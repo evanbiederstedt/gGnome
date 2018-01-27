@@ -28,5 +28,5 @@ Imports:
     BSgenome,
     gUtils,
     gTrack
-RoxygenNote: 6.0.1
+RoxygenNote: 6.0.1.9000
 Suggests: testthat

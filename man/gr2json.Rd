@@ -8,9 +8,9 @@ gr2json(intervals, file, y = rep("null", length(intervals)), labels = "",
   maxcn = 100, maxweight = 100)
 }
 \arguments{
-\item{file}{output json file}
+\item{intervals}{input jab object}
 
-\item{GRange}{input jab object}
+\item{file}{output json file}
 }
 \description{
 Dumps GRanges into JSON with metadata features as data points in  "intervals"
