@@ -2690,7 +2690,7 @@ bGraph = R6::R6Class("bGraph",
                      },
 
                      ## DONE: the bGraph created from jab different that from gGraph!!!
-                     subgraph = function(v=numeric(0), na.rm=F, mod=F){)
+                     subgraph = function(v=numeric(0), na.rm=F, mod=F){
                          if (mod == T){
                              super$subgraph(v, na.rm=F, mod=mod)
                              return(self)
