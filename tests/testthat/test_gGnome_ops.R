@@ -1,5 +1,4 @@
 
-
 library(gGnome)
 library(testthat)
 library(gUtils)
@@ -13,6 +12,135 @@ test_segs = readRDS(system.file('extdata', 'testing.segs.rds', package="gGnome")
 message("Toy edges: ", system.file('extdata', 'testing.es.rds', package="gGnome"))
 test_es = readRDS(system.file('extdata', 'testing.es.rds', package="gGnome"))
 
+
+## 
+
+gr = GRanges(1, IRanges(c(3,7,13), c(5,9,16)), strand=c('+','-','-'), seqinfo=Seqinfo("1", 25), name=c("A","B","C"))
+gr2 = GRanges(1, IRanges(c(1,9), c(6,14)), strand=c('+','-'), seqinfo=Seqinfo("1", 25), field=c(1,2))
+dt = data.table(seqnames=1, start=c(2,5,10), end=c(3,8,15))
+
+
+
+
+
+### some non-exported functions
+
+rev.comp = function(gr){
+    strmap = setNames(c("+", "-"), c("-", "+"))
+    if (!inherits(gr, "GRanges")){
+        stop("Error: Input must be GRanges.")
+    } else if (!all(strand(gr) %in% strmap)) {
+        stop("Error: Input must be all strand specific.")
+    }
+    return(rev(gr.flipstrand(gr)))
+}
+
+
+test_that('rev.comp works', {
+
+    expect_error(rev.comp())
+    expect_error(rev.comp(data.frame()))
+    gr3 = dt2gr(dt)
+    expect_error(rev.comp(gr3))   ## Error in rev.comp(gr3) : Input must be all strand specific.
+    expect_equal(width(rev.comp(gr)[1]), 4)
+    expect_equal(as.character(strand(rev.comp(gr)[1])), "+")
+    expect_equal(width(rev.comp(gr)[2]), 3)
+    expect_equal(as.character(strand(rev.comp(gr)[2])), "+")
+
+})
+
+
+capitalize = function(string, un = FALSE){
+    if (!un){
+        capped <- grep("^[^A-Z].*$", string, perl = TRUE)
+        substr(string[capped], 1, 1) <- toupper(substr(string[capped],1, 1))
+    } else{
+        capped <- grep("^[A-Z].*$", string, perl = TRUE)
+        substr(string[capped], 1, 1) <- tolower(substr(string[capped],1, 1))
+    }
+    return(string)
+}
+
+
+
+
+
+test_that('capitalize works', {
+
+    str1 = "Foo FOO"
+    str2 = "2Foo . $%@"
+    str3 = "foobar foo"
+    expect_match(capitalize(str1), "Foo FOO")
+    expect_match(capitalize(str1, un=TRUE), "foo FOO")
+    expect_equal(capitalize(str2), "2Foo . $%@")
+    expect_equal(capitalize(str2, un=TRUE), "2Foo . $%@")    ## probably should report this bug to r-lib
+    expect_match(capitalize(str3), "Foobar foo")
+    expect_match(capitalize(str3, un=TRUE), "foobar foo")
+
+})
+
+
+  
+
+ul = function(x, n=6){
+    n = pmin(pmin(dim(x)), n)
+    return(x[1:n, 1:n])
+}
+
+
+
+test_that('ul works', {
+
+    A = matrix(  c(2, 4, 3, 1, 5, 7),  nrow=2, ncol=3, byrow = TRUE)    
+    expect_equal(as.integer(ul(A, n=0)), 2)   ### Is this expected behavior? 
+    expect_equal(as.integer(ul(A, n=1)), 2)
+    expect_equal(dim(ul(A, n=2))[1], 2)
+    expect_equal(dim(ul(A, n=2))[2], 2)
+    expect_equal(dim(ul(A, n=999))[1], 2)
+    expect_equal(dim(ul(A, n=9999))[2], 2)   ### Is this expected behavior? 
+
+})
+
+
+
+
+tile.name = function(x){
+    if (!inherits(x, "GRanges")){
+        stop("Only takes GRanges as input for now.")
+    }
+    hb = hydrogenBonds(segs = x)
+    if (hb[, any(is.na(from) | is.na(to))]){
+        stop("Not fully strand paired.")
+    }
+    hb.map = hb[, c(setNames(from, to), setNames(to, from))]
+    seg.name = ifelse(strand(x)=="+",
+                      as.character(seq_along(x)),
+                      paste0("-", hb.map[as.character(seq_along(x))]))
+    return(seg.name)
+}
+
+
+test_that('tile.name works', {
+
+    ## if (!inherits(x, "GRanges")){
+    expect_error(tile.name(GRangesList()))
+    expect_equal(length(tile.name(test_segs)), 10)
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+### XT's tests
 
 ##-------------------------------------------------------##
 test_that('constructors and essential functions', {

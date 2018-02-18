@@ -1,7 +1,7 @@
 #' @title gGnome
 #'
 #' @description
-#' Reference-based graph representation of structurally altered genome
+#' Reference-based graph representation of structurally-altered genome
 #' employing GenomicRanges framework.
 #'
 #'
@@ -3978,6 +3978,9 @@ grl.match = function(query, subject,
     ## LATER
 }
 
+
+
+
 #' rev.comp
 #' Return the reverse complement of a given GRanges
 #'
@@ -3988,11 +3991,14 @@ rev.comp = function(gr){
     strmap = setNames(c("+", "-"), c("-", "+"))
     if (!inherits(gr, "GRanges")){
         stop("Input must be GRanges.")
-    } else if (!all(strand(gr) %in% strmap)) {
+    } else if (!all(strand(gr) %in% strmap)) {          ### EVAN: I would just return the GRanges here
         stop("Input must be all strand specific.")
     }
     return(rev(gr.flipstrand(gr)))
 }
+
+
+
 
 ## 2) converting a gwalks to
 ## ============= R6 gWalks class definition ============= ##
@@ -4053,11 +4059,9 @@ gWalks = R6::R6Class("gWalks",
                                                        cn,
                                                        str,
                                                        metacols=metacols)
-                             }
-                             else if (!is.null(grl)) {
+                             } else if (!is.null(grl)) {
                                  self$grl2gw(grl, kh=kh)
-                             }
-                             else {
+                             } else {
                                  self$nullGWalks()
                              }
                          },
@@ -6095,13 +6099,11 @@ read_gencode = function(con = Sys.getenv("DEFAULT_GENE_ANNOTATION"),
 ##############################
 capitalize = function(string, un = FALSE)
 {
-    if (!un)
-    {
+    if (!un){
         capped <- grep("^[^A-Z].*$", string, perl = TRUE)
         substr(string[capped], 1, 1) <- toupper(substr(string[capped],1, 1))
     }
-    else
-    {
+    else{
         capped <- grep("^[A-Z].*$", string, perl = TRUE)
         substr(string[capped], 1, 1) <- tolower(substr(string[capped],1, 1))
     }
@@ -6649,6 +6651,9 @@ tile.name = function(x){
     return(seg.name)
 }
 
+
+
+
 #########################################
 #' @name ul
 #' Upper left corner of a matrix
@@ -6663,6 +6668,9 @@ ul = function(x, n=6){
     n = pmin(pmin(dim(x)), n)
     return(x[1:n, 1:n])
 }
+
+
+
 
 ############################################
 #' @name jab2json
