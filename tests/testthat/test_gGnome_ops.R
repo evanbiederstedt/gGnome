@@ -130,6 +130,24 @@ test_that('tile.name works', {
 
 
 
+test_that('e2j works', {
+
+    expect_equal(length(e2j(test_segs, test_es)), 2)
+
+})
+
+
+
+
+test_that('etype works', {
+
+    expect_equal(dim(etype(test_segs, test_es))[1], 12)
+    expect_equal(dim(etype(test_segs, test_es))[2], 16) 
+
+})
+
+
+
 
 
 
@@ -172,6 +190,10 @@ test_that('dedup() works', {
     expect_equal(dedup(c(rep(2, 10.5), rep(3, 20)))[30], "3.20")
 
 })
+
+
+
+
 
 
 
@@ -227,7 +249,101 @@ test_that('chr2num works', {
 
 
 
+affine.map = function(x,
+                      ylim = c(0,1),
+                      xlim = c(min(x), max(x)),
+                      cap = F,
+                      cap.min = cap,
+                      cap.max = cap,
+                      clip = T,
+                      clip.min = clip,
+                      clip.max = clip){
+    if (xlim[2]==xlim[1]){
+        y = rep(mean(ylim), length(x))
+    }
+    else{
+        y = (ylim[2]-ylim[1]) / (xlim[2]-xlim[1])*(x-xlim[1]) + ylim[1]
+    }
 
+    if (cap.min){
+        y[x<min(xlim)] = ylim[which.min(xlim)]
+    }
+    else if (clip.min){
+        y[x<min(xlim)] = NA;
+    }
+
+    if (cap.max){
+        y[x>max(xlim)] = ylim[which.max(xlim)]
+    }
+    else if (clip.max){
+        y[x>max(xlim)] = NA;
+    }
+
+    return(y)
+}
+
+
+test_that('affine.map works', {
+
+    expect_equal(affine.map(49), 0.5)
+
+})
+
+
+#' @name gr.flatmap
+gr.flatmap = function(gr,
+                      windows,
+                      gap = 0,
+                      strand.agnostic = TRUE,
+                      squeeze = FALSE,
+                      xlim = c(0, 1)){
+    if (strand.agnostic){
+        GenomicRanges::strand(windows) = "*"
+    }
+
+    ## now flatten "window" coordinates, so we first map gr to windows
+    ## (replicating some gr if necessary)
+                                        #    h = findOverlaps(gr, windows)
+
+    h = gr.findoverlaps(gr, windows);
+
+    window.segs = gr.flatten(windows, gap = gap)
+
+    grl.segs = BiocGenerics::as.data.frame(gr);
+    grl.segs = grl.segs[values(h)$query.id, ];
+    grl.segs$query.id = values(h)$query.id;
+    grl.segs$window = values(h)$subject.id
+    grl.segs$start = start(h);
+    grl.segs$end = end(h);
+    grl.segs$pos1 = pmax(window.segs[values(h)$subject.id, ]$start,
+                         window.segs[values(h)$subject.id, ]$start + grl.segs$start - start(windows)[values(h)$subject.id])
+    grl.segs$pos2 = pmin(window.segs[values(h)$subject.id, ]$end,
+                         window.segs[values(h)$subject.id, ]$start + grl.segs$end - start(windows)[values(h)$subject.id])
+    grl.segs$chr = grl.segs$seqnames
+
+    if (squeeze)
+    {
+        min.win = min(window.segs$start)
+        max.win = max(window.segs$end)
+        grl.segs$pos1 = affine.map(grl.segs$pos1, xlim = c(min.win, max.win), ylim = xlim)
+        grl.segs$pos2 = affine.map(grl.segs$pos2, xlim = c(min.win, max.win), ylim = xlim)
+        window.segs$start = affine.map(window.segs$start, xlim = c(min.win, max.win), ylim = xlim)
+        window.segs$end = affine.map(window.segs$end, xlim = c(min.win, max.win), ylim = xlim)
+    }
+
+    return(list(grl.segs = grl.segs, window.segs = window.segs))
+}
+
+
+
+
+test_that('gr.flatmap works', {
+
+    expect_equal((gr.flatmap(example_genes, windows=GRanges('1:10000-20000'))$window.segs)$start, 1)
+    expect_equal((gr.flatmap(example_genes, windows=GRanges('1:10000-20000'))$window.segs)$end, 10001)
+    expect_equal(length((gr.flatmap(example_genes, windows=GRanges('1:10000-20000'))$window.segs)$grl.segs), 0)
+
+})
 
 
 
@@ -277,34 +393,13 @@ test_that('gGraph, dipGraph', {
 })
 
 
-## 
-## Error: Test failed: 'karyograph'
-## * unused argument (kag.tile = gGraph$new(tile = segments))
-## 1: expect_true(inherits(kag.tile = gGraph$new(tile = segments), "gGraph")) at :12
-## 2: quasi_label(enquo(object), label)
-## 3: eval_bare(get_expr(quo), get_env(quo))
-##
 
+test_that('karyograph', {
 
-##-------------------------------------------------------##
-## test_that('karyograph', {
-## 
-##    segments = system.file("extdata", "testing_tile.rds", package="gGnome")
-##    message("Tiling of the genome for testing:", segments)
-##    segments = readRDS(segments)
-##    juncs = system.file("extdata", "testing_junctions.rds", package="gGnome")
-##    message("Junctions of the genome for testing:", juncs)
-##    juncs = readRDS(juncs)
-##
-##    expect_error(kag.tile <<- gGraph$new(tile = segments), NA)
-    ## init with only tile
-##    expect_true(inherits(kag.tile = gGraph$new(tile = segments), "gGraph"))
-    ## ## expect_equal(length(kag.tile$segstats), 2220)
-    ## ## expect_equal(kag.tile$edges[, sum(type=="reference")/2], 1086)
-    ## ## ## init with only junc
-##    expect_true(inherits(kag.junc = gGraph$new(junc = junctions), "gGraph"))
-##
-##})
+    kag.tile = gGraph$new(tile = segments)
+    expect_error(kag.tile <<- gGraph$new(tile = segments),  NA) ### checks runs correctly
+
+})
 
 
 
