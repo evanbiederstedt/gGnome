@@ -1,4 +1,4 @@
-#' @title gGnome
+f#' @title gGnome
 #'
 #' @description
 #' Reference-based graph representation of structurally-altered genome
@@ -7335,8 +7335,7 @@ munlist = function(x, force.rbind = F, force.cbind = F, force.list = F)
         if ((length(unique(sapply(x, function(y) dim(y)[1]))) == 1)){
             force.cbind = T
         }
-    }
-    else{
+    } else{
         force.list = T
     }
 
@@ -7344,13 +7343,11 @@ munlist = function(x, force.rbind = F, force.cbind = F, force.list = F)
         return(cbind(ix = unlist(lapply(1:length(x), function(y) rep(y, length(x[[y]])))),
                      iix = unlist(lapply(1:length(x), function(y) if (length(x[[y]])>0) 1:length(x[[y]]) else NULL)),
                      unlist(x)))
-    }
-    else if (force.rbind){
+    } else if (force.rbind){
         return(cbind(ix = unlist(lapply(1:length(x), function(y) rep(y, nrow(x[[y]])))),
                      iix = unlist(lapply(1:length(x), function(y) if (nrow(x[[y]])>0) 1:nrow(x[[y]]) else NULL)),
                      do.call('rbind', x)))
-    }
-    else if (force.cbind){
+    } else if (force.cbind){
         return(t(rbind(ix = unlist(lapply(1:length(x), function(y) rep(y, ncol(x[[y]])))),
                        iix = unlist(lapply(1:length(x), function(y) if (ncol(x[[y]])>0) 1:ncol(x[[y]]) else NULL)),
                        do.call('cbind', x))))
@@ -7432,6 +7429,10 @@ read_vcf = function (fn, gr = NULL, hg = "hg19", geno = NULL, swap.header = NULL
         values(out)$path = in.fn
     return(out)
 }
+
+
+
+
 
 ############################################################
 #' ra_breaks: parse junction data from various common formats

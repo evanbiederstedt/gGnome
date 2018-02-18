@@ -133,6 +133,98 @@ test_that('tile.name works', {
 
 
 
+write.tab = function (x, ..., sep = "\t", quote = F, row.names = F)
+{
+    if (!is.data.frame(x)){
+        x = as.data.frame(x)
+    }
+    write.table(x, ..., sep = sep, quote = quote, row.names = row.names)
+}
+
+
+
+test_that('write.tab() works', {
+
+    expect_equal(length(write.tab(dt)), 0)  ### throws dt to STDOUT
+
+})
+
+
+
+
+
+
+
+test_that('get.ploidy works', {
+
+    expect_error(get.ploidy(GRangesList()))
+    expect_equal(get.ploidy(test_segs), 3)
+    ## if (length(cnix <- grep("CN", colnames(mcols(segs)), ignore.case = T)) == 
+
+})
+
+
+
+
+
+test_that('dedup() works', {
+
+    expect_equal(dedup(c(rep(2, 10.5), rep(3, 20)))[30], "3.20")
+
+})
+
+
+
+
+
+
+## read_vcf()
+## read_vcf = function(fn, gr = NULL, hg = 'hg19', geno = NULL, swap.header = NULL, verbose = FALSE, add.path = FALSE, tmp.dir = '~/temp/.tmpvcf', ...)
+##test_that('read_vcf', {
+#    ## error
+#    expect_error(read_vcf('foobar'))
+#    ## default 
+#    expect_equal(length(read_vcf(somatic_vcf)), 60)
+#    expect_equal(length(seqnames(seqinfo(read_vcf(somatic_vcf)))), 84)
+#    ## gr  gr= GRanges('1:10075-10100')
+#    ## hg
+##    expect_match(unique(as.data.frame(seqinfo(read_vcf(somatic_vcf, hg='hg12345')))$genome), 'hg12345')
+#    ## geno
+#    ## swap.header
+#    expect_equal(length(seqnames(seqinfo(read_vcf(somatic_vcf, swap.header='/Users/ebiederstedt/bamUtils/tests/testthat/new_header.vcf')))), 2)
+#    ## verbose
+#    expect_equal(length(read_vcf(somatic_vcf, verbose=TRUE)), 60)
+#    ## check 'if (!file.exists(swap.header))'
+#    expect_error(read_vcf(somatic_vcf, swap.header='foobar'))
+#
+#})
+
+
+chr2num = function(x, xy = FALSE)
+{
+    if (inherits(x, 'factor') | inherits(x, 'Rle')){
+        x = as.character(x)
+    }
+
+    out = gsub('chr', '', x);
+
+    if (!xy){
+        out = as.numeric(gsub('M', '25', gsub('Y', '24', gsub('X', '23', out))))
+    }
+
+    return(out)
+}
+
+
+
+test_that('chr2num works', {
+
+    expect_equal(as.logical(chr2num("ChrX")), NA)
+    expect_equal(chr2num("chrX"), 23)
+    expect_equal(chr2num("chrY"), 24)
+
+})
+
 
 
 
