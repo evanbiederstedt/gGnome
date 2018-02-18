@@ -164,26 +164,27 @@ test_that('special ranges functions for skew-symmetric graph', {
  
 
 
+
 ##-------------------------------------------------------##
-test_that('gWalks', {
-
-    jab = system.file('extdata', 'jabba.simple.rds', package="gGnome")
-    message("JaBbA result: ", jab)
-    segments = readRDS(jab)$segstats
-    junctions = readRDS(jab)$junctions
-    grl = system.file("extdata", "gw.grl.rds", package="gGnome")
-    message("Walks for testing:", grl)
-    grl = readRDS(grl)
-    expect_equal(length(gw <<- as(grl, "gWalks")), sum(values(grl)$cn>0))
-    expect_error(bg <<- as(gw, "bGraph"), NA)
-    expect_equal(length(bg$junctions), sum(values(junctions)$cn>0))
-    expect_true(inherits(gw.simp <<- gw$simplify(mod=FALSE), "gWalks"))
-    expect_error(bg.simp <<- as(gw.simp, "bGraph"), NA)
-    expect_error(bg.dc <<- bg.simp$decouple(mod=FALSE), NA)
-    ## expect_equal(length(bg.dc$junctions), length(bg$junctions)) 291>269
-    ## why does simplifying gwalks then decouple create more junctions????
-
-})
+##test_that('gWalks', {
+##
+##    jab = system.file('extdata', 'jabba.simple.rds', package="gGnome")
+##    message("JaBbA result: ", jab)
+##    segments = readRDS(jab)$segstats
+##    junctions = readRDS(jab)$junctions
+##    grl = system.file("extdata", "gw.grl.rds", package="gGnome")
+##    message("Walks for testing:", grl)
+##    grl = readRDS(grl)
+##    expect_equal(length(gw <<- as(grl, "gWalks")), sum(values(grl)$cn>0))
+##    expect_error(bg <<- as(gw, "bGraph"), NA)
+##    expect_equal(length(bg$junctions), sum(values(junctions)$cn>0))
+##    expect_true(inherits(gw.simp <<- gw$simplify(mod=FALSE), "gWalks"))
+##    expect_error(bg.simp <<- as(gw.simp, "bGraph"), NA)
+##    expect_error(bg.dc <<- bg.simp$decouple(mod=FALSE), NA)
+##    ## expect_equal(length(bg.dc$junctions), length(bg$junctions)) 291>269
+##    ## why does simplifying gwalks then decouple create more junctions????
+##
+##})
 
 
 ## I think downloading data without warnings is evil
@@ -214,3 +215,5 @@ test_that('gWalks', {
 ##     query = readRDS()
 ##     expect_error()
 ## })
+
+
