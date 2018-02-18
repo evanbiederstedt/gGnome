@@ -1,16 +1,20 @@
-context('testing gGnome')
+
 
 library(gGnome)
 library(testthat)
-library(gUtils)
+
+context('testing gGnome')
+
+
+message("Toy segments: ", system.file('extdata', 'testing.segs.rds', package="gGnome"))
+test_segs = readRDS(system.file('extdata', 'testing.segs.rds', package="gGnome"))
+
+message("Toy edges: ", system.file('extdata', 'testing.es.rds', package="gGnome"))
+test_es = readRDS(system.file('extdata', 'testing.es.rds', package="gGnome"))
 
 ##-------------------------------------------------------##
 test_that('constructors and essential functions', {
     ## small example, nested tDUP
-    message("Toy segments: ", system.file('extdata', 'testing.segs.rds', package="gGnome"))
-    test_segs = readRDS(system.file('extdata', 'testing.segs.rds', package="gGnome"))
-    message("Toy edges: ", system.file('extdata', 'testing.es.rds', package="gGnome"))
-    test_es = readRDS(system.file('extdata', 'testing.es.rds', package="gGnome"))
     ## default
     expect_equal(dim(etype(test_segs, test_es))[1], 12)
     expect_equal(dim(etype(test_segs, test_es))[2], 16)

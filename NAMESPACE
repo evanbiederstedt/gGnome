@@ -3,6 +3,7 @@
 S3method(length,gGraph)
 export("%+%.bGraph")
 export("%+%.gGraph")
+export(bGraph)
 export(e2j)
 export(etype)
 export(fusions)

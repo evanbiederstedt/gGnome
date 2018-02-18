@@ -561,7 +561,6 @@ gGraph = R6::R6Class("gGraph",
 
 
                          if (!"cn" %in% colnames(private$es)){
-                             browser()
                          
                          }
 
@@ -685,7 +684,6 @@ gGraph = R6::R6Class("gGraph",
                              ## if empty, ignore these GRanges lists
                              self$addJuncs(juncs[jadd])
                          }
-                         browser()
                          return(self)
                      },
 
@@ -828,7 +826,6 @@ gGraph = R6::R6Class("gGraph",
                          segs = segs %Q% (!is.na(cn))
 
                          all.j = e2j(private$segs, private$es, etype = "reference|aberrant")
-                         browser()
                          if (mod==T){
                              self$karyograph(tile = segs, juncs = all.j, cn = TRUE)
                              return(self)
@@ -1539,7 +1536,7 @@ gGraph = R6::R6Class("gGraph",
                          ed.json = ed.json[!is.na(cid)]
                          gg.js = list(intervals = node.json, connections = ed.json)
 
-                         browser()
+
                          if (save){
                              if (verbose <- getOption("gGnome.verbose")){
                                  message("Saving JSON to: ", filename)
@@ -2693,8 +2690,7 @@ bGraph = R6::R6Class("bGraph",
                      },
 
                      ## DONE: the bGraph created from jab different that from gGraph!!!
-                     subgraph = function(v=numeric(0), na.rm=F, mod=F){
-                         browser()
+                     subgraph = function(v=numeric(0), na.rm=F, mod=F){)
                          if (mod == T){
                              super$subgraph(v, na.rm=F, mod=mod)
                              return(self)
@@ -3070,7 +3066,6 @@ bGraph = R6::R6Class("bGraph",
                                  cn.adj[epaths[[i]]] = cn.adj[epaths[[i]]]-cns[i]
                                  cn.adj[epaths[[i+1]]] = cn.adj[epaths[[i+1]]]-cns[i+1]
                                  if (any(is.na(cn.adj))){
-                                     browser()
                                  }
                                  if (!all(cn.adj[epaths[[i]]]>=0)) ## something wrong, backtrack
                                  {
@@ -3266,7 +3261,7 @@ bGraph = R6::R6Class("bGraph",
                                  ## if (!palindromic) ## update reverse complement unless palindromic
                                  cn.adj[ecycles[[i+1]]] = cn.adj[ecycles[[i+1]]]-ccns[i+1]
                                  if (any(is.na(cn.adj))){
-                                     browser()
+
                                  }
                                  if (!all(cn.adj[ecycles[[i]]]>=0))
                                  {
@@ -4505,12 +4500,10 @@ gWalks = R6::R6Class("gWalks",
                                               loose.n = which(this.npath %in% loose.ix)
                                               if (length(loose.n)>0){
                                                   if (this.cyc==TRUE){
-                                                      browser()
                                                       return(NULL)
                                                   } else {
                                                       if (any(loose.n %in%
                                                               setdiff(seq_along(this.npath), c(1, length(this.npath))))){
-                                                          browser()
                                                           return(NULL)
                                                       }
                                                   }
@@ -4688,7 +4681,6 @@ gWalks = R6::R6Class("gWalks",
                                                                   ## weight = thisWeight,
                                                                   path.ix = i)
                                               if (thisEs[, any(is.na(to) | is.na(from))]){
-                                                  browser()
                                                   warning("Path ", i, " invalid, discard.")
                                                   return(NULL)
                                               }
@@ -4816,7 +4808,6 @@ gWalks = R6::R6Class("gWalks",
                                             ## ALERT: modifying segs
                                             new.node$new.ix = new.node$run.ix + length(new.segs)
                                             if (e %in% debug){
-                                                browser()
                                             }
                                             new.segs <<- c(new.segs, new.node[,c()])
                                             ## was this evaluated?
@@ -4834,7 +4825,6 @@ gWalks = R6::R6Class("gWalks",
 
                                             new.n.loose = new.ep[, sum(type=="loose")]
                                             if (new.n.loose != n.loose){
-                                                browser()
                                             }
 
                                             if (nrow(new.ep)==0){
@@ -4844,7 +4834,6 @@ gWalks = R6::R6Class("gWalks",
                                             }
 
                                             if (any(is.na(new.path))){
-                                                browser()
                                             }
                                             return(new.path)
                                         },
@@ -5459,7 +5448,6 @@ fusions = function(gg = NULL,
         x = vL[[i]]
         if (!is.null(debug)){
             if (i %in% debug){
-                browser()
             }
         }
 
@@ -5639,7 +5627,6 @@ proximity = function(query,
     query = gr.fix(query, get(private$segs))
     gr = c(query, subject)
 
-    browser()
     kg = karyograph(ra, gr)
     ## kg2 = gGraph$new()$karyograph(gr, ra)
 
@@ -6562,7 +6549,6 @@ annotate.walks = function(walks, cds, promoters = NULL, filter.splice = T, verbo
                                                      x = x[!is.na(tmp.fe[x]) & !is.na(tmp.le[x])]
                                                      if (length(x)>0)
                                                      {
-                                        #                                                   browser()
                                                          ir = IRanges(pmin(tmp.le[x], tmp.fe[x]), pmax(tmp.fe[x], tmp.le[x]))
                                                          if (length(del <- setdiff(IRanges(min(tmp.fe[x]), max(tmp.le[x])), ir))>0)
                                                          {
