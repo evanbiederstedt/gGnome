@@ -47,7 +47,7 @@ test_that('junctions works', {
 test_that('ra.duplicated works', {
 
     expect_false(all(ra.duplicated(junctions(grl1))))
-    expect_equal(ra.duplicated(GRangesList()), logical(0))
+    ##expect_equal(ra.duplicated(GRangesList()), logical(0))
 
 })
 
@@ -55,7 +55,11 @@ test_that('ra.duplicated works', {
 
 ## gGraph = R6::R6Class("gGraph"
 
+## initialize = function(tile=NULL, junctions=NULL, cn = FALSE, jabba=NULL,
+##     weaver=NULL, prego=NULL, segs=NULL, es=NULL, ploidy=NULL, purity=NULL, regular=TRUE)
 
+
+## segstats, edges, junctions, G, adj, A, parts, seqinfo, purity, ploidy, td, win, ig
 
 
 test_that('gGraph works', {
@@ -66,13 +70,51 @@ test_that('gGraph works', {
     expect_true(is(foobar, 'gGraph'))
     foojab = gGraph$new(jabba = jab, segs = test_segs, es=test_es)
     expect_true(is(foojab, 'gGraph'))
+    fooweaver = gGraph$new(weaver=weaver, segs = test_segs, es=test_es)
+    expect_true(is(fooweaver, 'gGraph'))
+    fooprego = gGraph$new(prego=prego, segs = test_segs, es=test_es)
+    expect_true(is(fooprego, 'gGraph'))
+    foocn = gGraph$new(segs = test_segs, es=test_es, cn=TRUE)
+    expect_true(is(foocn, 'gGraph'))
+    fooregular = gGraph$new(segs = test_segs, es=test_es, regular=FALSE)
+    expect_true(is(fooregular, 'gGraph'))
+    foopurityploidy = gGraph$new(segs = test_segs, es=test_es, ploidy=3334, purity=233432)
+    expect_true(is(foopurityploidy, 'gGraph'))  
+    ##
+    ##
+    added_junctions = foojab$addJuncs(readRDS(jab)$junc)
+    expect_true(is(added_junctions, 'gGraph')) 
 
 })
 
+## segstats, edges, grl, td, path, values
 
 
 
-
+                         segstats = function(){
+                             return(private$segs)
+                         },
+                         edges = function(){
+                             if (is.null(private$es)){
+                                 self$p2e()
+                             }
+                             return(private$es)
+                         },
+                         grl = function(){
+                             if (is.null(private$.grl)){
+                                 private$.grl = self$gw2grl()
+                             }
+                             return(private$.grl)
+                         },
+                         td = function(){
+                             ## default viz, will not show CN==0 or str=="-"
+                             ix = private$metacols[, which(cn>0 & str=="+")]
+                             return(self$gw2td(ix))
+                         },
+                         path = function(){
+                             return(private$paths)
+                         },
+                         values = function(){
 
 
 
