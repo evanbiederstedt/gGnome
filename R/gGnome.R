@@ -1,4 +1,4 @@
-f#' @title gGnome
+#' @title gGnome
 #'
 #' @description
 #' Reference-based graph representation of structurally-altered genome
@@ -8876,6 +8876,8 @@ hydrogenBonds = function(segs){
     return(hydrogenBs)
 }
 
+
+
 #' @name get.tile.id
 get.tile.id = function(segs){
     hb = hydrogenBonds(segs) ## nrow(hb)==length(segs)
@@ -8888,6 +8890,8 @@ get.tile.id = function(segs){
 
     return(hb[, tile.id])
 }
+
+
 
 ## what is this
 sparse_subset = function (A, B, strict = FALSE, chunksize = 100, quiet = FALSE)
@@ -9075,6 +9079,7 @@ draw.paths.y = function(grl, path.stack.x.gap=0, path.stack.y.gap=1){
     return(split(grl.segs$y, grl.segs$group)[names(grl)])
 }
 
+
 #' @name gr.flatmap
 gr.flatmap = function(gr,
                       windows,
@@ -9118,6 +9123,8 @@ gr.flatmap = function(gr,
 
     return(list(grl.segs = grl.segs, window.segs = window.segs))
 }
+
+
 
 #' @name affine.map
 affine.map = function(x,

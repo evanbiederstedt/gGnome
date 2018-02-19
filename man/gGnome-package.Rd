@@ -6,7 +6,7 @@
 \alias{gGnome-package}
 \title{gGnome}
 \description{
-Reference-based graph representation of structurally altered genome
+Reference-based graph representation of structurally-altered genome
 employing GenomicRanges framework.
 
 
