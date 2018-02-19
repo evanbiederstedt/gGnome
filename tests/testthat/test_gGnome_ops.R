@@ -511,10 +511,16 @@ test_that('gread', {
     weaver = system.file('extdata', 'weaver', package='gGnome')
     message("Weaver results: ", weaver)
     expect_error(gread('no_file_here'))
-    expect_true(inherits(jab <<- gread(jab), "bGraph"))
-    expect_true(inherits(prego <<- gread(prego), "gGraph"))
-    expect_true(inherits(wv <<-gread(weaver), "gGraph"))
-
+    jab_bgraph = gread(jab)
+    expect_true(is(jab_bgraph, "bGraph"))
+    ## preg_bgraph = gread(prego)
+    ## expect_true(is(preg_bgraph, "bGraph")) ### 'gGraph'
+    ## wv_bgraph = gread(weaver)   
+    ## expect_true(is(wv_bgraph, "bGraph"))  ### 'gGraph'
+    ## if (is.list(file)){
+    list_foo = gread(readRDS(system.file("extdata", "jabba.simple.rds", package="gGnome")))
+    expect_true(is(list_foo, 'bGraph'))
+    
 })
 
 
