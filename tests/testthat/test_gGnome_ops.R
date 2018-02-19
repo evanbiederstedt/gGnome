@@ -12,12 +12,67 @@ test_segs = readRDS(system.file('extdata', 'testing.segs.rds', package="gGnome")
 message("Toy edges: ", system.file('extdata', 'testing.es.rds', package="gGnome"))
 test_es = readRDS(system.file('extdata', 'testing.es.rds', package="gGnome"))
 
+jab = system.file('extdata', 'jabba.simple.rds', package="gGnome")
+message("JaBbA result: ", jab)
+
+prego = system.file('extdata', 'intervalFile.results', package='gGnome')
+message("PREGO results: ", prego)
+
+weaver = system.file('extdata', 'weaver', package='gGnome')
+message("Weaver results: ", weaver)
 
 ## 
 
 gr = GRanges(1, IRanges(c(3,7,13), c(5,9,16)), strand=c('+','-','-'), seqinfo=Seqinfo("1", 25), name=c("A","B","C"))
 gr2 = GRanges(1, IRanges(c(1,9), c(6,14)), strand=c('+','-'), seqinfo=Seqinfo("1", 25), field=c(1,2))
 dt = data.table(seqnames=1, start=c(2,5,10), end=c(3,8,15))
+
+
+
+
+
+
+test_that('junctions works', {
+
+    expect_error(junctions(data.frame()))
+    expect_error(junctions(GRanges()))
+    expect_equal(length(junctions(GRangesList())), 0)
+    expect_equal(length(junctions(grl1)), 250)
+
+})
+
+
+
+
+test_that('ra.duplicated works', {
+
+    expect_false(all(ra.duplicated(junctions(grl1))))
+    expect_equal(ra.duplicated(GRangesList()), logical(0))
+
+})
+
+
+
+## gGraph = R6::R6Class("gGraph"
+
+
+
+
+test_that('gGraph works', {
+
+    ggnew = gGraph$new()
+    expect_true(is(ggnew, 'gGraph'))
+    foobar = gGraph$new(segs = test_segs, es=test_es)
+    expect_true(is(foobar, 'gGraph'))
+    foojab = gGraph$new(jabba = jab, segs = test_segs, es=test_es)
+    expect_true(is(foojab, 'gGraph'))
+
+})
+
+
+
+
+
 
 
 
@@ -434,13 +489,21 @@ test_that('gread', {
 
 
 
+
+setxor = function (A, B){
+    return(setdiff(union(A, B), intersect(A, B)))
+}
+
 ## * could not find function "setxor"
 ##-------------------------------------------------------##
-## test_that('setxor', {
-##     A = c(1, 2, 3)
-##     B = c(1, 4, 5)
-##     expect_equal(setxor(A, B), c(2, 3, 4, 5))
-## })
+
+test_that('setxor', {
+
+    A = c(1, 2, 3)
+    B = c(1, 4, 5)
+    expect_equal(setxor(A, B), c(2, 3, 4, 5))
+
+})
 
 
 
@@ -449,8 +512,7 @@ test_that('gread', {
 ##-------------------------------------------------------##
 test_that('special ranges functions for skew-symmetric graph', {
 
-    jab = system.file('extdata', 'jabba.simple.rds', package="gGnome")
-    message("JaBbA result: ", jab)
+
     segments = readRDS(jab)$segstats
     junctions = readRDS(jab)$junctions
     expect_equal(length(seg.fill(GRanges())), 0)
