@@ -91,34 +91,6 @@ test_that('gGraph works', {
 
 
 
-                         segstats = function(){
-                             return(private$segs)
-                         },
-                         edges = function(){
-                             if (is.null(private$es)){
-                                 self$p2e()
-                             }
-                             return(private$es)
-                         },
-                         grl = function(){
-                             if (is.null(private$.grl)){
-                                 private$.grl = self$gw2grl()
-                             }
-                             return(private$.grl)
-                         },
-                         td = function(){
-                             ## default viz, will not show CN==0 or str=="-"
-                             ix = private$metacols[, which(cn>0 & str=="+")]
-                             return(self$gw2td(ix))
-                         },
-                         path = function(){
-                             return(private$paths)
-                         },
-                         values = function(){
-
-
-
-
 
 ### some non-exported functions
 
