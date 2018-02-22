@@ -87,6 +87,115 @@ test_that('gGraph works', {
 
 })
 
+
+## FUCNTIONS: initialize, set.seqinfo, nullGGraph, simpleGraph, dipGraph, addJuncs, addSegs, karyograph, simplify,
+##     decouple, add, jabb2gg, wv2gg, pr2gg, print, plot, window, layout, summary, gg2td, son, html, gg2js, components, 
+##     subgraph, filling, 
+
+## ACTIVE BINDINGS: segstats, edges, junctions, G, adj, A, parts, seqinfo, purity, ploidy, td, win, ig
+
+test_that('gGraph works, default', {
+
+    ggnew = gGraph$new()
+    expect_true(is(ggnew, 'gGraph'))
+    ## ACCESS ACTIVE BINDINGS
+    expect_equal(length(ggnew$segstats), 0)
+    expect_equal(dim(ggnew$edges)[1], 0)
+    expect_equal(length(ggnew$junctions), 0)
+    expect_error(ggnew$G, NA)  ## check it works; IGRAPH 84fc0c4 D--- 0 0 -- + edges from 84fc0c4:
+    expect_equal(length(ggnew$adj), 0)
+    expect_equal(length(ggnew$A), 0)
+    expect_equal(ggnew$parts, NULL)
+    expect_equal(length(ggnew$seqinfo), 0)
+    expect_equal(ggnew$purity, NULL)
+    expect_equal(ggnew$ploidy, NULL)
+    expect_equal(ggnew$td, NULL)
+    expect_equal(length(ggnew$win), 0)
+    ## ggnew$ig
+    ## FUNCTIONS
+    ## set.seqinfo = function(genome=NULL, gname=NULL, drop=FALSE)
+    ggnew_setseq = ggnew$set.seqinfo()
+    expect_true(is(ggnew_setseq, 'gGraph'))
+    expect_equal(length(ggnew_setseq$segstats), 0)
+    expect_equal(dim(ggnew_setseq$edges)[1], 0)
+    expect_equal(length(ggnew_setseq$junctions), 0)
+    expect_error(ggnew_setseq$G, NA)  ## check it works
+    expect_equal(length(ggnew_setseq$adj), 0)
+    expect_equal(length(ggnew_setseq$A), 0)
+    expect_equal(ggnew_setseq$parts, NULL)
+    expect_equal(length(ggnew_setseq$seqinfo), 0)
+    expect_equal(ggnew_setseq$purity, NULL)
+    expect_equal(ggnew_setseq$ploidy, NULL)
+    expect_equal(ggnew_setseq$td, NULL)
+    expect_equal(length(ggnew_setseq$win), 0)
+    ## set.seqinfo, drop = TRUE
+    ggnew_setseq_drop = ggnew$set.seqinfo(gname = 'foobar', drop=TRUE)
+    expect_true(is(ggnew_setseq_drop, 'gGraph'))
+    expect_equal(length(ggnew_setseq_drop$segstats), 0)
+    expect_equal(dim(ggnew_setseq_drop$edges)[1], 0)
+    expect_equal(length(ggnew_setseq_drop$junctions), 0)
+    expect_error(ggnew_setseq_drop$G, NA)   ## check it works
+    expect_equal(length(ggnew_setseq_drop$adj), 0)
+    expect_equal(length(ggnew_setseq_drop$A), 0)
+    expect_equal(ggnew_setseq_drop$parts, NULL)
+    expect_equal(length(ggnew_setseq_drop$seqinfo), 0)
+    expect_equal(ggnew_setseq_drop$purity, NULL)
+    expect_equal(ggnew_setseq_drop$ploidy, NULL)
+    expect_equal(ggnew_setseq_drop$td, NULL)
+    expect_equal(length(ggnew_setseq_drop$win), 0)
+    ## set.seqinfo, genome != NULL, gname != NULL
+    ggnew_setseq_hg = ggnew$set.seqinfo(genome = hg_seqlengths(), gname = 'foobar', drop = TRUE)
+    expect_true(is(ggnew_setseq_hg, 'gGraph'))
+    expect_equal(length(ggnew_setseq_hg$segstats), 0)
+    expect_equal(dim(ggnew_setseq_hg$edges)[1], 0)
+    expect_equal(length(ggnew_setseq_hg$junctions), 0)
+    expect_error(ggnew_setseq_hg$G, NA) ## check it works
+    expect_equal(length(ggnew_setseq_hg$adj), 0)
+    expect_equal(length(ggnew_setseq_hg$A), 0)
+    expect_equal(ggnew_setseq_hg$parts, NULL)
+    expect_equal(length(ggnew_setseq_hg$seqinfo), 25)   ### checks!
+    expect_equal(ggnew_setseq_hg$purity, NULL)
+    expect_equal(ggnew_setseq_hg$ploidy, NULL)
+    expect_equal(ggnew_setseq_hg$td, NULL)
+    expect_equal(length(ggnew_setseq_hg$win), 0)
+    ## nullGraph = function(regular=TRUE, genome=NULL)
+    ggnew_setseq_nullGraph = ggnew$nullGGraph()
+    expect_true(is(ggnew_setseq_nullGraph, 'gGraph'))
+    expect_equal(length(ggnew_setseq_nullGraph$segstats), 0)
+    expect_equal(dim(ggnew_setseq_nullGraph$edges)[1], 0)
+    expect_equal(length(ggnew_setseq_nullGraph$junctions), 0)
+    expect_error(ggnew_setseq_nullGraph$G, NA) ## check it works
+    expect_equal(length(ggnew_setseq_nullGraph$adj), 0)
+    expect_equal(length(ggnew_setseq_nullGraph$A), 0)
+    expect_equal(ggnew_setseq_nullGraph$parts, NULL)
+    expect_equal(length(ggnew_setseq_nullGraph$seqinfo), 25)   ### checks! "null" means there is no node, you can still have a "space" of possible values when the set is empty
+    expect_equal(ggnew_setseq_nullGraph$purity, NULL)
+    expect_equal(ggnew_setseq_nullGraph$ploidy, NULL)
+    expect_equal(ggnew_setseq_nullGraph$td, NULL)
+    expect_equal(length(ggnew_setseq_nullGraph$win), 0)
+    ## simpleGraph = function(genome = NULL, chr=FALSE, include.junk=FALSE, ploidy = NULL)
+    ggnew_setseq_simpleGraph = ggnew$simpleGraph()
+    expect_true(is(ggnew_setseq_simpleGraph, 'gGraph'))
+    expect_equal(length(ggnew_setseq_simpleGraph$segstats), 50)
+    expect_equal(dim(ggnew_setseq_simpleGraph$edges)[1], 0)
+    expect_equal(length(ggnew_setseq_simpleGraph$junctions), 0)
+    expect_error(ggnew_setseq_simpleGraph$G, NA) ## check it works
+    expect_equal(length(ggnew_setseq_simpleGraph$adj), 2500)
+    expect_equal(length(ggnew_setseq_simpleGraph$A), 2500)
+    ## expect_equal(ggnew_setseq_simpleGraph$parts, NULL)
+    expect_equal(length(ggnew_setseq_simpleGraph$seqinfo), 25)   ### checks! "null" means there is no node, you can still have a "space" of possible values when the set is empty
+    expect_equal(ggnew_setseq_simpleGraph$purity, NULL)
+    expect_equal(ggnew_setseq_simpleGraph$ploidy, NULL)
+    expect_true(is(ggnew_setseq_simpleGraph$td, 'gTrack'))
+    expect_equal((ggnew_setseq_simpleGraph$td)$ygap, 2)
+    expect_match((ggnew_setseq_simpleGraph$td)$name, 'CN')
+    expect_equal(length(ggnew_setseq_simpleGraph$win), 25)
+
+})
+
+
+
+
 ## segstats, edges, grl, td, path, values
 
 
@@ -291,22 +400,6 @@ test_that('dedup() works', {
 #})
 
 
-chr2num = function(x, xy = FALSE)
-{
-    if (inherits(x, 'factor') | inherits(x, 'Rle')){
-        x = as.character(x)
-    }
-
-    out = gsub('chr', '', x);
-
-    if (!xy){
-        out = as.numeric(gsub('M', '25', gsub('Y', '24', gsub('X', '23', out))))
-    }
-
-    return(out)
-}
-
-
 
 test_that('chr2num works', {
 
@@ -318,92 +411,11 @@ test_that('chr2num works', {
 
 
 
-affine.map = function(x,
-                      ylim = c(0,1),
-                      xlim = c(min(x), max(x)),
-                      cap = F,
-                      cap.min = cap,
-                      cap.max = cap,
-                      clip = T,
-                      clip.min = clip,
-                      clip.max = clip){
-    if (xlim[2]==xlim[1]){
-        y = rep(mean(ylim), length(x))
-    }
-    else{
-        y = (ylim[2]-ylim[1]) / (xlim[2]-xlim[1])*(x-xlim[1]) + ylim[1]
-    }
-
-    if (cap.min){
-        y[x<min(xlim)] = ylim[which.min(xlim)]
-    }
-    else if (clip.min){
-        y[x<min(xlim)] = NA;
-    }
-
-    if (cap.max){
-        y[x>max(xlim)] = ylim[which.max(xlim)]
-    }
-    else if (clip.max){
-        y[x>max(xlim)] = NA;
-    }
-
-    return(y)
-}
-
-
 test_that('affine.map works', {
 
     expect_equal(affine.map(49), 0.5)
 
 })
-
-
-#' @name gr.flatmap
-gr.flatmap = function(gr,
-                      windows,
-                      gap = 0,
-                      strand.agnostic = TRUE,
-                      squeeze = FALSE,
-                      xlim = c(0, 1)){
-    if (strand.agnostic){
-        GenomicRanges::strand(windows) = "*"
-    }
-
-    ## now flatten "window" coordinates, so we first map gr to windows
-    ## (replicating some gr if necessary)
-                                        #    h = findOverlaps(gr, windows)
-
-    h = gr.findoverlaps(gr, windows);
-
-    window.segs = gr.flatten(windows, gap = gap)
-
-    grl.segs = BiocGenerics::as.data.frame(gr);
-    grl.segs = grl.segs[values(h)$query.id, ];
-    grl.segs$query.id = values(h)$query.id;
-    grl.segs$window = values(h)$subject.id
-    grl.segs$start = start(h);
-    grl.segs$end = end(h);
-    grl.segs$pos1 = pmax(window.segs[values(h)$subject.id, ]$start,
-                         window.segs[values(h)$subject.id, ]$start + grl.segs$start - start(windows)[values(h)$subject.id])
-    grl.segs$pos2 = pmin(window.segs[values(h)$subject.id, ]$end,
-                         window.segs[values(h)$subject.id, ]$start + grl.segs$end - start(windows)[values(h)$subject.id])
-    grl.segs$chr = grl.segs$seqnames
-
-    if (squeeze)
-    {
-        min.win = min(window.segs$start)
-        max.win = max(window.segs$end)
-        grl.segs$pos1 = affine.map(grl.segs$pos1, xlim = c(min.win, max.win), ylim = xlim)
-        grl.segs$pos2 = affine.map(grl.segs$pos2, xlim = c(min.win, max.win), ylim = xlim)
-        window.segs$start = affine.map(window.segs$start, xlim = c(min.win, max.win), ylim = xlim)
-        window.segs$end = affine.map(window.segs$end, xlim = c(min.win, max.win), ylim = xlim)
-    }
-
-    return(list(grl.segs = grl.segs, window.segs = window.segs))
-}
-
-
 
 
 test_that('gr.flatmap works', {
@@ -508,11 +520,6 @@ test_that('gread', {
 
 
 
-
-
-setxor = function (A, B){
-    return(setdiff(union(A, B), intersect(A, B)))
-}
 
 ## * could not find function "setxor"
 ##-------------------------------------------------------##

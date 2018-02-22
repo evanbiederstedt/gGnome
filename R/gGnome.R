@@ -111,6 +111,9 @@ ra.duplicated = function(junc){
     }
 }
 
+
+
+
 ## ================== gGraph class definition =========== ##
 #' @export
 gGraph = setClass("gGraph")
@@ -306,7 +309,7 @@ gGraph = R6::R6Class("gGraph",
                     ## initialize from global ref genome seqinfo
                     ## This is actually a diploid graph
                     ## null graph should be all zero
-                    nullGGraph = function(regular=TRUE, genome=NULL){
+                    nullGraph = function(regular=TRUE, genome=NULL){
                         "Create empty gGraph."
                         if (!is.null(private$segs)){
                             old.si = seqinfo(private$segs)
@@ -1220,7 +1223,6 @@ gGraph = R6::R6Class("gGraph",
                         }
                         return(private$parition$no)
                     },
-                    ##
 
                     gg2td = function(seg.col, ...){
                         if (verbose <- getOption("gGnome.verbose")){
@@ -1612,8 +1614,7 @@ gGraph = R6::R6Class("gGraph",
                                      self$fillin()
                                  }
                                  return(self)
-                             }
-                             else {
+                             } else {
                                  out = gGraph$new(segs=newSegs,
                                                   es=newEs,
                                                   junctions=newJuncs,
@@ -1624,8 +1625,7 @@ gGraph = R6::R6Class("gGraph",
                                  }
                                  return(out)
                              }
-                         }
-                         else {
+                         } else {
                              stop("Error: Invalid input.")
                          }
                      },
@@ -1665,8 +1665,7 @@ gGraph = R6::R6Class("gGraph",
 
                          if (any(inSum>cns | outSum>cns, na.rm = TRUE)){
                              warning("Infeasible graph!!")
-                         }
-                         else {
+                         } else {
                              colnames(inE)[2] = "cn.in"
                              colnames(outE)[2] = "cn.out"
                              ## Now fill in the loose ends
@@ -2033,8 +2032,7 @@ gGraph = R6::R6Class("gGraph",
                                        start(gr2.s) - start(tiles)[gr2.s$ix])
 
                          ## reverse offset now calculate 3' offset from 5' of intervals
-                         if (!directed)
-                         {
+                         if (!directed){
                              off1r = ifelse(as.logical(strand(gr1.s)=='+'),
                                             end(tiles)[gr1.s$ix]-start(gr1.s),
                                             end(gr1.s) - start(tiles)[gr1.s$ix])
@@ -2113,8 +2111,9 @@ gGraph = R6::R6Class("gGraph",
                                  2, off2r , '+') ## add uix2 offset to all distances
                              D = pmin(abs(Df), abs(Dr), abs(Df2), abs(Dr2))
                          }
-                         else
+                         else{
                              D = Df
+                         }
 
                          if (verbose)
                          {
