@@ -21,6 +21,10 @@ message("PREGO results: ", prego)
 weaver = system.file('extdata', 'weaver', package='gGnome')
 message("Weaver results: ", weaver)
 
+
+jabba = readRDS(jab)
+
+junctions = jabba$junctions
 ## 
 
 gr = GRanges(1, IRanges(c(3,7,13), c(5,9,16)), strand=c('+','-','-'), seqinfo=Seqinfo("1", 25), name=c("A","B","C"))
@@ -190,11 +194,66 @@ test_that('gGraph works, default', {
     expect_equal((ggnew_setseq_simpleGraph$td)$ygap, 2)
     expect_match((ggnew_setseq_simpleGraph$td)$name, 'CN')
     expect_equal(length(ggnew_setseq_simpleGraph$win), 25)
+    ## dipGraph = function(genome = NULL, chr=FALSE, include.junk=FALSE)
+    ggnew_dd = ggnew$dipGraph()
+    expect_true(is(ggnew_dd, 'gGraph'))
+    expect_equal(length(ggnew_dd$segstats), 50)
+    expect_equal(dim(ggnew_dd$edges)[1], 0)
+    expect_equal(length(ggnew_dd$junctions), 0)
+    expect_error(ggnew_dd$G, NA) ## check it works
+    expect_equal(length(ggnew_dd$adj), 2500)
+    expect_equal(length(ggnew_dd$A), 2500)
+    ## expect_equal(ggnew_dd$parts, NULL)
+    expect_equal(length(ggnew_dd$seqinfo), 25)   
+    expect_equal(ggnew_dd$purity, NULL)
+    expect_equal(ggnew_dd$ploidy, 2)  ## checks!
+    expect_true(is(ggnew_dd$td, 'gTrack'))
+    expect_equal((ggnew_dd$td)$ygap, 2)
+    expect_match((ggnew_dd$td)$name, 'CN')
+    expect_equal(length(ggnew_dd$win), 25)
+    ## dipGraph
+    ggnew_dd_junk = ggnew$dipGraph(genome = hg_seqlengths(), chr=TRUE, include.junk=TRUE)
+    expect_true(is(ggnew_dd_junk, 'gGraph'))
+    expect_equal(length(ggnew_dd_junk$segstats), 50)
+    expect_equal(dim(ggnew_dd_junk$edges)[1], 0)
+    expect_equal(length(ggnew_dd_junk$junctions), 0)
+    expect_error(ggnew_dd_junk$G, NA) ## check it works
+    expect_equal(length(ggnew_dd_junk$adj), 2500)
+    expect_equal(length(ggnew_dd_junk$A), 2500)
+    ## expect_equal(ggnew_dd$parts, NULL)
+    expect_equal(length(ggnew_dd_junk$seqinfo), 25)   
+    expect_equal(ggnew_dd_junk$purity, NULL)
+    expect_equal(ggnew_dd_junk$ploidy, 2)  ## checks!
+    expect_true(is(ggnew_dd_junk$td, 'gTrack'))
+    expect_equal((ggnew_dd_junk$td)$ygap, 2)
+    expect_match((ggnew_dd_junk$td)$name, 'CN')
+    expect_equal(length(ggnew_dd_junk$win), 25)
+    ## addJuncs = function(junc, cn=TRUE)
+    expect_error(ggnew$addJuncs())
+    added_juncs = ggnew$addJuncs(junc = junctions)
+    expect_true(is(added_juncs, 'gGraph'))
+    expect_equal(length(added_juncs$segstats), 1112)
+    expect_equal(dim(added_juncs$edges)[1], 1596)
+    expect_equal(dim(added_juncs$edges)[2], 15)
+    expect_equal(length(added_juncs$junctions), 267)
+    expect_error(added_juncs$G, NA) ## check it works
+    expect_equal(length(added_juncs$adj), 1236544)
+    expect_equal(length(added_juncs$A),  1236544)
+    ## expect_equal(added_juncs$parts, NULL)
+    expect_equal(length(added_juncs$seqinfo), 25)   
+    expect_equal(added_juncs$purity, NULL)
+    expect_equal(added_juncs$ploidy, NULL)  ## checks!
+    expect_true(is(added_juncs$td, 'gTrack'))
+    expect_equal((added_juncs$td)$ygap, 2)
+    expect_match((added_juncs$td)$name, 'CN')
+    expect_equal(length(added_juncs$win), 25)
+    ## addJuncs, cn = FALSE
+    ## added_juncs_cnfalse = ggnew$addJuncs(junc = junctions, cn = FALSE) ERROR
 
 })
 
 
-
+### gGraph$new(tile = test_segs)
 
 ## segstats, edges, grl, td, path, values
 
@@ -202,16 +261,6 @@ test_that('gGraph works, default', {
 
 
 ### some non-exported functions
-
-rev.comp = function(gr){
-    strmap = setNames(c("+", "-"), c("-", "+"))
-    if (!inherits(gr, "GRanges")){
-        stop("Error: Input must be GRanges.")
-    } else if (!all(strand(gr) %in% strmap)) {
-        stop("Error: Input must be all strand specific.")
-    }
-    return(rev(gr.flipstrand(gr)))
-}
 
 
 ##test_that('rev.comp works', {
@@ -226,18 +275,6 @@ rev.comp = function(gr){
 ##    expect_equal(as.character(strand(rev.comp(gr)[2])), "+")
 ##
 ##})
-
-
-capitalize = function(string, un = FALSE){
-    if (!un){
-        capped <- grep("^[^A-Z].*$", string, perl = TRUE)
-        substr(string[capped], 1, 1) <- toupper(substr(string[capped],1, 1))
-    } else{
-        capped <- grep("^[A-Z].*$", string, perl = TRUE)
-        substr(string[capped], 1, 1) <- tolower(substr(string[capped],1, 1))
-    }
-    return(string)
-}
 
 
 
@@ -260,12 +297,6 @@ test_that('capitalize works', {
 
   
 
-ul = function(x, n=6){
-    n = pmin(pmin(dim(x)), n)
-    return(x[1:n, 1:n])
-}
-
-
 
 test_that('ul works', {
 
@@ -281,21 +312,6 @@ test_that('ul works', {
 
 
 
-
-tile.name = function(x){
-    if (!inherits(x, "GRanges")){
-        stop("Only takes GRanges as input for now.")
-    }
-    hb = hydrogenBonds(segs = x)
-    if (hb[, any(is.na(from) | is.na(to))]){
-        stop("Not fully strand paired.")
-    }
-    hb.map = hb[, c(setNames(from, to), setNames(to, from))]
-    seg.name = ifelse(strand(x)=="+",
-                      as.character(seq_along(x)),
-                      paste0("-", hb.map[as.character(seq_along(x))]))
-    return(seg.name)
-}
 
 
 test_that('tile.name works', {
@@ -327,15 +343,6 @@ test_that('etype works', {
 
 
 
-
-
-write.tab = function (x, ..., sep = "\t", quote = F, row.names = F)
-{
-    if (!is.data.frame(x)){
-        x = as.data.frame(x)
-    }
-    write.table(x, ..., sep = sep, quote = quote, row.names = row.names)
-}
 
 
 
@@ -375,29 +382,6 @@ test_that('dedup() works', {
 
 
 
-
-
-
-## read_vcf()
-## read_vcf = function(fn, gr = NULL, hg = 'hg19', geno = NULL, swap.header = NULL, verbose = FALSE, add.path = FALSE, tmp.dir = '~/temp/.tmpvcf', ...)
-##test_that('read_vcf', {
-#    ## error
-#    expect_error(read_vcf('foobar'))
-#    ## default 
-#    expect_equal(length(read_vcf(somatic_vcf)), 60)
-#    expect_equal(length(seqnames(seqinfo(read_vcf(somatic_vcf)))), 84)
-#    ## gr  gr= GRanges('1:10075-10100')
-#    ## hg
-##    expect_match(unique(as.data.frame(seqinfo(read_vcf(somatic_vcf, hg='hg12345')))$genome), 'hg12345')
-#    ## geno
-#    ## swap.header
-#    expect_equal(length(seqnames(seqinfo(read_vcf(somatic_vcf, swap.header='/Users/ebiederstedt/bamUtils/tests/testthat/new_header.vcf')))), 2)
-#    ## verbose
-#    expect_equal(length(read_vcf(somatic_vcf, verbose=TRUE)), 60)
-#    ## check 'if (!file.exists(swap.header))'
-#    expect_error(read_vcf(somatic_vcf, swap.header='foobar'))
-#
-#})
 
 
 

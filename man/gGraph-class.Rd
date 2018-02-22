@@ -7,17 +7,17 @@
 \title{genomic rearrangement graph}
 \format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
-\strong{Constructor:}
-  gGraph$new(tile=NULL, junctions=NULL, cn = FALSE,
+Constructor:
+  gGraph$new(tile=NULL, juncs=NULL, cn = FALSE,
              jabba=NULL,
              weaver=NULL,
              prego=NULL,
              segs=NULL, es=NULL,
              ploidy=NULL, purity=NULL)
 
-  gread(file)
+  gread(filename)
 
-\strong{Public fields:}
+Public fields:
   gg$segstats
 
   gg$edges
@@ -32,7 +32,7 @@
 
   gg$parts
 
-\strong{Public methods:}
+Public methods:
 
   gg$seqinfo()
 
@@ -40,11 +40,13 @@
 
   gg$nullGGraph()
 
+  gg$simpleGraph(genome = NULL, chr = FALSE, include.junk = FALSE)
+
   gg$dipGraph(genome = NULL, chr = FALSE, include.junk = FALSE)
 
   gg$karyograph(tile = NULL, juncs = NULL)
 
-  gg$addJuncs(junc)
+  gg$addJuncs(juncs)
 
   gg$addSegs(bps)
 
@@ -66,9 +68,13 @@
   ## TODO: rewrite layout(gg); add layout method option
 
   gg$summary()
-  ## TODO: rewrite suumary(gg)
+  ## TODO: rewrite summary(gg)
 
-  ## TODO gg$simplify(); gg$decouple(); gg$add(); gg$subtract()
+  gg$simplify(mod=TRUE)
+
+  gg$decouple(mod=TRUE)
+
+  ## TODO: gg$add(); gg$subtract()
 
   gg$length()
 
@@ -77,35 +83,100 @@
   gg$gg2td()
   ## TODO: add node and edge appearences
 
-  gg$json(filename = ".", maxcn = 100, maxweight = 100, trim=TRUE)
+  gg$json(filename = ".", maxcn = 100, maxweight = 100)
 
-  gg$gg2js(filename = ".", maxcn = 100, maxweight = 100, trim=TRUE)
+  gg$gg2js(filename = ".", maxcn = 100, maxweight = 100, save = TRUE)
 
-  ## TODO: gg$html(), directly open browser and invoke gGnome.js if possible
+  gg$html(filename = ".", gGnome.js = Sys.getenv("DEFAULT_GGENOMEJS"), maxcn = 100, maxweight=100)
 
-  gg$components(mc.cores = 1) OR components(gg)
+  gg$components(mc.cores = 1)
+
+  components(gg)
 
   gg$subgraph(v = numeric(0), na.rm = T, mod = T)
 
   gg$fillin()
+
+  gg$fillup()
 
   gg$trim(gr = NULL)
 
   gg$get.g(force = FALSE)
 
   gg$get.adj()
+
+  gg$hood()
+
+  gg$dist()
+
+  gg$isBalance()
+
+  gg$get.loose()
+
+  gg$get.walk(v=numeric(0), e=numeric(0), peel=FALSE, cn=NULL)
+
+  random.walk(start=numeric(0), steps, mode=c("out","in","all"))
+
+  chromoplexy()
+
+  chromothripsis()
+
+  kid.frag()
+
+  bfb()
 }
 \arguments{
 \item{tile}{the \code{GRanges} genome segmentation}
 
-\item{junctions}{the \code{GRangesList} of SV junctions}
+\item{juncs}{the \code{GRangesList} of SV junctions}
 
-\item{cn}{\code{logical}}
+\item{cn}{\code{logical} if \code{TRUE} honor the copy number annotation in the input}
 
 \item{jabba}{the path to or actual \code{list} of
 \href{http://github.com/mskilab/JaBbA}{JaBbA} output}
 
-\item{regular}{\code{logical}}
+\item{weaver}{the directory containing the output files from Weaver
+\href{https://github.com/ma-compbio/Weaver}{Weaver}}
+
+\item{prego}{the interval.results output file from PREGO
+\href{http://compbio.cs.brown.edu/projects/prego/}{PREGO}}
+
+\item{segs}{\code{GRanges} object of the nodes}
+
+\item{es}{\code{data.table} object of the edges}
+
+\item{ploidy}{defined as the width weighted copy number of the nodes}
+
+\item{purity}{the proportion of cells that has rearranged genome described by the graph
+in the biological sample, the rest is assumed diploid reference}
+
+\item{filename}{a path to the input or output file}
+
+\item{genome}{\code{seqinfo}, \code{seqlengths}, or \code{BSgenome} objects of the reference genome}
+
+\item{chr}{\code{logical} scalar, whether chromosome names should have the "chr" prefixes}
+
+\item{include.junk}{\code{logical} scalar, whether to keep the unassembled gaps in reference genome}
+
+\item{ploidy}{\code{numeric} scalar, the ploidy with which to initialize the simple graph}
+
+\item{bps}{\code{GRanges} of genomic breakpoints or segments}
+
+\item{regular}{\code{logical} or \code{character}, defining the \code{seqlevels} of the regular chromosomes,
+or non-unassembled gaps in a reference genome, if \code{TRUE} will read this info from DEFAULT_REGULAR_CHR}
+
+\item{pad}{the amount of extension up and downstream of the ranges when defining genomic ranges}
+
+\item{mod}{\code{logical} scalar, whether to modify the instance by reference (i.e. \code{self}) or produce
+a copy of the output}
+
+\item{maxcn}{\code{numeric}, any node copy number exceeding will be capped}
+
+\item{maxweight}{\code{numeric}, similar to \code{\link{maxcn}}, but for edges}
+
+\item{gGnome.js}{\code{character}, the path to the repository of gGnome.js}
+
+\item{invoke}{\code{logical} scalar, whether to start gGnome.js server right away}
 }
 \description{
 The main work horse of this package. Rearrangement graph G=(V, E), where V is a set of
@@ -125,7 +196,8 @@ In the following examples \code{gg} is a gGraph object.
 \section{Details}{
 
 \subsection{Consructors}{
-There are five ways to create gGraph objects.
+To parse the output from genome graph callers like JaBbA and load it as a gGraph/bGraph object,
+use \code{gread()}.
 }
 }
 
