@@ -4,11 +4,11 @@
 \alias{gr2json}
 \title{gr2json}
 \usage{
-gr2json(intervals, file, y = rep("null", length(intervals)), labels = "",
-  maxcn = 100, maxweight = 100)
+gr2json(intervals, filename, y = rep("null", length(intervals)),
+  labels = "", maxcn = 100, maxweight = 100)
 }
 \arguments{
-\item{file}{output json file}
+\item{filename}{output json file}
 
 \item{GRange}{input jab object}
 }

@@ -4,12 +4,12 @@
 \alias{jab2json}
 \title{jab2json}
 \usage{
-jab2json(jab, file, maxcn = 100, maxweight = 100)
+jab2json(jab, filename, maxcn = 100, maxweight = 100)
 }
 \arguments{
 \item{jab}{input jab object}
 
-\item{file}{output json file}
+\item{filename}{output json file}
 }
 \description{
 Dumps JaBbA graph into json
