@@ -1693,179 +1693,172 @@ gGraph = R6::R6Class("gGraph",
                          return(allComponents)
                      },
 
-                     ## DONE:
-                     ## if na.rm==F, balanced graph's subgraph should always be balanced!!!!!
-                     subgraph = function(v=numeric(0), na.rm=T, mod=T){
-                         "Given a numeric vector of vertices, \
-                         change this gGraph to its subgraph consists of only these vertices."
-                         if (length(v)==0){
-                             ## nothing provided, nothing happens
-                             return(self)
-                         }
-                         else if (is.numeric(v)){
-                             ## at least they are num
-                             if (!is.integer(v)){
-                                 ## if not integer, convert
-                                 v = as.integer(v)
-                             }
+                    ## DONE:
+                    ## if na.rm==F, balanced graph's subgraph should always be balanced!!!!!
+                    subgraph = function(v=numeric(0), na.rm=T, mod=T){
+                        "Given a numeric vector of vertices, \
+                        change this gGraph to its subgraph consists of only these vertices."
+                        if (length(v)==0){
+                            ## nothing provided, nothing happens
+                            return(self)
+                        } else if (is.numeric(v)){
+                            ## at least they are num
+                            if (!is.integer(v)){
+                                ## if not integer, convert
+                                v = as.integer(v)
+                            }
+                            if (!all(v %in% seq_along(private$segs))){
+                                v = v[which(v %in% seq_along(private$segs))]
+                                warning("Some v subscripts out of bound! Ignore!")
+                            }
 
-                             if (!all(v %in% seq_along(private$segs))){
-                                 v = v[which(v %in% seq_along(private$segs))]
-                                 warning("Some v subscripts out of bound! Ignore!")
-                             }
+                            if (length(loose.v <- intersect(v, which(private$segs$loose==T)))>0){
+                                warning("Some v is loose end. Ignore!")
+                                v = setdiff(v, loose.v)
+                            }
 
-                             if (length(loose.v <- intersect(v, which(private$segs$loose==T)))>0){
-                                 warning("Some v is loose end. Ignore!")
-                                 v = setdiff(v, loose.v)
-                             }
+                            ## DONE: also recover v's missing reverse complements
+                            hB = hydrogenBonds(private$segs)
+                            vid = sort(unique(c(v, hB[from %in% v, to], hB[to %in% v, from])))
 
-                             ## DONE: also recover v's missing reverse complements
-                             hB = hydrogenBonds(private$segs)
-                             vid = sort(unique(c(v, hB[from %in% v, to], hB[to %in% v, from])))
+                            ## get the subgraph
+                            newSegs = private$segs[vid]
 
-                             ## get the subgraph
-                             newSegs = private$segs[vid]
-
-                             newId = setNames(seq_along(vid), vid)
-                             newEs = private$es[from %in% vid & to %in% vid]
-                             newEs[, ":="(from=newId[as.character(from)],
+                            newId = setNames(seq_along(vid), vid)
+                            newEs = private$es[from %in% vid & to %in% vid]
+                            newEs[, ":="(from=newId[as.character(from)],
                                           to=newId[as.character(to)])]
 
-                             ## ## DONE: use "fillin" function on the graph if na.rm=F
-                             ## jIdx = which(grl.in(private$junction, newSegs, only=T))
-                             ## newJuncs = private$junction[unique(jIdx)]
+                            ## ## DONE: use "fillin" function on the graph if na.rm=F
+                            ## jIdx = which(grl.in(private$junction, newSegs, only=T))
+                            ## newJuncs = private$junction[unique(jIdx)]
 
-                             if (mod==T){
-                                 private$gGraphFromScratch(segs=newSegs,
-                                                           es=newEs,
-                                                           ## junc=newJuncs,
-                                                           purity=private$.purity)
-                                 if (na.rm==F){
-                                     self$fillin()
-                                 }
-                                 return(self)
-                             }
-                             else {
-                                 out = gGraph$new(segs=newSegs,
-                                                  es=newEs,
-                                                  ## junctions=newJuncs,
-                                                  purity=private$.purity)
-                                 if (na.rm==F){
-                                     out$fillin()
-                                 }
-                                 return(out)
-                             }
-                         }
-                         else {
-                             stop("Error: Invalid input.")
-                         }
-                     },
+                            if (mod==T){
+                                private$gGraphFromScratch(segs=newSegs,
+                                                          es=newEs,
+                                                          ## junc=newJuncs,
+                                                          purity=private$.purity)
+                                if (na.rm==F){
+                                    self$fillin()
+                                }
+                                return(self)
+                            } else {
+                                out = gGraph$new(segs=newSegs,
+                                                es=newEs,
+                                                ## junctions=newJuncs,
+                                                purity=private$.purity)
+                                if (na.rm==F){
+                                    out$fillin()
+                                }
+                                return(out)
+                            }
+                        } else {
+                            stop("Error: Invalid input.")
+                        }
+                    },
 
-                     ## DONE!!!!!!
-                     ## the idea of loose end: accesorries, only exist to BALANCE the graph
-                     ## make them transient
-                     fillin = function(){
-                         "Fill in the missing copies of edges to make the graph balanced."
-                         if (self$isBalance()){
-                             return(self)
-                         }
+                    ## DONE!!!!!!
+                    ## the idea of loose end: accesorries, only exist to BALANCE the graph
+                    ## make them transient
+                    fillin = function(){
+                        "Fill in the missing copies of edges to make the graph balanced."
+                        if (self$isBalance()){
+                            return(self)
+                        }
                          
-                         ## GOAL: make loose ends a very free thing, add it, remove it, fuse a
-                         ## pair of them or convert to a terminal feature.
-                         adj = self$get.adj()
-                         inSum = Matrix::colSums(adj)
-                         outSum = Matrix::rowSums(adj)
-                         cns = private$segs$cn
+                        ## GOAL: make loose ends a very free thing, add it, remove it, fuse a
+                        ## pair of them or convert to a terminal feature.
+                        adj = self$get.adj()
+                        inSum = Matrix::colSums(adj)
+                        outSum = Matrix::rowSums(adj)
+                        cns = private$segs$cn
 
-                         ## sanity check: edge copy number sum should eq adj
-                         inE = data.table(toid=seq_along(private$segs))
-                         tmp.inE = private$es[, .(cn = sum(cn)), by=to]
-                         setkey(tmp.inE, "to")
-                         inE[, cn := tmp.inE[.(toid), cn]]
-                         inE[, cn := ifelse(is.na(cn), 0, cn)]
+                        ## sanity check: edge copy number sum should eq adj
+                        inE = data.table(toid=seq_along(private$segs))
+                        tmp.inE = private$es[, .(cn = sum(cn)), by=to]
+                        setkey(tmp.inE, "to")
+                        inE[, cn := tmp.inE[.(toid), cn]]
+                        inE[, cn := ifelse(is.na(cn), 0, cn)]
 
-                         outE = data.table(fromid=seq_along(private$segs))
-                         tmp.outE = private$es[, .(cn = sum(cn)), by=from]
-                         setkey(tmp.outE, "from")
-                         outE[, cn := tmp.outE[.(fromid), cn]]
-                         outE[, cn := ifelse(is.na(cn), 0, cn)]
+                        outE = data.table(fromid=seq_along(private$segs))
+                        tmp.outE = private$es[, .(cn = sum(cn)), by=from]
+                        setkey(tmp.outE, "from")
+                        outE[, cn := tmp.outE[.(fromid), cn]]
+                        outE[, cn := ifelse(is.na(cn), 0, cn)]
 
-                         if (!all(inE[, setNames(cn, toid)] == inSum) | !all(outE[, setNames(cn, fromid)] == outSum)){
-                             stop("Error: Adjacency not matching edges table!")
-                         }
+                        if (!all(inE[, setNames(cn, toid)] == inSum) | !all(outE[, setNames(cn, fromid)] == outSum)){
+                            stop("Error: Adjacency not matching edges table!")
+                        }
 
-                         ## next we determine if it is feasible to fill the slacks
-                         ## test if inSum>cns | outSum>cns
-                         ## TODO: No!! reference edges are given copy 2!!!
+                        ## next we determine if it is feasible to fill the slacks
+                        ## test if inSum>cns | outSum>cns
+                        ## TODO: No!! reference edges are given copy 2!!!
 
-                         if (any(inSum>cns | outSum>cns, na.rm = TRUE)){
-                             warning("Infeasible graph!!")
-                         }
-                         else {
-                             colnames(inE)[2] = "cn.in"
-                             colnames(outE)[2] = "cn.out"
-                             ## Now fill in the loose ends
-                             node.cn = merge(inE, outE, by.x="toid", by.y="fromid")
-                             colnames(node.cn)[1] = "id"
-                             node.cn[, cn := cns]
-                             node.cn[, terminal := private$segs$terminal]
-                             node.cn[, loose.out := ifelse(terminal==T & cn.out==0, 0, cn-cn.out)]
-                             node.cn[, loose.in := ifelse(terminal==T & cn.in==0, 0, cn-cn.in)]
+                        if (any(inSum>cns | outSum>cns, na.rm = TRUE)){
+                            warning("Infeasible graph!!")
+                        } else {
+                            colnames(inE)[2] = "cn.in"
+                            colnames(outE)[2] = "cn.out"
+                            ## Now fill in the loose ends
+                            node.cn = merge(inE, outE, by.x="toid", by.y="fromid")
+                            colnames(node.cn)[1] = "id"
+                            node.cn[, cn := cns]
+                            node.cn[, terminal := private$segs$terminal]
+                            node.cn[, loose.out := ifelse(terminal==T & cn.out==0, 0, cn-cn.out)]
+                            node.cn[, loose.in := ifelse(terminal==T & cn.in==0, 0, cn-cn.in)]
 
-                             ## before any action, if nothing to be filled in, then stop
-                             if (node.cn[, !any(loose.in>0)] | node.cn[, !any(loose.out>0)]){
-                                 return(self)
-                             }
+                            ## before any action, if nothing to be filled in, then stop
+                            if (node.cn[, !any(loose.in>0)] | node.cn[, !any(loose.out>0)]){
+                                return(self)
+                            }
 
 
-                             ## construct GR for new loose ends required
-                             new.loose.in = node.cn[loose.in>0,
-                                                    gr.start(private$segs[id], ignore.strand=FALSE)]
-                             values(new.loose.in) = NULL
-                             values(new.loose.in)$cn = node.cn[loose.in>0, loose.in]
-                             values(new.loose.in)$loose = TRUE
-                             values(new.loose.in)$terminal = TRUE
+                            ## construct GR for new loose ends required
+                            new.loose.in = node.cn[loose.in>0, gr.start(private$segs[id], ignore.strand=FALSE)]
+                            values(new.loose.in) = NULL
+                            values(new.loose.in)$cn = node.cn[loose.in>0, loose.in]
+                            values(new.loose.in)$loose = TRUE
+                            values(new.loose.in)$terminal = TRUE
 
-                             new.loose.out = node.cn[loose.out>0,
-                                                     gr.end(private$segs[id], ignore.strand=FALSE)]
-                             values(new.loose.out) = NULL
-                             values(new.loose.out)$cn = node.cn[loose.out>0, loose.out]
-                             values(new.loose.out)$loose = TRUE
-                             values(new.loose.out)$terminal = TRUE
+                            new.loose.out = node.cn[loose.out>0, gr.end(private$segs[id], ignore.strand=FALSE)]
+                            values(new.loose.out) = NULL
+                            values(new.loose.out)$cn = node.cn[loose.out>0, loose.out]
+                            values(new.loose.out)$loose = TRUE
+                            values(new.loose.out)$terminal = TRUE
 
-                             new.loose = c(new.loose.in, new.loose.out)
-                             segs = private$tmpSegs = private$segs
-                             old.n = length(segs)
-                             node.cn[loose.out>0,
-                                     new.loose.id := old.n+length(new.loose.in)+
-                                         seq_along(new.loose.out)]
-                             node.cn[loose.in>0,
-                                     new.loose.id := old.n+seq_along(new.loose.in)]
-                             ## Warning! We throw out things that was in JaBbA output!
-                             ## TODO: reconstruct them on demand
-                             private$segs = c(segs[,c("cn", "loose", "terminal")], new.loose)
-                             newEs = rbind(node.cn[loose.in>0, .(from=new.loose.id,
-                                                                 to=id,
-                                                                 cn = loose.in,
-                                                                 type="loose")],
-                                           node.cn[loose.out>0, .(from=id,
-                                                                  to=new.loose.id,
-                                                                  cn = loose.out,
-                                                                  type="loose")])
-                             private$es = rbind(private$es[,.(from, to, cn, type)],
+                            new.loose = c(new.loose.in, new.loose.out)
+                            segs = private$tmpSegs = private$segs
+                            old.n = length(segs)
+                            node.cn[loose.out>0,
+                                    new.loose.id := old.n+length(new.loose.in)+
+                                        seq_along(new.loose.out)]
+                            node.cn[loose.in>0,
+                                    new.loose.id := old.n+seq_along(new.loose.in)]
+                            ## Warning! We throw out things that was in JaBbA output!
+                            ## TODO: reconstruct them on demand
+                            private$segs = c(segs[,c("cn", "loose", "terminal")], new.loose)
+                            newEs = rbind(node.cn[loose.in>0, .(from=new.loose.id,
+                                                                to=id,
+                                                                cn = loose.in,
+                                                                type="loose")],
+                                            node.cn[loose.out>0, .(from=id,
+                                                                to=new.loose.id,
+                                                                cn = loose.out,
+                                                                type="loose")])
+                            private$es = rbind(private$es[,.(from, to, cn, type)],
                                                 newEs[, .(from, to, cn, type)])
-                             private$g = igraph::make_directed_graph(
-                                 t(as.matrix(private$es[,.(from,to)])), n=length(private$segs))
-                         }
-                         return(self)
-                     },
+                            private$g = igraph::make_directed_graph(
+                                t(as.matrix(private$es[,.(from,to)])), n=length(private$segs))
+                        }
+                        return(self)
+                    },
 
-                     trim = function(gr=NULL, mod=FALSE){
-                         "Return a trimmed subgraph that all the nodes are wihtin the range defined by gr."
-                         ## DONE
-                         ## if input gr is super set of private$segs, do nothing!
-                         ## Only returning new obj
-                         if (verbose <- getOption("gGnome.verbose")){
+                    trim = function(gr=NULL, mod=FALSE){
+                        "Return a trimmed subgraph that all the nodes are wihtin the range defined by gr."
+                        ## DONE
+                        ## if input gr is super set of private$segs, do nothing!
+                        ## Only returning new obj
+                        if (verbose <- getOption("gGnome.verbose")){
                              message("Given a GRanges, return the trimmed subgraph overlapping it.")
                          }
 
@@ -8231,21 +8224,19 @@ ra_breaks = function(rafile,
         }
     }
 
-    if (is.data.table(rafile))
-    {
+    if (is.data.table(rafile)){
         require(data.table)
         rafile = as.data.frame(rafile)
     }
 
-    if (nrow(rafile)==0)
-    {
+    if (nrow(rafile)==0){
         out = GRangesList()
         values(out) = rafile
         return(out)
     }
-
-    if (flipstrand) ## flip breaks so that they are pointing away from junction
-    {
+    
+    ## flip breaks so that they are pointing away from junction
+    if (flipstrand) {
         rafile$str1 = ifelse(rafile$strand1 == '+', '-', '+')
         rafile$str2 = ifelse(rafile$strand2 == '+', '-', '+')
     }
@@ -8265,10 +8256,8 @@ ra_breaks = function(rafile,
         rafile$str2 = rafile$strand2
     }
 
-    if (!is.null(rafile$pos1) & !is.null(rafile$pos2))
-    {
-        if (breakpointer)
-        {
+    if (!is.null(rafile$pos1) & !is.null(rafile$pos2)){
+        if (breakpointer){
             rafile$pos1 = rafile$T_BPpos1
             rafile$pos2 = rafile$T_BPpos2
         }

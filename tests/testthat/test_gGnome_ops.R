@@ -115,7 +115,7 @@ test_that('gGraph works, default', {
     expect_equal(ggnew$ploidy, NULL)
     expect_equal(ggnew$td, NULL)
     expect_equal(length(ggnew$win), 0)
-    ## ggnew$ig
+    expect_equal(ggnew$ig, NULL)
     ## FUNCTIONS
     ## set.seqinfo = function(genome=NULL, gname=NULL, drop=FALSE)
     ggnew_setseq = ggnew$set.seqinfo()
@@ -132,6 +132,7 @@ test_that('gGraph works, default', {
     expect_equal(ggnew_setseq$ploidy, NULL)
     expect_equal(ggnew_setseq$td, NULL)
     expect_equal(length(ggnew_setseq$win), 0)
+    expect_equal(ggnew_setseq$ig, NULL)
     ## set.seqinfo, drop = TRUE
     ggnew_setseq_drop = ggnew$set.seqinfo(gname = 'foobar', drop=TRUE)
     expect_true(is(ggnew_setseq_drop, 'gGraph'))
@@ -147,6 +148,7 @@ test_that('gGraph works, default', {
     expect_equal(ggnew_setseq_drop$ploidy, NULL)
     expect_equal(ggnew_setseq_drop$td, NULL)
     expect_equal(length(ggnew_setseq_drop$win), 0)
+    expect_equal(ggnew_setseq_drop$ig, NULL)
     ## set.seqinfo, genome != NULL, gname != NULL
     ggnew_setseq_hg = ggnew$set.seqinfo(genome = hg_seqlengths(), gname = 'foobar', drop = TRUE)
     expect_true(is(ggnew_setseq_hg, 'gGraph'))
@@ -162,6 +164,7 @@ test_that('gGraph works, default', {
     expect_equal(ggnew_setseq_hg$ploidy, NULL)
     expect_equal(ggnew_setseq_hg$td, NULL)
     expect_equal(length(ggnew_setseq_hg$win), 0)
+    expect_equal(ggnew_setseq_hg$ig, NULL)
     ## nullGraph = function(regular=TRUE, genome=NULL)
     ggnew_setseq_nullGraph = ggnew$nullGGraph()
     expect_true(is(ggnew_setseq_nullGraph, 'gGraph'))
@@ -177,6 +180,7 @@ test_that('gGraph works, default', {
     expect_equal(ggnew_setseq_nullGraph$ploidy, NULL)
     expect_equal(ggnew_setseq_nullGraph$td, NULL)
     expect_equal(length(ggnew_setseq_nullGraph$win), 0)
+    expect_equal(ggnew_setseq_nullGraph$ig, NULL)
     ## simpleGraph = function(genome = NULL, chr=FALSE, include.junk=FALSE, ploidy = NULL)
     ggnew_setseq_simpleGraph = ggnew$simpleGraph()
     expect_true(is(ggnew_setseq_simpleGraph, 'gGraph'))
@@ -194,6 +198,13 @@ test_that('gGraph works, default', {
     expect_equal((ggnew_setseq_simpleGraph$td)$ygap, 2)
     expect_match((ggnew_setseq_simpleGraph$td)$name, 'CN')
     expect_equal(length(ggnew_setseq_simpleGraph$win), 25)
+    ## STILL ERROR
+    ## >  ggnew_setseq_simpleGraph$ig
+    ##Error in log(private$segs$cn, 1.4) : 
+    ##  non-numeric argument to mathematical function
+    ##In addition: Warning messages:
+    ##1: replacing previous import ‘VariantAnnotation::select’ by ‘plotly::select’ when loading ‘skitools’ 
+    ##2: replacing previous import ‘ggplot2::last_plot’ by ‘plotly::last_plot’ when loading ‘skitools’ 
     ## dipGraph = function(genome = NULL, chr=FALSE, include.junk=FALSE)
     ggnew_dd = ggnew$dipGraph()
     expect_true(is(ggnew_dd, 'gGraph'))
@@ -203,7 +214,8 @@ test_that('gGraph works, default', {
     expect_error(ggnew_dd$G, NA) ## check it works
     expect_equal(length(ggnew_dd$adj), 2500)
     expect_equal(length(ggnew_dd$A), 2500)
-    ## expect_equal(ggnew_dd$parts, NULL)
+    ## > ggnew_dd$ig
+    ## > ggnew_dd$parts
     expect_equal(length(ggnew_dd$seqinfo), 25)   
     expect_equal(ggnew_dd$purity, NULL)
     expect_equal(ggnew_dd$ploidy, 2)  ## checks!
@@ -249,10 +261,346 @@ test_that('gGraph works, default', {
     expect_equal(length(added_juncs$win), 25)
     ## addJuncs, cn = FALSE
     ## added_juncs_cnfalse = ggnew$addJuncs(junc = junctions, cn = FALSE) ERROR
+    ##
+    ## addSegs = function(tile)
+    added_segs = ggnew$addSegs(tile = test_segs)
+    expect_true(is(added_segs, 'gGraph'))
+    expect_equal(length(added_segs$segstats), 1124)
+    expect_equal(dim(added_segs$edges)[1], 1074)
+    expect_equal(dim(added_segs$edges)[2], 14)
+    expect_equal(length(added_segs$junctions), 0)
+    expect_error(added_segs$G, NA) ## check it works
+    expect_equal(length(added_segs$adj), 1263376)
+    expect_equal(length(added_segs$A),  1263376)
+    ## expect_equal(added_segs$parts, NULL)
+    expect_equal(length(added_segs$seqinfo), 25)   
+    expect_equal(added_segs$purity, NULL)
+    expect_equal(added_segs$ploidy, NULL)  ## checks!
+    expect_true(is(added_segs$td, 'gTrack'))
+    expect_equal((added_segs$td)$ygap, 2)
+    expect_match((added_segs$td)$name, 'CN')
+    expect_equal(length(added_segs$win), 25)
+    ## karyograph = function(tile=NULL, juncs=NULL, cn=FALSE, regular=FALSE)
+    ## default
+    ggnew_karyograph = ggnew$karyograph()
+    expect_true(is(ggnew_karyograph, 'gGraph'))
+    expect_equal(length(ggnew_karyograph$segstats), 1124)
+    expect_equal(dim(ggnew_karyograph$edges)[1], 1074)
+    expect_equal(dim(ggnew_karyograph$edges)[2], 23)
+    expect_equal(length(ggnew_karyograph$junctions), 0)
+    expect_error(ggnew_karyograph$G, NA) ## check it works
+    expect_equal(length(ggnew_karyograph$adj), 1263376)
+    expect_equal(length(ggnew_karyograph$A),  1263376)
+    ## expect_equal(length((ggnew_karyograph$parts)$membership), 50)
+    ##expect_equal(length((ggnew_karyograph$parts)$csize), 25)
+    ##expect_equal(length(ggnew_karyograph$seqinfo), 25)   
+    expect_equal(ggnew_karyograph$purity, NULL)
+    expect_equal(ggnew_karyograph$ploidy, NULL)  ## checks!
+    expect_true(is(ggnew_karyograph$td, 'gTrack'))
+    expect_equal((ggnew_karyograph$td)$ygap, 2)
+    expect_match((ggnew_karyograph$td)$name, 'CN')
+    expect_equal(length(ggnew_karyograph$win), 25)
+    ##
+    ## simplify = function(mod=TRUE)
+    ggnew_simplify = ggnew$simplify()
+    expect_true(is(ggnew_simplify, 'gGraph'))
+    expect_equal(length(ggnew_simplify$segstats), 50)
+    expect_equal(dim(ggnew_simplify$edges)[1], 0)
+    expect_equal(dim(ggnew_simplify$edges)[2], 11)
+    expect_equal(length(ggnew_simplify$junctions), 0)
+    expect_error(ggnew_simplify$G, NA) ## check it works
+    expect_equal(length(ggnew_simplify$adj), 2500)
+    expect_equal(length(ggnew_simplify$A),  2500)
+    ##expect_equal(length((ggnew_simplify$parts)$membership), 50)
+    ##expect_equal(length((ggnew_simplify$parts)$csize), 25)
+    expect_equal(length(ggnew_simplify$seqinfo), 25)   
+    expect_equal(ggnew_simplify$purity, NULL)
+    expect_equal(ggnew_simplify$ploidy, NULL)  ## checks!
+    expect_true(is(ggnew_simplify$td, 'gTrack'))
+    expect_equal((ggnew_simplify$td)$ygap, 2)
+    expect_match((ggnew_simplify$td)$name, 'CN')
+    expect_equal(length(ggnew_simplify$win), 25)
+    ## simplify = function(mod=FALSE)
+    ggnew_simplify = ggnew$simplify(mod=FALSE)
+    expect_true(is(ggnew_simplify, 'gGraph'))
+    expect_equal(length(ggnew_simplify$segstats), 50)
+    expect_equal(dim(ggnew_simplify$edges)[1], 0)
+    expect_equal(dim(ggnew_simplify$edges)[2], 11)
+    expect_equal(length(ggnew_simplify$junctions), 0)
+    expect_error(ggnew_simplify$G, NA) ## check it works
+    expect_equal(length(ggnew_simplify$adj), 2500)
+    expect_equal(length(ggnew_simplify$A),  2500)
+    ##expect_equal(length((ggnew_simplify$parts)$membership), 50)
+    ##expect_equal(length((ggnew_simplify$parts)$csize), 25)
+    expect_equal(length(ggnew_simplify$seqinfo), 25)   
+    expect_equal(ggnew_simplify$purity, NULL)
+    expect_equal(ggnew_simplify$ploidy, NULL)  ## checks!
+    expect_true(is(ggnew_simplify$td, 'gTrack'))
+    expect_equal((ggnew_simplify$td)$ygap, 2)
+    expect_match((ggnew_simplify$td)$name, 'CN')
+    expect_equal(length(ggnew_simplify$win), 25)
+    ## decouple = function(mod=TRUE)
+    ggnew_decouple = ggnew$decouple()
+    expect_true(is(ggnew_decouple, 'gGraph'))
+    expect_equal(length(ggnew_decouple$segstats), 50)
+    expect_equal(dim(ggnew_decouple$edges)[1], 0)
+    expect_equal(dim(ggnew_decouple$edges)[2], 19)
+    expect_equal(length(ggnew_decouple$junctions), 0)
+    expect_error(ggnew_decouple$G, NA) ## check it works
+    expect_equal(length(ggnew_decouple$adj), 2500)
+    expect_equal(length(ggnew_decouple$A),  2500)
+    ##expect_equal(length((ggnew_decouple$parts)$membership), 50)
+    ##expect_equal(length((ggnew_decouple$parts)$csize), 25)
+    expect_equal(length(ggnew_decouple$seqinfo), 25)   
+    expect_equal(ggnew_decouple$purity, NULL)
+    expect_equal(ggnew_decouple$ploidy, NULL)  ## checks!
+    expect_true(is(ggnew_decouple$td, 'gTrack'))
+    expect_equal((ggnew_decouple$td)$ygap, 2)
+    expect_match((ggnew_decouple$td)$name, 'CN')
+    expect_equal(length(ggnew_decouple$win), 25)
+    ggnew_decouple = ggnew$decouple(mod=FALSE)
+    expect_true(is(ggnew_decouple, 'gGraph'))
+    expect_equal(length(ggnew_decouple$segstats), 50)
+    expect_equal(dim(ggnew_decouple$edges)[1], 0)
+    expect_equal(dim(ggnew_decouple$edges)[2], 19)
+    expect_equal(length(ggnew_decouple$junctions), 0)
+    expect_error(ggnew_decouple$G, NA) ## check it works
+    expect_equal(length(ggnew_decouple$adj), 2500)
+    expect_equal(length(ggnew_decouple$A),  2500)
+    ##expect_equal(length((ggnew_decouple$parts)$membership), 50)
+    ##expect_equal(length((ggnew_decouple$parts)$csize), 25)
+    expect_equal(length(ggnew_decouple$seqinfo), 25)   
+    expect_equal(ggnew_decouple$purity, NULL)
+    expect_equal(ggnew_decouple$ploidy, NULL)  ## checks!
+    expect_true(is(ggnew_decouple$td, 'gTrack'))
+    expect_equal((ggnew_decouple$td)$ygap, 2)
+    expect_match((ggnew_decouple$td)$name, 'CN')
+    expect_equal(length(ggnew_decouple$win), 25)
+    ## 
+    ## add = function(gg, mod=FALSE)
+    added = ggnew$add(gg=ggnew_karyograph)
+    expect_true(is(added, 'gGraph'))
+    expect_equal(length(added$segstats), 100)
+    expect_equal(dim(added$edges)[1], 0)
+    expect_equal(dim(added$edges)[2], 10)
+    expect_equal(length(added$junctions), 0)
+    expect_error(added$G, NA) ## check it works
+    expect_equal(length(added$adj), 10000)
+    expect_equal(length(added$A),  10000)
+    ##expect_true(is(added$parts, 'list'))
+    ##expect_equal(length(added$parts), 3)
+    ##expect_equal(length(added$parts$membership), 100)
+    ##expect_equal(length((added$parts)$csize), 25)
+    expect_equal(length(added$seqinfo), 25)   
+    expect_equal(added$purity, NULL)
+    expect_equal(added$ploidy, NULL)  ## checks!
+    expect_true(is(added$td, 'gTrack'))
+    expect_equal((added$td)$ygap, 2)
+    expect_match((added$td)$name, 'CN')
+    expect_equal(length(added$win), 25)
+    ## add() several times
+    five_adds = ggnew$add(gg=ggnew_karyograph)$add(gg=ggnew_karyograph)$add(gg=ggnew_karyograph)$add(gg=ggnew_karyograph)$add(gg=ggnew_karyograph)
+    expect_true(is(five_adds, 'gGraph'))
+    expect_equal(length(five_adds$segstats), 300)
+    expect_equal(dim(five_adds$edges)[1], 0)
+    expect_equal(dim(five_adds$edges)[2], 10)
+    expect_equal(length(five_adds$junctions), 0)
+    expect_error(five_adds$G, NA) ## check it works
+    expect_equal(length(five_adds$adj),  90000)
+    expect_equal(length(five_adds$A),   90000)
+    ##expect_true(is(five_adds$parts, 'list'))
+    ##expect_equal(length(five_adds$parts), 3)
+    ##expect_equal(length(five_adds$parts$membership), 300)
+    ##expect_equal(length((five_adds$parts)$csize), 25)
+    expect_equal(length(five_adds$seqinfo), 25)   
+    expect_equal(five_adds$purity, NULL)
+    expect_equal(five_adds$ploidy, NULL)  ## checks!
+    expect_true(is(five_adds$td, 'gTrack'))
+    expect_equal((five_adds$td)$ygap, 2)
+    expect_match((five_adds$td)$name, 'CN')
+    expect_equal(length(five_adds$win), 25) 
+    ## print() to STDOUT
+    expect_error(ggnew$print(), NA)
+    ## plot() nothing is returned here, so let's do this for now:
+    expect_error(ggnew$plot(), NA)
+    ## window()
+    expect_equal(length(ggnew$window()), 25)
+    ## 
+    ## > ggnew$layout()
+    ## Error in log(private$segs$cn, 1.4) : 
+    ## summary()
+    expect_true(is.character(ggnew$summary()))
+    ## length()
+    expect_equal(ggnew$length(), NULL)
+    ##
+    expect_true(is(ggnew$gg2td(), 'gTrack'))
+    ## JSON
+    ## > ggnew$json()
+    ## Error in eval(jsub, SDenv, parent.frame()) : object 'y' not found
+    ## In addition: Warning message:
+    ## In `[.data.table`(node.dt, , `:=`(y, private$segs$cn[oid])) :
+    ##   Adding new column 'y' then assigning NULL (deleting it).
+    ## HTML
+    ## > ggnew$html()
+    ## No gGnome.js repository found on your system.
+    ## Error in ggnew$html() : Get from https://github.com/mskilab/gGnome.js
+    ## gg2j()
+    ## > ggnew$gg2js()
+    ## Error in eval(jsub, SDenv, parent.frame()) : object 'y' not found
+    ## In addition: Warning message:
+    ## In `[.data.table`(node.dt, , `:=`(y, private$segs$cn[oid])) :
+    ##   Adding new column 'y' then assigning NULL (deleting it).
+    ## components()
+    component = ggnew$components(mc.cores=2)
+    expect_true(is(component, 'list'))
+    expect_equal(length(component), 25)
+    expect_equal(length(component$segstats), 0)
+    expect_equal(dim(component$edges)[1], NULL)
+    expect_equal(dim(component$edges)[2], NULL)
+    expect_equal(length(component$junctions), 0)
+    expect_equal(component$G, NULL) 
+    expect_equal(length(component$adj), 0)
+    expect_equal(length(component$A),  0)
+    expect_equal(length(component$parts), 0)
+    expect_equal(length(component$seqinfo), 0)   
+    expect_equal(component$purity, NULL)
+    expect_equal(component$ploidy, NULL)  ## checks!
+    expect_equal(component$td, NULL)
+    expect_equal(length(component$win), 0) 
+    ##
+    ## subgraph = function(v=numeric(0), na.rm=T, mod=T)
+    ## default 
+    subgraphed = ggnew$subgraph()
+    expect_true(is(subgraphed, 'gGraph'))
+    expect_equal(length(subgraphed), 25)
+    expect_equal(length(subgraphed$segstats), 50)
+    expect_equal(dim(subgraphed$edges)[1], 0)
+    expect_equal(dim(subgraphed$edges)[2], 19)
+    expect_equal(length(subgraphed$junctions), 0)
+    expect_error(subgraphed$G, NA) 
+    expect_equal(length(subgraphed$adj), 2500)
+    expect_equal(length(subgraphed$A),  2500)
+    ##expect_equal(length(subgraphed$parts), 0)
+    expect_equal(length(subgraphed$seqinfo), 25)   
+    expect_equal(component$purity, NULL)
+    expect_equal(component$ploidy, NULL)  ## checks!
+    expect_equal(component$td, NULL)
+    expect_equal(length(component$win), 0) 
+    ##
+    ## vertices5K = ggnew$subgraph(v=5000)
+    ##
+    filled = ggnew$fillin()
+    expect_true(is(filled, 'gGraph'))
+    expect_equal(length(filled$segstats), 50)
+    expect_equal(dim(filled$edges)[1], 0)
+    expect_equal(dim(filled$edges)[2], 19)
+    expect_equal(length(filled$junctions), 0)
+    expect_error(filled$G, NA) 
+    expect_equal(length(filled$adj), 2500)
+    expect_equal(length(filled$A),  2500)
+    ##expect_equal(length(filled$parts), 3)
+    expect_equal(length(filled$seqinfo), 25)   
+    expect_equal(filled$purity, NULL)
+    expect_equal(filled$ploidy, NULL)  ## checks!
+    expect_true(is(filled$td, 'gTrack'))
+    expect_equal(length(filled$win), 25)
+    ## 
+    ## trim = function(gr=NULL, mod=FALSE)
+    ## default
+    trimmed = ggnew$trim()
+    expect_true(is(trimmed, 'gGraph'))
+    expect_equal(length(trimmed$segstats), 50)
+    expect_equal(dim(trimmed$edges)[1], 0)
+    expect_equal(dim(trimmed$edges)[2], 19)
+    expect_equal(length(trimmed$junctions), 0)
+    expect_error(trimmed$G, NA) 
+    expect_equal(length(trimmed$adj), 2500)
+    expect_equal(length(trimmed$A),  2500)
+    expect_equal(length(trimmed$parts), 3)
+    expect_equal(length(trimmed$seqinfo), 25)   
+    expect_equal(trimmed$purity, NULL)
+    expect_equal(trimmed$ploidy, NULL)  ## checks!
+    expect_true(is(trimmed$td, 'gTrack'))
+    expect_equal(length(trimmed$win), 25)
+    ## 
+    ## trimmed_mod = ggnew$trim(gr=gr2, mod=TRUE) 
+    ## gotg
+    ## default
+    gotg = ggnew$get.g() 
+    expect_true(is(gotg, 'gGraph'))
+    expect_equal(length(gotg$segstats), 50)
+    expect_equal(dim(gotg$edges)[1], 0)
+    expect_equal(dim(gotg$edges)[2], 19)
+    expect_equal(length(gotg$junctions), 0)
+    expect_error(gotg$G, NA) 
+    expect_equal(length(gotg$adj), 2500)
+    expect_equal(length(gotg$A),  2500)
+    ##expect_equal(length(gotg$parts), 3)
+    expect_equal(length(gotg$seqinfo), 25)   
+    expect_equal(gotg$purity, NULL)
+    expect_equal(gotg$ploidy, NULL)  ## checks!
+    expect_true(is(gotg$td, 'gTrack'))
+    expect_equal(length(gotg$win), 25)
+    ## get.g = function(force=FALSE)
+    gotg_forced = ggnew$get.g(force=TRUE) 
+    expect_true(is(gotg_forced, 'gGraph'))
+    expect_equal(length(gotg_forced$segstats), 50)
+    expect_equal(dim(gotg_forced$edges)[1], 0)
+    expect_equal(dim(gotg_forced$edges)[2], 19)
+    expect_equal(length(gotg_forced$junctions), 0)
+    expect_error(gotg_forced$G, NA) 
+    expect_equal(length(gotg_forced$adj), 2500)
+    expect_equal(length(gotg_forced$A),  2500)
+    ##expect_equal(length(gotg_forced$parts), 3)
+    expect_equal(length(gotg_forced$seqinfo), 25)   
+    expect_equal(gotg_forced$purity, NULL)
+    expect_equal(gotg_forced$ploidy, NULL)  ## checks!
+    expect_true(is(gotg_forced$td, 'gTrack'))
+    expect_equal(length(gotg_forced$win), 25)
+    ## with added
+    gotgadd = added$get.g(force=TRUE) 
+    expect_true(is(gotgadd, 'gGraph'))
+    expect_equal(length(gotgadd$segstats), 100)
+    expect_equal(dim(gotgadd$edges)[1], 0)
+    expect_equal(dim(gotgadd$edges)[2], 19)
+    expect_equal(length(gotgadd$junctions), 0)
+    expect_error(gotgadd$G, NA) 
+    expect_equal(length(gotgadd$adj), 10000)
+    expect_equal(length(gotgadd$A),  10000)
+    expect_equal(length(gotgadd$parts), 3)  
+    expect_equal(length((gotgadd$parts)$membership), 100)
+    expect_equal(length((gotgadd$parts)$csize), 25)
+    expect_equal(length((gotgadd$parts)$no), 1)  ## 25
+    expect_equal(length(gotgadd$seqinfo), 25)   
+    expect_equal(gotgadd$purity, NULL)
+    expect_equal(gotgadd$ploidy, NULL)  ## checks!
+    expect_true(is(gotgadd$td, 'gTrack'))
+    expect_equal((gotgadd$td)$ygap, 2)
+    expect_match((gotgadd$td)$name, 'CN')
+    expect_equal(length(gotgadd$win), 25) 
+    ##  hood = function(win, d=NULL, k=NULL, pad=0, bagel=FALSE, ignore.strand=T, verbose=FALSE)  
+    ##gr2_win = ggnew$hood(win=gr2)
+    expect_error(ggnew$hood(win=grl1)) ## Error in .local(x, y, ...) : setdiff() between a GRanges and a GRangesList object is not supported
+    ##grl2_win = ggnew$hood(win=grl.unlist(grl2))
+    ##hgseq_win = ggnew$hood(win = si2gr(hg_seqlengths()))
+    ##expect_true(is(hgseq_win, 'gGraph'))
+    ##expect_equal(length(hgseq_win$segstats), 0)
+    ##expect_equal(dim(hgseq_win$edges)[1], 0)
+    ##expect_equal(dim(hgseq_win$edges)[2], 19)
+    ##expect_equal(length(hgseq_win$junctions), 0)
+    ##expect_error(hgseq_win$G, NA) 
+    ##expect_equal(length(hgseq_win$adj), 0)
+    ##expect_equal(length(hgseq_win$A),  0)
+    ##expect_equal(length(hgseq_win$parts), 0)   
+    ##expect_equal(hgseq_win$purity, NULL)
+    ##expect_equal(hgseq_win$ploidy, NULL)  ## checks!
+    ##expect_equal(length(hgseq_win$td), 0)
+    ##expect_equal(length(hgseq_win$win), 0) 
 
 })
 
 
+### try gGraph with inputs above
 ### gGraph$new(tile = test_segs)
 
 ## segstats, edges, grl, td, path, values
@@ -260,7 +608,23 @@ test_that('gGraph works, default', {
 
 
 
-### some non-exported functions
+### bGraph, default
+### should be similar to gGraph
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ##test_that('rev.comp works', {
@@ -269,7 +633,7 @@ test_that('gGraph works, default', {
 ##    expect_error(rev.comp(data.frame()))
 ##    gr3 = dt2gr(dt)
 ##    expect_error(rev.comp(gr3))   ## Error in rev.comp(gr3) : Input must be all strand specific.
-##    expect_equal(width(rev.comp(gr)[1]), 4)
+##    expect_equal(width(rev.comp(as.vector(gr)[1]), 4)
 ##    expect_equal(as.character(strand(rev.comp(gr)[1])), "+")
 ##    expect_equal(width(rev.comp(gr)[2]), 3)
 ##    expect_equal(as.character(strand(rev.comp(gr)[2])), "+")
