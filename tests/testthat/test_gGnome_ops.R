@@ -596,6 +596,32 @@ test_that('gGraph works, default', {
     ##expect_equal(hgseq_win$ploidy, NULL)  ## checks!
     ##expect_equal(length(hgseq_win$td), 0)
     ##expect_equal(length(hgseq_win$win), 0) 
+    #
+    ## fillup
+    filledup = ggnew$fillup()
+    expect_true(is(filledup, 'gGraph'))
+    expect_equal(length(filledup$segstats), 50)
+    expect_equal(dim(filledup$edges)[1], 0)
+    expect_equal(dim(filledup$edges)[2], 19)
+    expect_equal(length(filledup$junctions), 0)
+    expect_error(filledup$G, NA) 
+    expect_equal(length(filledup$adj), 2500)
+    expect_equal(length(filledup$A),  2500)
+    ## expect_equal(length(filledup$parts), 3)  
+    ##expect_equal(length((filledup$parts)$membership), 100)
+    ##expect_equal(length((filledup$parts)$csize), 25)
+    ##expect_equal(length((filledup$parts)$no), 1)  ## 25
+    expect_equal(length(filledup$seqinfo), 25)   
+    expect_equal(filledup$purity, NULL)
+    expect_equal(filledup$ploidy, 0)  ## checks!
+    expect_true(is(filledup$td, 'gTrack'))
+    expect_equal((filledup$td)$ygap, 2)
+    expect_match((filledup$td)$name, 'CN')
+    expect_equal(length(filledup$win), 25) 
+    ## isBalance
+    expect_true(ggnew$isBalance())
+    ## get.loose
+    expect_equal(length(ggnew$get.loose()), 0)
 
 })
 
@@ -609,7 +635,66 @@ test_that('gGraph works, default', {
 
 
 ### bGraph, default
-### should be similar to gGraph
+### bGraph inherits all active bindings from gGraph
+## METHODS
+## print
+## subgraph
+## walk
+## walk2
+## 
+
+
+
+
+test_that('check bGraph works, default', {
+
+    bgnew = bGraph$new()
+    expect_true(is(bgnew, 'bGraph'))
+    expect_equal(length(bgnew$segstats), 0)
+    expect_equal(dim(bgnew$edges)[1], 0)
+    expect_equal(dim(bgnew$edges)[2], 3)
+    expect_equal(length(bgnew$junctions), 0)
+    expect_error(bgnew$G, NA) 
+    expect_equal(length(bgnew$adj), 0)
+    expect_equal(length(bgnew$A),  0)
+    ##expect_equal(length(bgnew$parts), 0)
+    expect_equal(length(bgnew$seqinfo), 0)   
+    expect_equal(bgnew$purity, NULL)
+    expect_equal(bgnew$ploidy, NULL)  ## checks!
+    expect_equal(bgnew$td, NULL)
+    expect_equal(length(bgnew$win), 0)
+    ##
+    ##
+    ## 
+    ## print()
+    ## variable outputs 'numeric(0)'
+    expect_error(bgnew$print(), NA) ## check it works
+    ##
+    ## subgraph()
+    subgraphed = bgnew$subgraph()
+    expect_true(is(subgraphed, 'bGraph'))
+    expect_equal(length(subgraphed$segstats), 0)
+    expect_equal(dim(subgraphed$edges)[1], 0)
+    expect_equal(dim(subgraphed$edges)[2], 3)
+    expect_equal(length(subgraphed$junctions), 0)
+    expect_error(subgraphed$G, NA) 
+    expect_equal(length(subgraphed$adj), 0)
+    expect_equal(length(subgraphed$A),  0)
+    ##expect_equal(length(bgnew$parts), 0)
+    expect_equal(length(subgraphed$seqinfo), 0)   
+    expect_equal(subgraphed$purity, NULL)
+    expect_equal(subgraphed$ploidy, NULL)  ## checks!
+    expect_equal(subgraphed$td, NULL)
+    expect_equal(length(subgraphed$win), 0)
+    ##
+    ##
+    ## walk()
+    expect_equal(bgnew$walk(), NULL)
+    ##
+    ## walk2()
+    expect_equal(bgnew$walk2(), NULL)
+
+})
 
 
 
@@ -623,22 +708,18 @@ test_that('gGraph works, default', {
 
 
 
+test_that('rev.comp works', {
 
+    expect_error(rev.comp())
+    expect_error(rev.comp(data.frame()))
+    gr3 = dt2gr(dt)  ## not stranded
+    expect_error(rev.comp(gr3))   ## Error in rev.comp(gr3) : Input must be all strand specific.
+    ##expect_equal(as.integer(width(rev.comp(gr2[1]))), 6)
+    ##expect_equal(as.character(strand(rev.comp(gr)[1])), "+")
+    ##expect_equal(width(rev.comp(gr)[2]), 3)
+    ##expect_equal(as.character(strand(rev.comp(gr)[2])), "+")
 
-
-
-##test_that('rev.comp works', {
-##
-##    expect_error(rev.comp())
-##    expect_error(rev.comp(data.frame()))
-##    gr3 = dt2gr(dt)
-##    expect_error(rev.comp(gr3))   ## Error in rev.comp(gr3) : Input must be all strand specific.
-##    expect_equal(width(rev.comp(as.vector(gr)[1]), 4)
-##    expect_equal(as.character(strand(rev.comp(gr)[1])), "+")
-##    expect_equal(width(rev.comp(gr)[2]), 3)
-##    expect_equal(as.character(strand(rev.comp(gr)[2])), "+")
-##
-##})
+})
 
 
 

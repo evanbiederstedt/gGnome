@@ -2789,311 +2789,306 @@ bGraph = setClass("bGraph")
 #' @export bGraph
 ##############################
 bGraph = R6::R6Class("bGraph",
-                     inherit = gGraph,
-                     public = list(
-                         ## overwrite constructor: restrict about junction balance
-                         initialize = function(gG=NULL, jabba=NULL, prego=NULL){
-                             if (!is.null(gG)){
-                                 if (inherits(gG, "gGraph")){
+                    inherit = gGraph,
+                    public = list(
+                        ## overwrite constructor: restrict about junction balance
+                        initialize = function(gG=NULL, jabba=NULL, prego=NULL){
+                            if (!is.null(gG)){
+                                if (inherits(gG, "gGraph")){
                                      ## TODO
-                                     private$gGraphFromScratch(gG$segstats, gG$edges, gG$junctions, gG$ploidy, gG$purity)
-                                     return(self)
-                                 } else {
-                                     stop("Invalid input gG.")
-                                 }
-                             } else if (!is.null(jabba)) {
-                                 if (is.character(jabba))
-                                 {
-                                     if (file.exists(jabba))
-                                         jabba = readRDS(jabba)
-                                     else
-                                         stop(paste('file', jabba, 'not found'))
-                                 }
+                                    private$gGraphFromScratch(gG$segstats, gG$edges, gG$junctions, gG$ploidy, gG$purity)
+                                    return(self)
+                                } else {
+                                    stop("Invalid input gG.")
+                                }
+                            } else if (!is.null(jabba)) {
+                                if (is.character(jabba)){
+                                    if (file.exists(jabba)){
+                                        jabba = readRDS(jabba)
+                                    } else{
+                                        stop(paste('file', jabba, 'not found'))
+                                    }
+                                }
 
-                                 self$jab2gg(jabba=jabba)
-                                 if (self$isBalance()){
-                                     return(self)
-                                 } else {
-                                     stop("Invalid input gG.")
-                                 }
-                             } else if (!is.null(prego)){
-                                 if (is.character(prego))
-                                 {
-                                     if (file.exists(prego))
-                                         self$pr2gg(fn=prego)
-                                     else
-                                         stop(paste('file', jabba, 'not found'))
-                                 }
+                                self$jab2gg(jabba=jabba)
+                                if (self$isBalance()){
+                                    return(self)
+                                } else {
+                                    stop("Invalid input gG.")
+                                }
+                            } else if (!is.null(prego)){
+                                if (is.character(prego)){
+                                    if (file.exists(prego)){
+                                        self$pr2gg(fn=prego)
+                                    } else{
+                                        stop(paste('file', jabba, 'not found'))
+                                    }
+                                }
 
-                                 if (self$isBalance()){
-                                     return(self)
-                                 } else {
-                                     stop("Invalid input gG.")
-                                 }
-                             } else {
-                                 self$nullGGraph()
-                                 return(self)
-                             }
-                         },
+                                if (self$isBalance()){
+                                    return(self)
+                                } else {
+                                    stop("Invalid input gG.")
+                                }
+                            } else {
+                                self$nullGGraph()
+                                return(self)
+                            }
+                        },
 
-                         print = function(){
-                             cat('A bGraph object.\n')
-                             ## cat('Based on reference genome: ')
-                             ## cat(private$segs)
-                             cat('\n\n')
-                             cat('Total non-loose segmentation:')
-                             if ("loose" %in% colnames(values(private$segs))){
-                                 cat(length(private$segs %Q% (loose==F & strand=="+")))
-                             } else {
-                                 ## ALERT!!! TODO!!! This means we have to make sure if there is
-                                 ## loose end, it must be labeled in the nodes.
-                                 cat(length(private$segs %Q% (strand=="+")))
-                             }
-                             cat('\n\n')
-                             cat('Junction counts:\n')
-                             print(private$es[, table(type)/2])
-                         },
+                        print = function(){
+                            cat('A bGraph object.\n')
+                            ## cat('Based on reference genome: ')
+                            ## cat(private$segs)
+                            cat('\n\n')
+                            cat('Total non-loose segmentation:')
+                            if ("loose" %in% colnames(values(private$segs))){
+                                cat(length(private$segs %Q% (loose==F & strand=="+")))
+                            } else {
+                                ## ALERT!!! TODO!!! This means we have to make sure if there is
+                                ## loose end, it must be labeled in the nodes.
+                                cat(length(private$segs %Q% (strand=="+")))
+                            }
+                            cat('\n\n')
+                            cat('Junction counts:\n')
+                            print(private$es[, table(type)/2])
+                        },
 
-                         ## DONE: the bGraph created from jab different that from gGraph!!!
-                         subgraph = function(v=numeric(0), na.rm=F, mod=F){
-                             if (mod == T){
-                                 super$subgraph(v, na.rm=F, mod=mod)
-                                 return(self)
-                             } else {
-                                 out = super$subgraph(v, na.rm=F, mod=mod)
-                                 out = as(out, "bGraph")
-                                 return(out)
-                             }
-                         },
+                        ## DONE: the bGraph created from jab different that from gGraph!!!
+                        subgraph = function(v=numeric(0), na.rm=F, mod=F){
+                            if (mod == T){
+                                super$subgraph(v, na.rm=F, mod=mod)
+                                return(self)
+                            } else {
+                                out = super$subgraph(v, na.rm=F, mod=mod)
+                                out = as(out, "bGraph")
+                                return(out)
+                            }
+                        },
 
-                         ## decompose graph into all possible haplotypes
-                         ## MOMENT
-                         walk = function(outdir="tmp.walk",
-                                         max.iteration = Inf,
-                                         mc.cores = 1,
-                                         verbose = T,
-                                         nsolutions = 100,
-                                         tilim = 100,
-                                         gurobi = FALSE,
-                                         cplex = !gurobi){
-                             "Enumerate all the possible multiset of walks that can be represented by this graph."
-                             ## ASSUMPTION: no duplicated rows in $segs
-                             ## TODO: something's wrong here, need redo
-                             if (verbose <- getOption("gGnome.verbose")){
-                                 message("Enumerating all possible karyotypes with minimum cardinal numbers.")
-                             }
+                        ## decompose graph into all possible haplotypes
+                        ## MOMENT
+                        walk = function(outdir="tmp.walk",
+                                        max.iteration = Inf,
+                                        mc.cores = 1,
+                                        verbose = T,
+                                        nsolutions = 100,
+                                        tilim = 100,
+                                        gurobi = FALSE,
+                                        cplex = !gurobi){
+                            "Enumerate all the possible multiset of walks that can be represented by this graph."
+                            ## ASSUMPTION: no duplicated rows in $segs
+                            ## TODO: something's wrong here, need redo
+                            if (verbose <- getOption("gGnome.verbose")){
+                                message("Enumerating all possible karyotypes with minimum cardinal numbers.")
+                            }
 
-                             if (length(private$segs)==0 | is.null(private$es)){
-                                 if (verbose){warning("Empty graph. Nothing to decompose.")}
-                                 return(NULL)
-                             }
+                            if (length(private$segs)==0 | is.null(private$es)){
+                                if (verbose){warning("Empty graph. Nothing to decompose.")}
+                                return(NULL)
+                            }
 
-                             if (!"type" %in% colnames(private$es) |
-                                 !"loose" %in% colnames(values(private$segs))){
-                                 et = etype(private$segs, private$es, T, T)
-                                 private$segs = et$segs
-                                 private$es = et$es
-                             }
+                            if (!"type" %in% colnames(private$es) |
+                                !"loose" %in% colnames(values(private$segs))){
+                                et = etype(private$segs, private$es, T, T)
+                                private$segs = et$segs
+                                private$es = et$es
+                            }
 
-                             which.loose = which(private$segs$loose==TRUE)
-                             if (length(which.loose)>0){
-                                 segs = private$segs[-which.loose]
-                             } else {
-                                 segs = private$segs
-                             }
-                             new.ix = setNames(seq_along(segs),
-                                               setdiff(seq_along(private$segs),
-                                                       which.loose))
-                             ed0 =
-                                 private$es[type!="loose"][, ":="(from = new.ix[as.character(from)],
+                            which.loose = which(private$segs$loose==TRUE)
+                            if (length(which.loose)>0){
+                                segs = private$segs[-which.loose]
+                            } else {
+                                segs = private$segs
+                            }
+                            new.ix = setNames(seq_along(segs), setdiff(seq_along(private$segs), which.loose))
+
+                            ed0 = private$es[type!="loose"][, ":="(from = new.ix[as.character(from)],
                                                                   to = new.ix[as.character(to)])]
 
-                             A = self$get.adj()[setdiff(seq_along(segs), which.loose),
+                            A = self$get.adj()[setdiff(seq_along(segs), which.loose),
                                                 setdiff(seq_along(segs), which.loose)]
 
-                             ## node mapping
-                             hb = hydrogenBonds(segs)
-                             hb.map = hb[, setNames(from, to)]
+                            ## node mapping
+                            hb = hydrogenBonds(segs)
+                            hb.map = hb[, setNames(from, to)]
 
-                             ## keep the network flowing: adding sources and sinks
-                             ifl = Matrix::colSums(A)
-                             ofl = Matrix::rowSums(A)
-                             avail = ifl - ofl
+                            ## keep the network flowing: adding sources and sinks
+                            ifl = Matrix::colSums(A)
+                            ofl = Matrix::rowSums(A)
+                            avail = ifl - ofl
 
-                             if (sum(avail)!=0){
-                                 stop("The edge copy flow is not balanced!")
-                             }
+                            if (sum(avail)!=0){
+                                stop("The edge copy flow is not balanced!")
+                            }
 
-                             slack = rbind(data.table(from = NA,
-                                                      to = which(avail<0),
-                                                      cn = abs(avail[which(avail<0)]),
-                                                      type = "slack.in"),
-                                           data.table(from = which(avail>0),
-                                                      to = NA,
-                                                      cn = abs(avail[which(avail>0)]),
-                                                      type = "slack.out"))
+                            slack = rbind(data.table(from = NA,
+                                                    to = which(avail<0),
+                                                    cn = abs(avail[which(avail<0)]),
+                                                    type = "slack.in"),
+                                            data.table(from = which(avail>0),
+                                                    to = NA,
+                                                    cn = abs(avail[which(avail>0)]),
+                                                    type = "slack.out"))
 
-                             ed0 = rbind(ed0[,.(from, to, cn, type)],
-                                         slack)
-                             ed0[, ":="(eid = paste(from, to),
+                            ed0 = rbind(ed0[,.(from, to, cn, type)], slack)
+                            ed0[, ":="(eid = paste(from, to),
                                         reid = paste(hb.map[as.character(to)],
                                                      hb.map[as.character(from)]))]
 
-                             ## get eclass
-                             ed0[, ":="(ix = 1:.N,
+                            ## get eclass
+                            ed0[, ":="(ix = 1:.N,
                                         rix = match(reid, eid))]
-                             ed0[, unique.ix := ifelse(rix>=ix,
+                            ed0[, unique.ix := ifelse(rix>=ix,
                                                        paste(ix, rix),
                                                        paste(rix, ix))]
-                             ed0[, eclass := as.numeric(as.factor(unique.ix))]
-                             ed0[, iix := 1:.N, by=eclass]
-                             ## rename non-slack edge types
-                             ed0[!grepl("slack", type), type := "nonslack"]
+                            ed0[, eclass := as.numeric(as.factor(unique.ix))]
+                            ed0[, iix := 1:.N, by=eclass]
+                            ## rename non-slack edge types
+                            ed0[!grepl("slack", type), type := "nonslack"]
 
-                             ## get incidence matrix
-                             ## vertices x edges
-                             ## TODO: assemble h, input to karyoMIP -- e, e.ij, B, eclass, etype
-                             ## ASSUMPTION: private$segs is sorted by loose then strand
-                             ## copies going away
-                             ii1 = c(ed0[type=="nonslack", from],
-                                     ed0[type=="slack.out", from])
-                             jj1 = c(ed0[, which(type=="nonslack")],
-                                     ed0[, which(type=="slack.out")])
-                             xx1 = c(rep(-1, ed0[,sum(type=="nonslack")]),
-                                     rep(-1, ed0[,sum(type=="slack.in")]))
-                             ## copies coming in
-                             ii2 = c(ed0[type=="nonslack", to],
-                                     ed0[type=="slack.in", to])
-                             jj2 = c(ed0[, which(type=="nonslack")],
-                                     ed0[, which(type=="slack.in")])
-                             xx2 = c(rep(1, ed0[,sum(type=="nonslack")]),
-                                     rep(1, ed0[,sum(type=="slack.in")]))
+                            ## get incidence matrix
+                            ## vertices x edges
+                            ## TODO: assemble h, input to karyoMIP -- e, e.ij, B, eclass, etype
+                            ## ASSUMPTION: private$segs is sorted by loose then strand
+                            ## copies going away
+                            ii1 = c(ed0[type=="nonslack", from],
+                                    ed0[type=="slack.out", from])
+                            jj1 = c(ed0[, which(type=="nonslack")],
+                                    ed0[, which(type=="slack.out")])
+                            xx1 = c(rep(-1, ed0[,sum(type=="nonslack")]),
+                                    rep(-1, ed0[,sum(type=="slack.in")]))
+                            ## copies coming in
+                            ii2 = c(ed0[type=="nonslack", to],
+                                    ed0[type=="slack.in", to])
+                            jj2 = c(ed0[, which(type=="nonslack")],
+                                    ed0[, which(type=="slack.in")])
+                            xx2 = c(rep(1, ed0[,sum(type=="nonslack")]),
+                                    rep(1, ed0[,sum(type=="slack.in")]))
 
-                             ##
-                             B = sparseMatrix(i = ii1,
-                                              j = jj1,
-                                              x = xx1,
-                                              dims=c(length(segs), nrow(ed0))) +
-                                 sparseMatrix(i = ii2,
-                                              j = jj2,
-                                              x = xx2,
-                                              dims=c(length(segs), nrow(ed0)))
+                            ##
+                            B = sparseMatrix(i = ii1,
+                                                j = jj1,
+                                                x = xx1,
+                                                dims=c(length(segs), nrow(ed0))) +
+                                    sparseMatrix(i = ii2,
+                                                j = jj2,
+                                                x = xx2,
+                                                dims=c(length(segs), nrow(ed0)))
 
-                             ## form the hypothesis list
-                             h = list(e = ed0[, cn],
-                                      e.ij = as.matrix(ed0[, .(from, to)]),
-                                      B = B,
-                                      eclass = ed0[, eclass],
-                                      etype = ed0[, ifelse(grepl("nonslack", type),
-                                                           "nonslack", "slack")])
+                            ## form the hypothesis list
+                            h = list(e = ed0[, cn],
+                                        e.ij = as.matrix(ed0[, .(from, to)]),
+                                        B = B,
+                                        eclass = ed0[, eclass],
+                                        etype = ed0[, ifelse(grepl("nonslack", type),
+                                                            "nonslack", "slack")])
+ 
+                            ## compute convex basis of B
+                            K = convex.basis(B)
+                            prior = rep(1, ncol(K))
 
-                             ## compute convex basis of B
-                             K = convex.basis(B)
-                             prior = rep(1, ncol(K))
+                            if (getOption("gGnome.debug")){
+                                saveRDS(h, "h.rds")
+                                saveRDS(K, "K.rds")
+                                saveRDS(prior, "prior.rds")
+                            }
 
-                             if (getOption("gGnome.debug")){
-                                 saveRDS(h, "h.rds")
-                                 saveRDS(K, "K.rds")
-                                 saveRDS(prior, "prior.rds")
-                             }
+                            ## MEAT
+                            ## TODO: convert karyoMIP solution to gWalks object,
+                            ## with the new gw definition
+                            ## is.cyc = Matrix::colSums(K[h$etype == 'slack', ])==0 &
+                            ## Matrix::colSums((Bc %*% K)!=0)==0
+                            karyo.sol = karyoMIP(K, h$e, h$eclass,
+                                                    nsolutions = nsolutions,
+                                                    tilim = tilim,
+                                                    cpenalty = 1/prior,
+                                                    gurobi = gurobi)
 
-                             ## MEAT
-                             ## TODO: convert karyoMIP solution to gWalks object,
-                             ## with the new gw definition
-                             ## is.cyc = Matrix::colSums(K[h$etype == 'slack', ])==0 &
-                             ## Matrix::colSums((Bc %*% K)!=0)==0
-                             karyo.sol = karyoMIP(K, h$e, h$eclass,
-                                                  nsolutions = nsolutions,
-                                                  tilim = tilim,
-                                                  cpenalty = 1/prior,
-                                                  gurobi = gurobi)
+                            ## if (saveAll){
+                            ##     saveRDS(karyo.sol, "temp.walk/allSol.rds")
+                            ## }
+                            if (cplex){
+                                kag.sol = karyo.sol[[1]]
+                            } else {
+                                kag.sol = karyo.sol
+                            }
 
-                             ## if (saveAll){
-                             ##     saveRDS(karyo.sol, "temp.walk/allSol.rds")
-                             ## }
-                             if (cplex){
-                                 kag.sol = karyo.sol[[1]]
-                             } else {
-                                 kag.sol = karyo.sol
-                             }
+                            p = karyoMIP.to.path(kag.sol, K, h$e.ij, segs)
+                            p$paths = mclapply(p$paths, as.numeric, mc.cores=mc.cores)
 
-                             p = karyoMIP.to.path(kag.sol, K, h$e.ij, segs)
-                             p$paths = mclapply(p$paths, as.numeric, mc.cores=mc.cores)
-
-                             ## construct gWalks as result
-                             gw = gWalks$new(segs=segs,
-                                             paths=p$paths,
+                            ## construct gWalks as result
+                            gw = gWalks$new(segs=segs,
+                                            paths=p$paths,
                                              is.cycle=p$is.cyc,
                                              cn = p$cn)
-                             return(gw)
-                         },
+                            return(gw)
+                        },
 
-                         ## TODO: hurestic walk decomposition
-                         ## new idea: if we assign weight
-                         walk2 = function(verbose = FALSE,
-                                          grl = TRUE,
-                                          e.weight = NULL,
-                                          gurobi = FALSE,
-                                          cplex = !gurobi){
-                             "Heuristic for decomposing a junction-balanced graph into a multiset of walks."
-                             if (length(private$segs)==0 | is.null(private$es)){
-                                 if(verbose){warning("Empty graph. Nothing to decompose.")}
-                                 return(NULL)
-                             }
-                             segs = private$segs
-                             hb = hydrogenBonds(segs)
-                             hb.map = hb[, setNames(from, to)]
-                             cn.adj = self$get.adj()
-                             adj = as.matrix(cn.adj)
-                             adj.new = adj*0
-                             ## ALERT!!! see below
-                             adj[which(adj!=0, arr.ind = TRUE)] =
-                                 width(segs)[which(adj!=0, arr.ind = TRUE)[,2]]
-                             ## make all edges a large number by default
+                        ## TODO: hurestic walk decomposition
+                        ## new idea: if we assign weight
+                        walk2 = function(verbose = FALSE,
+                                            grl = TRUE,
+                                            e.weight = NULL,
+                                            gurobi = FALSE,
+                                            cplex = !gurobi){
+                            "Heuristic for decomposing a junction-balanced graph into a multiset of walks."
+                            if (length(private$segs)==0 | is.null(private$es)){
+                                if(verbose){warning("Empty graph. Nothing to decompose.")}
+                                return(NULL)
+                            }
+                            segs = private$segs
+                            hb = hydrogenBonds(segs)
+                            hb.map = hb[, setNames(from, to)]
+                            cn.adj = self$get.adj()
+                            adj = as.matrix(cn.adj)
+                            adj.new = adj*0
+                            ## ALERT!!! see below
+                            adj[which(adj!=0, arr.ind = TRUE)] =
+                                width(segs)[which(adj!=0, arr.ind = TRUE)[,2]]
+                            ## make all edges a large number by default
 
-                             if (verbose){
-                                 message('Setting edge weights to destination widths for reference edges and 1 for aberrant edges')
-                             }
+                            if (verbose){
+                                message('Setting edge weights to destination widths for reference edges and 1 for aberrant edges')
+                            }
 
-                             ab.edges = private$es[type=="aberrant", cbind(from, to)]
-                             ## ALERT!!!
-                             if (nrow(ab.edges)>0)
-                             {
-                                 adj[ab.edges] = sign(cn.adj[ab.edges]) ## make ab.edges = 1
-                             }
-                             adj[is.na(adj)] = 0
-                             cn.adj[which(is.na(cn.adj))] = 0
+                            ab.edges = private$es[type=="aberrant", cbind(from, to)]
+                            ## ALERT!!!
+                            if (nrow(ab.edges)>0){
+                                adj[ab.edges] = sign(cn.adj[ab.edges]) ## make ab.edges = 1
+                            }
+                            adj[is.na(adj)] = 0
+                            cn.adj[which(is.na(cn.adj))] = 0
 
-                             ## ALERT!!! major change
-                             G = graph.adjacency(adj, weighted = 'weight')
+                            ## ALERT!!! major change
+                            G = graph.adjacency(adj, weighted = 'weight')
 
-                             ## define ends not using degree (old method) but using
-                             ## either telomeres or loose ends
-                             ## (otherwise lots of fake ends at homozygous deleted segments)
-                             ss = gr2dt(segs)[ , vid:= 1:length(seqnames)]
-                             ss[loose == TRUE, is.end := TRUE]
-                             ss[loose == FALSE,
+                            ## define ends not using degree (old method) but using
+                            ## either telomeres or loose ends
+                            ## (otherwise lots of fake ends at homozygous deleted segments)
+                            ss = gr2dt(segs)[ , vid:= 1:length(seqnames)]
+                            ss[loose == TRUE, is.end := TRUE]
+                            ss[loose == FALSE,
                                 is.end := 1:length(loose) %in%
                                     c(which.min(start), which.max(end)),
                                 by = list(seqnames, strand)]
-                             ends = which(ss$is.end)
-                             src = (Matrix::colSums(adj)[ends]==0) ## indicate which are sources
+                            ends = which(ss$is.end)
+                            src = (Matrix::colSums(adj)[ends]==0) ## indicate which are sources
 
-                             ## sanity check
-                             unb = which(!ss$is.end & Matrix::rowSums(self$get.adj(), na.rm = TRUE) !=
-                                         Matrix::colSums(self$get.adj(), na.rm = TRUE))
+                            ## sanity check
+                            unb = which(!ss$is.end & Matrix::rowSums(self$get.adj(), na.rm = TRUE) !=
+                                        Matrix::colSums(self$get.adj(), na.rm = TRUE))
 
-                             if (length(unb)>0)
-                             {
-                                 message(sprintf('JaBbA model not junction balanced at %s non-ends! Adding these to "ends"', length(unb)))
-                                 ends = c(ends, unb)         ## shameless HACK ... TOFIX
-                             }
+                            if (length(unb)>0){
+                                message(sprintf('JaBbA model not junction balanced at %s non-ends! Adding these to "ends"', length(unb)))
+                                ends = c(ends, unb)         ## shameless HACK ... TOFIX
+                            }
 
-                             i = 0
-                             ## adjust weight just before creating D
-                             ## assign lighter weight to higher copy
-                             ## D records distance from ends to every node
-                             D = shortest.paths(G, v = ends, mode = 'out', weight = E(G)$weight)[, ends]
+                            i = 0
+                            ## adjust weight just before creating D
+                            ## assign lighter weight to higher copy
+                            ## D records distance from ends to every node
+                            D = shortest.paths(G, v = ends, mode = 'out', weight = E(G)$weight)[, ends]
 
                              ## sort shortest paths
                              ij = as.data.table(
@@ -3121,8 +3116,7 @@ bGraph = R6::R6Class("bGraph",
                                            degree(G, mode = 'in')==0 &
                                            segs$cn>0)
                              i = 0
-                             if (length(psimp)>0)
-                             {
+                             if (length(psimp)>0){
                                  vpaths[1:length(psimp)] = split(psimp, 1:length(psimp))
                                  epaths[1:length(psimp)] = lapply(psimp, function(x) cbind(NA, NA))
                                  ## there is no "edge" associated with a zero total degree node
@@ -3156,8 +3150,7 @@ bGraph = R6::R6Class("bGraph",
                                  values(paths)$numsegs = elementNROWS(paths)
                                  values(paths)$num.ab = 0
                                  values(paths)$wid = width(ss)
-                             }
-                             else {
+                             } else {
 
                                  ed[, ":="(fromss = tile.map[ .(from), tile.id],
                                            toss = tile.map[ .(to), tile.id]),
@@ -3180,8 +3173,7 @@ bGraph = R6::R6Class("bGraph",
                                  cleanup_mode = FALSE
 
 
-                                 while (nrow(ij)>0)
-                                 {
+                                 while (nrow(ij)>0){
                                      if (verbose)
                                          message('Path peeling iteration ', i, ' with ', sum(adj!=0, na.rm = TRUE), ' edges left and ', nrow(ij), ' end-pairs to resolve' )
                                      i = i+1
@@ -3199,9 +3191,7 @@ bGraph = R6::R6Class("bGraph",
                                          message('Came up empty!')
                                          i = i -1
                                          ij = ij[-1, , drop = FALSE]
-                                     }
-                                     else
-                                     {
+                                     } else{
                                          ## Don't forget to update ed here
                                          ed$cn = cn.adj[cbind(ed$from, ed$to)]
 
@@ -3719,6 +3709,8 @@ setMethod("seqinfo",
           }
           )
 
+
+
 #' @name length
 #' The number of strongly connected components of the graph
 #'
@@ -3727,7 +3719,7 @@ setMethod("seqinfo",
 #' @return the number of strongly connected components in this graph
 #'
 #' @export
-length.gGraph <- function(gGraph){
+length.gGraph = function(gGraph){
     ## input must be a gGraph!
     if (!inherits(gGraph, "gGraph")){
         stop("Error: Invalid input.")
@@ -3737,6 +3729,8 @@ length.gGraph <- function(gGraph){
     }
     return(gGraph$parts$no)
 }
+
+
 
 #' @name %+%.gGraph
 #' Adding two \code{gGraph} instances
@@ -3750,11 +3744,15 @@ length.gGraph <- function(gGraph){
     return(gg1$add(gg2))
 }
 
+
+
 #' @inheritParams %+%.gGraph
 #' @export
 `%+%.bGraph` <- function(bg1, bg2){
     return(bg1$add(bg2))
 }
+
+
 
 #' get.constrained.shortest.path
 get.constrained.shortest.path = function(cn.adj, ## copy number matrix
@@ -3876,8 +3874,7 @@ get.constrained.shortest.path = function(cn.adj, ## copy number matrix
         message('YES WE ARE DOING PROPER MIP!!!!')
     }
 
-    if (res$status!=101)
-    {
+    if (res$status!=101){
         if (verbose){
             message('No solution to MIP!')
         }
@@ -3889,8 +3886,7 @@ get.constrained.shortest.path = function(cn.adj, ## copy number matrix
     tmp.p = as.numeric(get.shortest.paths(graph_from_edgelist(edges[res$xopt!=0, cbind(from, to)]), v, to)$vpath[[1]])
 
     ## check if overdrafted
-    if (verbose)
-    {
+    if (verbose){
         tmp.e = cbind(tmp.p[-length(tmp.p)], tmp.p[-1])
         tmp.eid = paste(tmp.e[, 1], tmp.e[, 2])
         tmp.eclass = edges[.(tmp.eid), eclass]
@@ -3898,9 +3894,7 @@ get.constrained.shortest.path = function(cn.adj, ## copy number matrix
         overdrafts.eclass = intersect(names(which(table(tmp.eclass)==2)), rationed.edges$eclass)
         if (length(overdrafts.eclass)==0){
             message('No overdrafts after MIP')
-        }
-        else
-        {
+        } else{
             message('Still overdraft!')
             ## browser()
         }
@@ -3951,20 +3945,20 @@ convex.basis = function(A,
     K_i = I = diag(rep(1, ncol(A)))
     A_i = A %*% K_i
 
-    if (!is.null(exclude.basis))
-    {
+    if (!is.null(exclude.basis)){
         exclude.basis = sign(exclude.basis)
         exclude.basis = exclude.basis[rowSums(exclude.basis)>0, ]
-        if (nrow(exclude.basis) == 0)
+        if (nrow(exclude.basis) == 0){
             exclude.basis = NULL
+        }
     }
 
-    if (!is.null(exclude.range))
-    {
+    if (!is.null(exclude.range)){
         exclude.range = sign(exclude.range)
         exclude.range = exclude.range[rowSums(exclude.range)>0, ]
-        if (nrow(exclude.range) == 0)
+        if (nrow(exclude.range) == 0){
             exclude.range = NULL
+        }
     }
 
                                         # vector to help rescale matrix (avoid numerical issues)
@@ -3973,19 +3967,22 @@ convex.basis = function(A,
 
     st = Sys.time()
                                         # iterate through rows of A, "canceling" them out
-    while (length(remaining)>0)
-    {
-        if (nrow(K_i)==0 | ncol(K_i)==0) ## TODO figure out why we have to check this so many times
+    while (length(remaining)>0){   
+        ## TODO figure out why we have to check this so many times
+        if (nrow(K_i)==0 | ncol(K_i)==0){
             return(matrix())
+        }
 
         iter = iter+1;
         K_last = K_i;
 
-        if (verbose)
+        if (verbose){
             print(Sys.time() - st)
+        }
 
-        if (verbose)
+        if (verbose){
             cat('Iter ', iter, '(of',  nrow(A_i),  ') Num basis vectors: ', nrow(K_i), " Num active components: ", sum(Matrix::rowSums(K_i!=0)), "\n")
+        }
 
         i = remaining[which.min(Matrix::rowSums(A_i[remaining,, drop = FALSE]>=ZERO)*Matrix::rowSums(A_i[remaining,, drop = FALSE]<=(-ZERO)))]  # chose "cheapest" rows
 
@@ -3999,13 +3996,13 @@ convex.basis = function(A,
         pos_elements = which(A_i[i, ]>ZERO)
         neg_elements = which(A_i[i, ]<(-ZERO))
 
-        if (verbose)
+        if (verbose){
             cat('Iter ', iter, " Row ", i, ":", length(zero_elements), " zero elements ", length(pos_elements), " pos elements ", length(neg_elements), " neg elements \n")
+        }
 
         if (length(pos_elements)>0 & length(neg_elements)>0)
             for (m in seq(1, length(pos_elements), interval))
-                for (l in seq(1, length(neg_elements), interval))
-                {
+                for (l in seq(1, length(neg_elements), interval)){
                     ind_pos = c(m:min(c(m+interval, length(pos_elements))))
                     ind_neg = c(l:min(c(l+interval, length(neg_elements))))
 
@@ -4024,8 +4021,7 @@ convex.basis = function(A,
                     H = H[!duplicated(as.matrix(H)>ZERO), ];
 
                                         # remove rows in H that have subsets in H (with respect to sparsity) ..
-                    if ((as.numeric(nrow(H))*as.numeric(nrow(H)))>maxchunks)
-                    {
+                    if ((as.numeric(nrow(H))*as.numeric(nrow(H)))>maxchunks){
                         print('Exceeding maximum number of chunks in convex.basis computation')
                         stop('Exceeding maximum number of chunks in convex.basis computation')
                     }
@@ -4034,10 +4030,8 @@ convex.basis = function(A,
 
                                         # remove rows in H that have subsets in K_i2
                     if (!is.null(K_i2))
-                        if (nrow(K_i2)>0)
-                        {
-                            if ((as.numeric(nrow(K_i2))*as.numeric(nrow(H)))>maxchunks)
-                            {
+                        if (nrow(K_i2)>0){
+                            if ((as.numeric(nrow(K_i2))*as.numeric(nrow(H)))>maxchunks){
                                 print('Exceeding maximum number of chunks in convex.basis computation')
                                 stop('Exceeding maximum number of chunks in convex.basis computation')
                             }
@@ -4047,8 +4041,7 @@ convex.basis = function(A,
 
                                         # remove rows in H that have subsets in K_i1
                     if (!is.null(K_i1))
-                        if (nrow(K_i1)>0)
-                        {
+                        if (nrow(K_i1)>0){
                             if ((as.numeric(nrow(K_i1))*as.numeric(nrow(H)))>maxchunks)
                             {
                                 print('Exceeding maximum number of chunks in convex.basis computation')
@@ -4059,43 +4052,45 @@ convex.basis = function(A,
                         }
 
                                         # maintain numerical stability
-                    if ((iter %% 10)==0)
+                    if ((iter %% 10)==0){
                         H = diag(1/apply(abs(H), 1, max)) %*% H
 
                                         #                K_i2 = rBind(K_i2, H)
+                    }
                     K_i2 = rbind(K_i2, as.matrix(H))
                 }
 
                                         #        K_i = rBind(K_i1, K_i2)
         K_i = rbind(K_i1, K_i2) ## new basis set
 
-        if (nrow(K_i)==0)
+        if (nrow(K_i)==0){
             return(matrix())
-
-        if (!is.null(exclude.basis)) ## only keep vectors that fail to intersect all vectors "exclude" in matrix
-        {
-            if ((as.numeric(nrow(exclude.basis))*as.numeric(nrow(K_i)))>maxchunks)
-            {
+        }
+        
+        ## only keep vectors that fail to intersect all vectors "exclude" in matrix
+        if (!is.null(exclude.basis)) {
+            if ((as.numeric(nrow(exclude.basis))*as.numeric(nrow(K_i)))>maxchunks){
                 print('Exceeding maximum number of chunks in convex.basis computation')
                 stop('Exceeding maximum number of chunks in convex.basis computation')
             }
             keep = Matrix::colSums(sparse_subset(exclude.basis>0, K_i>ZERO))==0
-            if (verbose)
+            if (verbose){
                 cat('Applying basis exclusion and removing', sum(keep==0), 'basis vectors\n')
+            }
             K_i = K_i[keep, , drop = F]
         }
-
-        if (!is.null(exclude.range)) ## only keep vectors that fail to intersect all vectors "exclude" in matrix
-        {
+        
+        ## only keep vectors that fail to intersect all vectors "exclude" in matrix
+        if (!is.null(exclude.range)){
             A_i_abs = abs(A) %*% t(K_i)
-            if ((as.numeric(nrow(exclude.range))*as.numeric*ncol(A_i_abs))>maxchunks)
-            {
+            if ((as.numeric(nrow(exclude.range))*as.numeric*ncol(A_i_abs))>maxchunks){
                 print('Exceeding maximum number of chunks in convex.basis computation')
                 stop('Exceeding maximum number of chunks in convex.basis computation')
             }
             keep = Matrix::colSums(sparse_subset(exclude.range>0, t(A_i_abs), quiet = !verbose))==0
-            if (verbose)
+            if (verbose){
                 cat('Applying range exclusion and removing', sum(keep==0), 'basis vectors\n')
+            }
             K_i = K_i[keep, , drop = F]
         }
 
