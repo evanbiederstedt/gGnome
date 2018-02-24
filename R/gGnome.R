@@ -3249,8 +3249,7 @@ bGraph = R6::R6Class("bGraph",
                                              ## if (!palindromic) ## update reverse complement
                                              to.rm = rbind(to.rm, epaths[[i+1]][which(cn.adj[epaths[[i+1]]]==0), ,drop = FALSE])
 
-                                             if (nrow(to.rm)>0)
-                                             {
+                                             if (nrow(to.rm)>0) {
                                                  adj[to.rm] = 0
                                                  ## ALERT!!! major change
                                                  ## adjj = adj/as.matrix(cn.adj)
@@ -3281,9 +3280,9 @@ bGraph = R6::R6Class("bGraph",
 
                                                  D = shortest.paths(G, v = ends, mode = 'out', weight = E(G)$weight)[, ends]
                                                  ij = as.data.table(which(!is.infinite(D), arr.ind = TRUE))[, dist := D[cbind(row, col)]][row != col, ][order(dist), ][, row := ends[row]][, col := ends[col]]
-                                             }
-                                             else
+                                             } else{
                                                  ij = ij[-1, , drop = FALSE]
+                                             }
 
                                              ## if (!palindromic) ## increase extra counter to account for reverse complement
                                              ## TOFIX: just update counter by 2 above, since we are just doing every path and its rc
@@ -3296,15 +3295,15 @@ bGraph = R6::R6Class("bGraph",
                                      seg.ix = which(as.character(strand(segs))=='+'); seg.rix = which(as.character(strand(segs))=='-');
 
 
-                                     if (nrow(ij)==0 & cleanup_mode == FALSE)
-                                     {
+                                     if (nrow(ij)==0 & cleanup_mode == FALSE) {
                                          message('!!!!!!!!!!!!!!!!!!!!!!!!!!STARTING CLEANUP MODE FOR PATHS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
                                          ij = as.data.table(which(!is.infinite(D), arr.ind = TRUE))[, dist := D[cbind(row, col)]][row != col, ][order(dist), ][, row := ends[row]][, col := ends[col]]
                                          cleanup_mode = TRUE
                                      }
                                  }
-                                 if (verbose)
+                                 if (verbose){
                                      message('Path peeling iteration ', i, ' with ', sum(adj!=0, na.rm = TRUE), ' edges left ', nrow(ij) )
+                                 }
 
                                  ## ## record G, D, remaining edges at the end of path peeling
                                  ## G1 = G
@@ -3323,8 +3322,7 @@ bGraph = R6::R6Class("bGraph",
                                  csimp = which(diag(cn.adj)!=0)
                                  ipath = i
                                  i = 0
-                                 if (length(csimp)>0)
-                                 {
+                                 if (length(csimp)>0){
                                      vcycles[1:length(csimp)] = split(csimp, 1:length(csimp))
                                      ecycles[1:length(csimp)] = lapply(csimp, function(x) cbind(x, x))
                                      ccns[1:length(csimp)] = diag(cn.adj)[csimp]
@@ -3332,8 +3330,9 @@ bGraph = R6::R6Class("bGraph",
                                      adj[cbind(csimp, csimp)] = 0
                                      i = length(csimp)
 
-                                     for (j in 1:length(csimp))
+                                     for (j in 1:length(csimp)){
                                          adj.new[ecycles[[j]]] = adj.new[ecycles[[j]]] + ccns[j]
+                                     }
                                  }
 
                                  ## sort shortest paths and find which connect a node to its ancestor (i.e. is a cycle)
@@ -3374,10 +3373,10 @@ bGraph = R6::R6Class("bGraph",
                                  ## peel off top path and add to stack, then update cn.adj
 
                                  cleanup_mode = FALSE
-                                 while (nrow(ij)>0)
-                                 {
-                                     if (verbose)
+                                 while (nrow(ij)>0){
+                                     if (verbose){
                                          message('Cycle-peeling iteration ', i, ' with ', sum(adj!=0, na.rm = TRUE), ' edges left ', nrow(ij) )
+                                     }
                                      i = i+1
                                         #        p = as.numeric(get.shortest.paths(G, ij[1, 1], ij[1, 2], mode = 'out', weight = E(G)$weight)$vpath[[1]])
 
@@ -3387,8 +3386,7 @@ bGraph = R6::R6Class("bGraph",
                                          message('Came up empty!')
                                          i = i -1
                                          ij = ij[-1, , drop = FALSE]
-                                     } else
-                                     {
+                                     } else {
 
                                          ed$cn = cn.adj[cbind(ed$from, ed$to)]
                                          vcycles[[i]] = p
@@ -3403,8 +3401,9 @@ bGraph = R6::R6Class("bGraph",
                                          ## (awkward) check for palindromicity for odd and even length palindromes
 
                                          ## if (all((vcycles[[i]]==rvcycle)[c(1:hclen,(clen-hclen+1):clen)]))
-                                         if (ed[eids, any(table(eclass)>1)])
+                                         if (ed[eids, any(table(eclass)>1)]){
                                              palindromic.cycle[i] = TRUE
+                                         }
                                          ## else
                                          ## {
                                          vcycles[[i+1]] = rvcycle
@@ -3424,8 +3423,7 @@ bGraph = R6::R6Class("bGraph",
                                          if (any(is.na(cn.adj))){
                                              browser()
                                          }
-                                         if (!all(cn.adj[ecycles[[i]]]>=0))
-                                         {
+                                         if (!all(cn.adj[ecycles[[i]]]>=0)){
                                              message('backtracking')
                                              ## browser()
                                              cn.adj[ecycles[[i]]] = cn.adj[ecycles[[i]]]+ccns[i]
@@ -3433,9 +3431,7 @@ bGraph = R6::R6Class("bGraph",
                                              cn.adj[ecycles[[i+1]]] = cn.adj[ecycles[[i+1]]]+ccns[i+1]
                                              i = i-1
                                              ij = ij[-1, , drop = FALSE]
-                                         }
-                                         else
-                                         {
+                                         } else {
                                              adj.new[ecycles[[i]]] = adj.new[ecycles[[i]]] + ccns[i]
 
                                              ## ## if (!palindromic)
@@ -3456,8 +3452,7 @@ bGraph = R6::R6Class("bGraph",
                                              ## if (!palindromic) ## update reverse complement
                                              to.rm = rbind(to.rm, ecycles[[i+1]][which(cn.adj[ecycles[[i+1]]]==0), ,drop = FALSE])
 
-                                             if (nrow(to.rm)>0)
-                                             {
+                                             if (nrow(to.rm)>0) {
                                                  adj[to.rm] = 0
                                                  parents = .parents(adj)
                                                  ## G = graph.adjacency(adj, weighted = 'weight')
@@ -3481,17 +3476,16 @@ bGraph = R6::R6Class("bGraph",
 
                                                  D = shortest.paths(G, mode = 'out', weight = E(G)$weight)
                                                  ij = as.data.table(which(!is.infinite(D), arr.ind = TRUE))[, dist := D[cbind(row, col)]][row %in% parents$parent & row != col, ][order(dist), ][, is.cycle := parents[list(row), col %in% parent], by = row][is.cycle == TRUE, ]
-                                             }
-                                             else
+                                             } else{
                                                  ij = ij[-1, ,drop = FALSE]
+                                             }
 
                                              ## if (!palindromic) ## increase extra counter to account for reverse complement
                                              i = i+1
                                          }
                                      }
 
-                                     if (nrow(ij)==0 & cleanup_mode == FALSE)
-                                     {
+                                     if (nrow(ij)==0 & cleanup_mode == FALSE){
                                          message('!!!!!!!!!!!!!!!!!!!!!!!!!!STARTING CLEANUP MODE FOR CYCLES!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
                                          ij = as.data.table(which(!is.infinite(D), arr.ind = TRUE))[, dist := D[cbind(row, col)]][row %in% parents$parent & row != col, ][order(dist), ][, is.cycle := parents[list(row), col %in% parent], by = row][is.cycle == TRUE, ]
 
@@ -3499,18 +3493,16 @@ bGraph = R6::R6Class("bGraph",
                                      }
                                  }
 
-                                 if (verbose)
+                                 if (verbose){
                                      message('Cycle peeling iteration ', i, ' with ', sum(adj!=0, na.rm = TRUE), ' edges left ', nrow(ij) )
+                                 }
 
 
-                                 if (i>0)
-                                 {
+                                 if (i>0){
                                      vcycles = vcycles[1:i]
                                      ecycles = ecycles[1:i]
                                      ccns = ccns[1:i]
-                                 }
-                                 else
-                                 {
+                                 } else{
                                      vcycles = NULL
                                      ecycles = NULL
                                      ccns = NULL
@@ -3527,17 +3519,20 @@ bGraph = R6::R6Class("bGraph",
                                  remain = as.matrix(self$get.adj()) - adj.new
                                  remain.ends = which(Matrix::colSums(remain)*Matrix::rowSums(remain)==0 & Matrix::colSums(remain)-Matrix::rowSums(remain)!=0)
                                  if (length(remain.ends)>0){
-                                     if (verbose)
+                                     if (verbose){
                                          message(length(remain.ends), "ends were not properly assigned a path. Do them.")
+                                     }
                                  }
 
                                  tmp = cbind(do.call(rbind, eall), rep(ecn, sapply(eall, nrow)), munlist(eall))
                                  ix = which(Matrix::rowSums(is.na(tmp[, 1:2]))==0)
 
-                                 if (length(ix)>0)
+                                 if (length(ix)>0){
                                      adj.new = sparseMatrix(tmp[ix,1], tmp[ix,2], x = tmp[ix,3], dims = dim(adj))
-                                 else
+                                 }
+                                 else{
                                      adj.new = sparseMatrix(1, 1, x = 0, dims = dim(adj))
+                                 }
                                  vix = munlist(vall)
 
                                  segs$node.id = 1:length(segs)
@@ -3574,10 +3569,12 @@ bGraph = R6::R6Class("bGraph",
 
                                  check = which((adj.new - self$get.adj()) !=0, arr.ind = TRUE)
 
-                                 if (length(check)>0)
+                                 if (length(check)>0){
                                      stop('Alleles do not add up to marginal copy number profile!')
-                                 else if (verbose)
+                                 }
+                                 else if (verbose){
                                      message('Cross check successful: sum of walk copy numbers = marginal JaBbA edge set!')
+                                 }
                              }
 
                              ## match up paths and their reverse complements
@@ -3600,12 +3597,12 @@ bGraph = R6::R6Class("bGraph",
                              values(paths)$id = remix$id
                              values(paths)$str = ifelse(remix$pos, '+', '-')
 
-                             if (length(setdiff(values(paths)$ogid, 1:length(paths))))
+                             if (length(setdiff(values(paths)$ogid, 1:length(paths)))){
                                  message('Warning!!! Some paths missing!')
+                             }
 
                              ## for gGnome compatibiliity
-                             if (!grl)
-                             {
+                             if (!grl){
                                  tmp.dt = as.data.table(copy(paths))[, pid := group_name][, nix := 1:.N, by =pid]
                                  setkeyv(tmp.dt, c('pid', 'nix'))
 
@@ -3630,8 +3627,7 @@ bGraph = R6::R6Class("bGraph",
 
 ### TODO: store ab.ids in walks
                                         #tmp.dt[loose == TRUE, ref.run.id := NA] ## make sure loose ends stay ungrouped
-                                 if (any(!is.na(tmp.dt$ref.run.id)))
-                                 {
+                                 if (any(!is.na(tmp.dt$ref.run.id))){
                                      collapsed.dt = tmp.dt[!is.na(ref.run.id), .(
                                                                                    nix = nix[1],
                                                                                    pid = pid[1],
