@@ -1,0 +1,6819 @@
+{
+  "intervals": [
+    {
+      "iid": 1,
+      "chromosome": "17",
+      "startPoint": 72874459,
+      "endPoint": 72874459,
+      "y": 1,
+      "title": "1 (2|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 2,
+      "chromosome": "7",
+      "startPoint": 116166641,
+      "endPoint": 116166641,
+      "y": 1,
+      "title": "2 (3|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 3,
+      "chromosome": "6",
+      "startPoint": 32822006,
+      "endPoint": 32822006,
+      "y": 1,
+      "title": "3 (5|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 4,
+      "chromosome": "15",
+      "startPoint": 65108496,
+      "endPoint": 65108496,
+      "y": 1,
+      "title": "4 (8|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 5,
+      "chromosome": "20",
+      "startPoint": 45839405,
+      "endPoint": 45839405,
+      "y": 1,
+      "title": "5 (10|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 6,
+      "chromosome": "1",
+      "startPoint": 13448049,
+      "endPoint": 13448049,
+      "y": 1,
+      "title": "6 (11|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 7,
+      "chromosome": "19",
+      "startPoint": 18979405,
+      "endPoint": 18979405,
+      "y": 1,
+      "title": "7 (14|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 8,
+      "chromosome": "X",
+      "startPoint": 86772896,
+      "endPoint": 86772896,
+      "y": 1,
+      "title": "8 (16|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 9,
+      "chromosome": "12",
+      "startPoint": 102122704,
+      "endPoint": 102122704,
+      "y": 1,
+      "title": "9 (18|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 10,
+      "chromosome": "4",
+      "startPoint": 146435765,
+      "endPoint": 146435765,
+      "y": 1,
+      "title": "10 (19|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 11,
+      "chromosome": "5",
+      "startPoint": 145969509,
+      "endPoint": 145969509,
+      "y": 1,
+      "title": "11 (20|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 12,
+      "chromosome": "7",
+      "startPoint": 5662490,
+      "endPoint": 5662490,
+      "y": 1,
+      "title": "12 (21|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 13,
+      "chromosome": "11",
+      "startPoint": 62558094,
+      "endPoint": 62558094,
+      "y": 1,
+      "title": "13 (22|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 14,
+      "chromosome": "15",
+      "startPoint": 59910437,
+      "endPoint": 59910437,
+      "y": 1,
+      "title": "14 (24|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 15,
+      "chromosome": "3",
+      "startPoint": 127411040,
+      "endPoint": 127411040,
+      "y": 1,
+      "title": "15 (29|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 16,
+      "chromosome": "16",
+      "startPoint": 67899033,
+      "endPoint": 67899033,
+      "y": 1,
+      "title": "16 (31|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 17,
+      "chromosome": "20",
+      "startPoint": 45169912,
+      "endPoint": 45169912,
+      "y": 1,
+      "title": "17 (32|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 18,
+      "chromosome": "15",
+      "startPoint": 86686952,
+      "endPoint": 86686952,
+      "y": 1,
+      "title": "18 (34|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 19,
+      "chromosome": "1",
+      "startPoint": 85020681,
+      "endPoint": 85020681,
+      "y": 1,
+      "title": "19 (35|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 20,
+      "chromosome": "3",
+      "startPoint": 112642523,
+      "endPoint": 112642523,
+      "y": 1,
+      "title": "20 (37|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 21,
+      "chromosome": "9",
+      "startPoint": 138235244,
+      "endPoint": 138235244,
+      "y": 1,
+      "title": "21 (38|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 22,
+      "chromosome": "X",
+      "startPoint": 134869963,
+      "endPoint": 134869963,
+      "y": 1,
+      "title": "22 (40|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 23,
+      "chromosome": "6",
+      "startPoint": 111621218,
+      "endPoint": 111621218,
+      "y": 1,
+      "title": "23 (41|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 24,
+      "chromosome": "12",
+      "startPoint": 56114968,
+      "endPoint": 56114968,
+      "y": 1,
+      "title": "24 (42|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 25,
+      "chromosome": "4",
+      "startPoint": 88577644,
+      "endPoint": 88577644,
+      "y": 1,
+      "title": "25 (43|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 26,
+      "chromosome": "15",
+      "startPoint": 56385542,
+      "endPoint": 56385542,
+      "y": 1,
+      "title": "26 (44|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 27,
+      "chromosome": "3",
+      "startPoint": 49547967,
+      "endPoint": 49547967,
+      "y": 1,
+      "title": "27 (45|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 28,
+      "chromosome": "1",
+      "startPoint": 108993223,
+      "endPoint": 108993223,
+      "y": 1,
+      "title": "28 (51|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 29,
+      "chromosome": "17",
+      "startPoint": 59667893,
+      "endPoint": 59667893,
+      "y": 1,
+      "title": "29 (52|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 30,
+      "chromosome": "21",
+      "startPoint": 15964942,
+      "endPoint": 15964942,
+      "y": 1,
+      "title": "30 (53|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 31,
+      "chromosome": "2",
+      "startPoint": 39477758,
+      "endPoint": 39477758,
+      "y": 1,
+      "title": "31 (57|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 32,
+      "chromosome": "4",
+      "startPoint": 70896457,
+      "endPoint": 70896457,
+      "y": 1,
+      "title": "32 (58|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 33,
+      "chromosome": "7",
+      "startPoint": 142829209,
+      "endPoint": 142829209,
+      "y": 1,
+      "title": "33 (60|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 34,
+      "chromosome": "3",
+      "startPoint": 53851803,
+      "endPoint": 53851803,
+      "y": 1,
+      "title": "34 (61|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 35,
+      "chromosome": "5",
+      "startPoint": 121726875,
+      "endPoint": 121726875,
+      "y": 1,
+      "title": "35 (65|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 36,
+      "chromosome": "22",
+      "startPoint": 46447706,
+      "endPoint": 46447706,
+      "y": 1,
+      "title": "36 (66|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 37,
+      "chromosome": "5",
+      "startPoint": 175875408,
+      "endPoint": 175875408,
+      "y": 1,
+      "title": "37 (69|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 38,
+      "chromosome": "5",
+      "startPoint": 170289037,
+      "endPoint": 170289037,
+      "y": 1,
+      "title": "38 (71|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 39,
+      "chromosome": "20",
+      "startPoint": 43738649,
+      "endPoint": 43738649,
+      "y": 1,
+      "title": "39 (72|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 40,
+      "chromosome": "17",
+      "startPoint": 34310836,
+      "endPoint": 34310836,
+      "y": 1,
+      "title": "40 (73|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 41,
+      "chromosome": "22",
+      "startPoint": 50656164,
+      "endPoint": 50656164,
+      "y": 1,
+      "title": "41 (74|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 42,
+      "chromosome": "12",
+      "startPoint": 44189387,
+      "endPoint": 44189387,
+      "y": 1,
+      "title": "42 (75|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 43,
+      "chromosome": "1",
+      "startPoint": 228194829,
+      "endPoint": 228194829,
+      "y": 1,
+      "title": "43 (77|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 44,
+      "chromosome": "3",
+      "startPoint": 48663418,
+      "endPoint": 48663418,
+      "y": 1,
+      "title": "44 (79|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 45,
+      "chromosome": "20",
+      "startPoint": 48699304,
+      "endPoint": 48699304,
+      "y": 1,
+      "title": "45 (84|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 46,
+      "chromosome": "1",
+      "startPoint": 175129849,
+      "endPoint": 175129849,
+      "y": 1,
+      "title": "46 (85|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 47,
+      "chromosome": "6",
+      "startPoint": 44126585,
+      "endPoint": 44126585,
+      "y": 1,
+      "title": "47 (88|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 48,
+      "chromosome": "19",
+      "startPoint": 39923912,
+      "endPoint": 39923912,
+      "y": 1,
+      "title": "48 (89|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 49,
+      "chromosome": "6",
+      "startPoint": 37186197,
+      "endPoint": 37186197,
+      "y": 1,
+      "title": "49 (95|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 50,
+      "chromosome": "3",
+      "startPoint": 182662881,
+      "endPoint": 182662881,
+      "y": 1,
+      "title": "50 (97|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 51,
+      "chromosome": "11",
+      "startPoint": 6411828,
+      "endPoint": 6411828,
+      "y": 1,
+      "title": "51 (98|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 52,
+      "chromosome": "2",
+      "startPoint": 127413839,
+      "endPoint": 127413839,
+      "y": 1,
+      "title": "52 (100|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 53,
+      "chromosome": "1",
+      "startPoint": 226252052,
+      "endPoint": 226252052,
+      "y": 1,
+      "title": "53 (103|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 54,
+      "chromosome": "19",
+      "startPoint": 41281447,
+      "endPoint": 41281447,
+      "y": 1,
+      "title": "54 (106|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 55,
+      "chromosome": "6",
+      "startPoint": 31674683,
+      "endPoint": 31674683,
+      "y": 1,
+      "title": "55 (107|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 56,
+      "chromosome": "16",
+      "startPoint": 215996,
+      "endPoint": 215996,
+      "y": 1,
+      "title": "56 (108|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 57,
+      "chromosome": "2",
+      "startPoint": 207146573,
+      "endPoint": 207146573,
+      "y": 1,
+      "title": "57 (109|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 58,
+      "chromosome": "15",
+      "startPoint": 89379437,
+      "endPoint": 89379437,
+      "y": 1,
+      "title": "58 (114|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 59,
+      "chromosome": "11",
+      "startPoint": 65784360,
+      "endPoint": 65784360,
+      "y": 1,
+      "title": "59 (115|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 60,
+      "chromosome": "11",
+      "startPoint": 33719974,
+      "endPoint": 33719974,
+      "y": 1,
+      "title": "60 (117|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 61,
+      "chromosome": "20",
+      "startPoint": 25388456,
+      "endPoint": 25388456,
+      "y": 1,
+      "title": "61 (118|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 62,
+      "chromosome": "17",
+      "startPoint": 19437252,
+      "endPoint": 19437252,
+      "y": 1,
+      "title": "62 (119|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 63,
+      "chromosome": "19",
+      "startPoint": 12540969,
+      "endPoint": 12540969,
+      "y": 1,
+      "title": "63 (120|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 64,
+      "chromosome": "19",
+      "startPoint": 38880942,
+      "endPoint": 38880942,
+      "y": 1,
+      "title": "64 (122|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 65,
+      "chromosome": "2",
+      "startPoint": 73612996,
+      "endPoint": 73612996,
+      "y": 1,
+      "title": "65 (125|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 66,
+      "chromosome": "3",
+      "startPoint": 138153640,
+      "endPoint": 138153640,
+      "y": 1,
+      "title": "66 (127|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 67,
+      "chromosome": "17",
+      "startPoint": 39032612,
+      "endPoint": 39032612,
+      "y": 1,
+      "title": "67 (128|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 68,
+      "chromosome": "1",
+      "startPoint": 6695734,
+      "endPoint": 6695734,
+      "y": 1,
+      "title": "68 (133|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 69,
+      "chromosome": "11",
+      "startPoint": 30253449,
+      "endPoint": 30253449,
+      "y": 1,
+      "title": "69 (138|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 70,
+      "chromosome": "2",
+      "startPoint": 38177721,
+      "endPoint": 38177721,
+      "y": 1,
+      "title": "70 (143|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 71,
+      "chromosome": "17",
+      "startPoint": 79993835,
+      "endPoint": 79993835,
+      "y": 1,
+      "title": "71 (149|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 72,
+      "chromosome": "12",
+      "startPoint": 105501578,
+      "endPoint": 105501578,
+      "y": 1,
+      "title": "72 (153|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 73,
+      "chromosome": "22",
+      "startPoint": 35695921,
+      "endPoint": 35695921,
+      "y": 1,
+      "title": "73 (154|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 74,
+      "chromosome": "17",
+      "startPoint": 909319,
+      "endPoint": 909319,
+      "y": 1,
+      "title": "74 (155|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 75,
+      "chromosome": "22",
+      "startPoint": 24322388,
+      "endPoint": 24322388,
+      "y": 1,
+      "title": "75 (156|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 76,
+      "chromosome": "1",
+      "startPoint": 23279535,
+      "endPoint": 23279535,
+      "y": 1,
+      "title": "76 (157|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 77,
+      "chromosome": "1",
+      "startPoint": 196621247,
+      "endPoint": 196621247,
+      "y": 1,
+      "title": "77 (161|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 78,
+      "chromosome": "2",
+      "startPoint": 239079176,
+      "endPoint": 239079176,
+      "y": 1,
+      "title": "78 (162|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 79,
+      "chromosome": "14",
+      "startPoint": 103566556,
+      "endPoint": 103566556,
+      "y": 1,
+      "title": "79 (165|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 80,
+      "chromosome": "15",
+      "startPoint": 40650522,
+      "endPoint": 40650522,
+      "y": 1,
+      "title": "80 (166|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 81,
+      "chromosome": "8",
+      "startPoint": 75898222,
+      "endPoint": 75898222,
+      "y": 1,
+      "title": "81 (167|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 82,
+      "chromosome": "15",
+      "startPoint": 43886416,
+      "endPoint": 43886416,
+      "y": 1,
+      "title": "82 (172|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 83,
+      "chromosome": "14",
+      "startPoint": 24612617,
+      "endPoint": 24612617,
+      "y": 1,
+      "title": "83 (173|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 84,
+      "chromosome": "12",
+      "startPoint": 7169216,
+      "endPoint": 7169216,
+      "y": 1,
+      "title": "84 (175|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 85,
+      "chromosome": "2",
+      "startPoint": 11295672,
+      "endPoint": 11295672,
+      "y": 1,
+      "title": "85 (179|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 86,
+      "chromosome": "14",
+      "startPoint": 103592794,
+      "endPoint": 103592794,
+      "y": 1,
+      "title": "86 (180|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 87,
+      "chromosome": "2",
+      "startPoint": 37872965,
+      "endPoint": 37872965,
+      "y": 1,
+      "title": "87 (181|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 88,
+      "chromosome": "17",
+      "startPoint": 62473939,
+      "endPoint": 62473939,
+      "y": 1,
+      "title": "88 (184|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 89,
+      "chromosome": "10",
+      "startPoint": 72972742,
+      "endPoint": 72972742,
+      "y": 1,
+      "title": "89 (185|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 90,
+      "chromosome": "X",
+      "startPoint": 154299802,
+      "endPoint": 154299802,
+      "y": 1,
+      "title": "90 (186|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 91,
+      "chromosome": "11",
+      "startPoint": 18478227,
+      "endPoint": 18478227,
+      "y": 1,
+      "title": "91 (188|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 92,
+      "chromosome": "19",
+      "startPoint": 48618905,
+      "endPoint": 48618905,
+      "y": 1,
+      "title": "92 (190|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 93,
+      "chromosome": "11",
+      "startPoint": 85576166,
+      "endPoint": 85576166,
+      "y": 1,
+      "title": "93 (191|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 94,
+      "chromosome": "13",
+      "startPoint": 78130010,
+      "endPoint": 78130010,
+      "y": 1,
+      "title": "94 (192|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 95,
+      "chromosome": "6",
+      "startPoint": 159187945,
+      "endPoint": 159187945,
+      "y": 1,
+      "title": "95 (195|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 96,
+      "chromosome": "10",
+      "startPoint": 13320300,
+      "endPoint": 13320300,
+      "y": 1,
+      "title": "96 (196|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 97,
+      "chromosome": "1",
+      "startPoint": 181452880,
+      "endPoint": 181452880,
+      "y": 1,
+      "title": "97 (197|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 98,
+      "chromosome": "6",
+      "startPoint": 2833841,
+      "endPoint": 2833841,
+      "y": 1,
+      "title": "98 (199|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 99,
+      "chromosome": "12",
+      "startPoint": 1740520,
+      "endPoint": 1740520,
+      "y": 1,
+      "title": "99 (200|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 100,
+      "chromosome": "X",
+      "startPoint": 72064969,
+      "endPoint": 72064969,
+      "y": 1,
+      "title": "100 (206|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 101,
+      "chromosome": "3",
+      "startPoint": 159943422,
+      "endPoint": 159943422,
+      "y": 1,
+      "title": "101 (207|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 102,
+      "chromosome": "19",
+      "startPoint": 35616096,
+      "endPoint": 35616096,
+      "y": 1,
+      "title": "102 (208|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 103,
+      "chromosome": "10",
+      "startPoint": 86004846,
+      "endPoint": 86004846,
+      "y": 1,
+      "title": "103 (211|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 104,
+      "chromosome": "17",
+      "startPoint": 79791604,
+      "endPoint": 79791604,
+      "y": 1,
+      "title": "104 (214|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 105,
+      "chromosome": "4",
+      "startPoint": 68777059,
+      "endPoint": 68777059,
+      "y": 1,
+      "title": "105 (215|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 106,
+      "chromosome": "9",
+      "startPoint": 126118539,
+      "endPoint": 126118539,
+      "y": 1,
+      "title": "106 (216|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 107,
+      "chromosome": "10",
+      "startPoint": 120795550,
+      "endPoint": 120795550,
+      "y": 1,
+      "title": "107 (218|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 108,
+      "chromosome": "10",
+      "startPoint": 17191038,
+      "endPoint": 17191038,
+      "y": 1,
+      "title": "108 (219|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 109,
+      "chromosome": "1",
+      "startPoint": 112233982,
+      "endPoint": 112233982,
+      "y": 1,
+      "title": "109 (223|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 110,
+      "chromosome": "X",
+      "startPoint": 106171458,
+      "endPoint": 106171458,
+      "y": 1,
+      "title": "110 (226|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 111,
+      "chromosome": "1",
+      "startPoint": 11728715,
+      "endPoint": 11728715,
+      "y": 1,
+      "title": "111 (227|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 112,
+      "chromosome": "1",
+      "startPoint": 156278989,
+      "endPoint": 156278989,
+      "y": 1,
+      "title": "112 (229|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 113,
+      "chromosome": "9",
+      "startPoint": 125562401,
+      "endPoint": 125562401,
+      "y": 1,
+      "title": "113 (234|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 114,
+      "chromosome": "6",
+      "startPoint": 41126340,
+      "endPoint": 41126340,
+      "y": 1,
+      "title": "114 (235|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 115,
+      "chromosome": "17",
+      "startPoint": 1369019,
+      "endPoint": 1369019,
+      "y": 1,
+      "title": "115 (236|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 116,
+      "chromosome": "3",
+      "startPoint": 49249213,
+      "endPoint": 49249213,
+      "y": 1,
+      "title": "116 (237|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 117,
+      "chromosome": "19",
+      "startPoint": 54742828,
+      "endPoint": 54742828,
+      "y": 1,
+      "title": "117 (238|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 118,
+      "chromosome": "X",
+      "startPoint": 96139309,
+      "endPoint": 96139309,
+      "y": 1,
+      "title": "118 (242|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 119,
+      "chromosome": "12",
+      "startPoint": 50344613,
+      "endPoint": 50344613,
+      "y": 1,
+      "title": "119 (243|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 120,
+      "chromosome": "14",
+      "startPoint": 93673636,
+      "endPoint": 93673636,
+      "y": 1,
+      "title": "120 (244|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 121,
+      "chromosome": "4",
+      "startPoint": 141446582,
+      "endPoint": 141446582,
+      "y": 1,
+      "title": "121 (246|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 122,
+      "chromosome": "11",
+      "startPoint": 62529120,
+      "endPoint": 62529120,
+      "y": 1,
+      "title": "122 (247|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 123,
+      "chromosome": "14",
+      "startPoint": 24974721,
+      "endPoint": 24974721,
+      "y": 1,
+      "title": "123 (255|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 124,
+      "chromosome": "18",
+      "startPoint": 12449636,
+      "endPoint": 12449636,
+      "y": 1,
+      "title": "124 (256|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 125,
+      "chromosome": "17",
+      "startPoint": 80015990,
+      "endPoint": 80015990,
+      "y": 1,
+      "title": "125 (258|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 126,
+      "chromosome": "4",
+      "startPoint": 120160914,
+      "endPoint": 120160914,
+      "y": 1,
+      "title": "126 (259|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 127,
+      "chromosome": "12",
+      "startPoint": 120882674,
+      "endPoint": 120882674,
+      "y": 1,
+      "title": "127 (260|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 128,
+      "chromosome": "1",
+      "startPoint": 237167486,
+      "endPoint": 237167486,
+      "y": 1,
+      "title": "128 (263|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 129,
+      "chromosome": "12",
+      "startPoint": 26208276,
+      "endPoint": 26208276,
+      "y": 1,
+      "title": "129 (265|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 130,
+      "chromosome": "20",
+      "startPoint": 55066612,
+      "endPoint": 55066612,
+      "y": 1,
+      "title": "130 (268|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 131,
+      "chromosome": "22",
+      "startPoint": 50354595,
+      "endPoint": 50354595,
+      "y": 1,
+      "title": "131 (270|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 132,
+      "chromosome": "1",
+      "startPoint": 46806498,
+      "endPoint": 46806498,
+      "y": 1,
+      "title": "132 (271|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 133,
+      "chromosome": "6",
+      "startPoint": 146920176,
+      "endPoint": 146920176,
+      "y": 1,
+      "title": "133 (272|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 134,
+      "chromosome": "12",
+      "startPoint": 72233561,
+      "endPoint": 72233561,
+      "y": 1,
+      "title": "134 (273|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 135,
+      "chromosome": "3",
+      "startPoint": 93779791,
+      "endPoint": 93779791,
+      "y": 1,
+      "title": "135 (275|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 136,
+      "chromosome": "6",
+      "startPoint": 41755435,
+      "endPoint": 41755435,
+      "y": 1,
+      "title": "136 (278|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 137,
+      "chromosome": "16",
+      "startPoint": 1306281,
+      "endPoint": 1306281,
+      "y": 1,
+      "title": "137 (280|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 138,
+      "chromosome": "2",
+      "startPoint": 85826198,
+      "endPoint": 85826198,
+      "y": 1,
+      "title": "138 (283|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 139,
+      "chromosome": "1",
+      "startPoint": 165619084,
+      "endPoint": 165619084,
+      "y": 1,
+      "title": "139 (287|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 140,
+      "chromosome": "10",
+      "startPoint": 77542733,
+      "endPoint": 77542733,
+      "y": 1,
+      "title": "140 (288|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 141,
+      "chromosome": "9",
+      "startPoint": 131465194,
+      "endPoint": 131465194,
+      "y": 1,
+      "title": "141 (289|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 142,
+      "chromosome": "7",
+      "startPoint": 138916230,
+      "endPoint": 138916230,
+      "y": 1,
+      "title": "142 (296|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 143,
+      "chromosome": "7",
+      "startPoint": 2514771,
+      "endPoint": 2514771,
+      "y": 1,
+      "title": "143 (297|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 144,
+      "chromosome": "7",
+      "startPoint": 916282,
+      "endPoint": 916282,
+      "y": 1,
+      "title": "144 (300|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 145,
+      "chromosome": "X",
+      "startPoint": 64732654,
+      "endPoint": 64732654,
+      "y": 1,
+      "title": "145 (302|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 146,
+      "chromosome": "17",
+      "startPoint": 40831570,
+      "endPoint": 40831570,
+      "y": 1,
+      "title": "146 (303|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 147,
+      "chromosome": "21",
+      "startPoint": 43892927,
+      "endPoint": 43892927,
+      "y": 1,
+      "title": "147 (304|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 148,
+      "chromosome": "1",
+      "startPoint": 18149503,
+      "endPoint": 18149503,
+      "y": 1,
+      "title": "148 (307|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 149,
+      "chromosome": "4",
+      "startPoint": 164048130,
+      "endPoint": 164048130,
+      "y": 1,
+      "title": "149 (311|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 150,
+      "chromosome": "11",
+      "startPoint": 111800577,
+      "endPoint": 111800577,
+      "y": 1,
+      "title": "150 (312|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 151,
+      "chromosome": "1",
+      "startPoint": 152487859,
+      "endPoint": 152487859,
+      "y": 1,
+      "title": "151 (313|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 152,
+      "chromosome": "14",
+      "startPoint": 24805380,
+      "endPoint": 24805380,
+      "y": 1,
+      "title": "152 (315|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 153,
+      "chromosome": "19",
+      "startPoint": 41903732,
+      "endPoint": 41903732,
+      "y": 1,
+      "title": "153 (316|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 154,
+      "chromosome": "11",
+      "startPoint": 5686736,
+      "endPoint": 5686736,
+      "y": 1,
+      "title": "154 (318|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 155,
+      "chromosome": "15",
+      "startPoint": 45777360,
+      "endPoint": 45777360,
+      "y": 1,
+      "title": "155 (320|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 156,
+      "chromosome": "12",
+      "startPoint": 53491501,
+      "endPoint": 53491501,
+      "y": 1,
+      "title": "156 (321|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 157,
+      "chromosome": "19",
+      "startPoint": 51410189,
+      "endPoint": 51410189,
+      "y": 1,
+      "title": "157 (322|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 158,
+      "chromosome": "2",
+      "startPoint": 10924383,
+      "endPoint": 10924383,
+      "y": 1,
+      "title": "158 (323|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 159,
+      "chromosome": "17",
+      "startPoint": 46846350,
+      "endPoint": 46846350,
+      "y": 1,
+      "title": "159 (324|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 160,
+      "chromosome": "1",
+      "startPoint": 201867499,
+      "endPoint": 201867499,
+      "y": 1,
+      "title": "160 (325|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 161,
+      "chromosome": "11",
+      "startPoint": 94153290,
+      "endPoint": 94153290,
+      "y": 1,
+      "title": "161 (326|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 162,
+      "chromosome": "20",
+      "startPoint": 13371006,
+      "endPoint": 13371006,
+      "y": 1,
+      "title": "162 (328|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 163,
+      "chromosome": "7",
+      "startPoint": 75399010,
+      "endPoint": 75399010,
+      "y": 1,
+      "title": "163 (329|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 164,
+      "chromosome": "20",
+      "startPoint": 207929,
+      "endPoint": 207929,
+      "y": 1,
+      "title": "164 (330|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 165,
+      "chromosome": "17",
+      "startPoint": 61897161,
+      "endPoint": 61897161,
+      "y": 1,
+      "title": "165 (333|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 166,
+      "chromosome": "2",
+      "startPoint": 46525050,
+      "endPoint": 46525050,
+      "y": 1,
+      "title": "166 (337|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 167,
+      "chromosome": "12",
+      "startPoint": 50355800,
+      "endPoint": 50355800,
+      "y": 1,
+      "title": "167 (338|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 168,
+      "chromosome": "4",
+      "startPoint": 25314431,
+      "endPoint": 25314431,
+      "y": 1,
+      "title": "168 (339|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 169,
+      "chromosome": "6",
+      "startPoint": 30621018,
+      "endPoint": 30621018,
+      "y": 1,
+      "title": "169 (341|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 170,
+      "chromosome": "6",
+      "startPoint": 32159142,
+      "endPoint": 32159142,
+      "y": 1,
+      "title": "170 (342|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 171,
+      "chromosome": "14",
+      "startPoint": 91360750,
+      "endPoint": 91360750,
+      "y": 1,
+      "title": "171 (344|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 172,
+      "chromosome": "10",
+      "startPoint": 115327256,
+      "endPoint": 115327256,
+      "y": 1,
+      "title": "172 (346|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 173,
+      "chromosome": "2",
+      "startPoint": 233404457,
+      "endPoint": 233404457,
+      "y": 1,
+      "title": "173 (347|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 174,
+      "chromosome": "17",
+      "startPoint": 73643456,
+      "endPoint": 73643456,
+      "y": 1,
+      "title": "174 (348|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 175,
+      "chromosome": "16",
+      "startPoint": 75573891,
+      "endPoint": 75573891,
+      "y": 1,
+      "title": "175 (349|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 176,
+      "chromosome": "20",
+      "startPoint": 44351006,
+      "endPoint": 44351006,
+      "y": 1,
+      "title": "176 (350|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 177,
+      "chromosome": "13",
+      "startPoint": 36743170,
+      "endPoint": 36743170,
+      "y": 1,
+      "title": "177 (354|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 178,
+      "chromosome": "4",
+      "startPoint": 130023765,
+      "endPoint": 130023765,
+      "y": 1,
+      "title": "178 (355|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 179,
+      "chromosome": "1",
+      "startPoint": 207627763,
+      "endPoint": 207627763,
+      "y": 1,
+      "title": "179 (357|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 180,
+      "chromosome": "20",
+      "startPoint": 43128936,
+      "endPoint": 43128936,
+      "y": 1,
+      "title": "180 (358|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 181,
+      "chromosome": "1",
+      "startPoint": 192544922,
+      "endPoint": 192544922,
+      "y": 1,
+      "title": "181 (359|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 182,
+      "chromosome": "5",
+      "startPoint": 140855683,
+      "endPoint": 140855683,
+      "y": 1,
+      "title": "182 (360|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 183,
+      "chromosome": "X",
+      "startPoint": 69506931,
+      "endPoint": 69506931,
+      "y": 1,
+      "title": "183 (362|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 184,
+      "chromosome": "1",
+      "startPoint": 109856664,
+      "endPoint": 109856664,
+      "y": 1,
+      "title": "184 (363|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 185,
+      "chromosome": "19",
+      "startPoint": 39971184,
+      "endPoint": 39971184,
+      "y": 1,
+      "title": "185 (364|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 186,
+      "chromosome": "22",
+      "startPoint": 39436965,
+      "endPoint": 39436965,
+      "y": 1,
+      "title": "186 (366|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 187,
+      "chromosome": "2",
+      "startPoint": 163200758,
+      "endPoint": 163200758,
+      "y": 1,
+      "title": "187 (367|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 188,
+      "chromosome": "18",
+      "startPoint": 30517974,
+      "endPoint": 30517974,
+      "y": 1,
+      "title": "188 (370|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 189,
+      "chromosome": "16",
+      "startPoint": 57188201,
+      "endPoint": 57188201,
+      "y": 1,
+      "title": "189 (371|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 190,
+      "chromosome": "X",
+      "startPoint": 49061596,
+      "endPoint": 49061596,
+      "y": 1,
+      "title": "190 (378|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 191,
+      "chromosome": "10",
+      "startPoint": 88985587,
+      "endPoint": 88985587,
+      "y": 1,
+      "title": "191 (381|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 192,
+      "chromosome": "11",
+      "startPoint": 94300684,
+      "endPoint": 94300684,
+      "y": 1,
+      "title": "192 (383|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 193,
+      "chromosome": "22",
+      "startPoint": 38054789,
+      "endPoint": 38054789,
+      "y": 1,
+      "title": "193 (384|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 194,
+      "chromosome": "19",
+      "startPoint": 54466396,
+      "endPoint": 54466396,
+      "y": 1,
+      "title": "194 (386|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 195,
+      "chromosome": "4",
+      "startPoint": 159814854,
+      "endPoint": 159814854,
+      "y": 1,
+      "title": "195 (389|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 196,
+      "chromosome": "8",
+      "startPoint": 38965294,
+      "endPoint": 38965294,
+      "y": 1,
+      "title": "196 (390|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 197,
+      "chromosome": "1",
+      "startPoint": 74663923,
+      "endPoint": 74663923,
+      "y": 1,
+      "title": "197 (391|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 198,
+      "chromosome": "6",
+      "startPoint": 26204872,
+      "endPoint": 26204872,
+      "y": 1,
+      "title": "198 (395|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 199,
+      "chromosome": "6",
+      "startPoint": 89808296,
+      "endPoint": 89808296,
+      "y": 1,
+      "title": "199 (406|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 200,
+      "chromosome": "15",
+      "startPoint": 38545386,
+      "endPoint": 38545386,
+      "y": 1,
+      "title": "200 (408|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 201,
+      "chromosome": "X",
+      "startPoint": 153626860,
+      "endPoint": 153626860,
+      "y": 1,
+      "title": "201 (412|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 202,
+      "chromosome": "16",
+      "startPoint": 57279279,
+      "endPoint": 57279279,
+      "y": 1,
+      "title": "202 (414|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 203,
+      "chromosome": "5",
+      "startPoint": 126383361,
+      "endPoint": 126383361,
+      "y": 1,
+      "title": "203 (417|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 204,
+      "chromosome": "10",
+      "startPoint": 57359659,
+      "endPoint": 57359659,
+      "y": 1,
+      "title": "204 (419|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 205,
+      "chromosome": "11",
+      "startPoint": 47440385,
+      "endPoint": 47440385,
+      "y": 1,
+      "title": "205 (421|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 206,
+      "chromosome": "18",
+      "startPoint": 52544816,
+      "endPoint": 52544816,
+      "y": 1,
+      "title": "206 (422|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 207,
+      "chromosome": "1",
+      "startPoint": 151732525,
+      "endPoint": 151732525,
+      "y": 1,
+      "title": "207 (423|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 208,
+      "chromosome": "11",
+      "startPoint": 6416763,
+      "endPoint": 6416763,
+      "y": 1,
+      "title": "208 (426|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 209,
+      "chromosome": "3",
+      "startPoint": 161063880,
+      "endPoint": 161063880,
+      "y": 1,
+      "title": "209 (427|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 210,
+      "chromosome": "6",
+      "startPoint": 116441235,
+      "endPoint": 116441235,
+      "y": 1,
+      "title": "210 (428|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 211,
+      "chromosome": "11",
+      "startPoint": 56257910,
+      "endPoint": 56257910,
+      "y": 1,
+      "title": "211 (430|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 212,
+      "chromosome": "6",
+      "startPoint": 4021659,
+      "endPoint": 4021659,
+      "y": 1,
+      "title": "212 (431|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 213,
+      "chromosome": "16",
+      "startPoint": 2564104,
+      "endPoint": 2564104,
+      "y": 1,
+      "title": "213 (432|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 214,
+      "chromosome": "16",
+      "startPoint": 49313314,
+      "endPoint": 49313314,
+      "y": 1,
+      "title": "214 (434|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 215,
+      "chromosome": "19",
+      "startPoint": 44721945,
+      "endPoint": 44721945,
+      "y": 1,
+      "title": "215 (436|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 216,
+      "chromosome": "11",
+      "startPoint": 73007563,
+      "endPoint": 73007563,
+      "y": 1,
+      "title": "216 (437|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 217,
+      "chromosome": "12",
+      "startPoint": 5020544,
+      "endPoint": 5020544,
+      "y": 1,
+      "title": "217 (438|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 218,
+      "chromosome": "12",
+      "startPoint": 62654195,
+      "endPoint": 62654195,
+      "y": 1,
+      "title": "218 (440|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 219,
+      "chromosome": "1",
+      "startPoint": 201328337,
+      "endPoint": 201328337,
+      "y": 1,
+      "title": "219 (441|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 220,
+      "chromosome": "1",
+      "startPoint": 143897546,
+      "endPoint": 143897546,
+      "y": 1,
+      "title": "220 (443|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 221,
+      "chromosome": "10",
+      "startPoint": 5936452,
+      "endPoint": 5936452,
+      "y": 1,
+      "title": "221 (445|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 222,
+      "chromosome": "12",
+      "startPoint": 96252851,
+      "endPoint": 96252851,
+      "y": 1,
+      "title": "222 (446|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 223,
+      "chromosome": "16",
+      "startPoint": 31502155,
+      "endPoint": 31502155,
+      "y": 1,
+      "title": "223 (447|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 224,
+      "chromosome": "X",
+      "startPoint": 49297934,
+      "endPoint": 49297934,
+      "y": 1,
+      "title": "224 (448|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 225,
+      "chromosome": "6",
+      "startPoint": 132966122,
+      "endPoint": 132966122,
+      "y": 1,
+      "title": "225 (452|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 226,
+      "chromosome": "4",
+      "startPoint": 6925116,
+      "endPoint": 6925116,
+      "y": 1,
+      "title": "226 (455|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 227,
+      "chromosome": "16",
+      "startPoint": 53526323,
+      "endPoint": 53526323,
+      "y": 1,
+      "title": "227 (456|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 228,
+      "chromosome": "11",
+      "startPoint": 20628575,
+      "endPoint": 20628575,
+      "y": 1,
+      "title": "228 (457|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 229,
+      "chromosome": "13",
+      "startPoint": 19748002,
+      "endPoint": 19748002,
+      "y": 1,
+      "title": "229 (458|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 230,
+      "chromosome": "1",
+      "startPoint": 62228564,
+      "endPoint": 62228564,
+      "y": 1,
+      "title": "230 (461|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 231,
+      "chromosome": "5",
+      "startPoint": 96058381,
+      "endPoint": 96058381,
+      "y": 1,
+      "title": "231 (462|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 232,
+      "chromosome": "19",
+      "startPoint": 51919278,
+      "endPoint": 51919278,
+      "y": 1,
+      "title": "232 (463|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 233,
+      "chromosome": "21",
+      "startPoint": 42551102,
+      "endPoint": 42551102,
+      "y": 1,
+      "title": "233 (464|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 234,
+      "chromosome": "1",
+      "startPoint": 29447416,
+      "endPoint": 29447416,
+      "y": 1,
+      "title": "234 (465|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 235,
+      "chromosome": "1",
+      "startPoint": 248366369,
+      "endPoint": 248366369,
+      "y": 1,
+      "title": "235 (467|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 236,
+      "chromosome": "12",
+      "startPoint": 106760447,
+      "endPoint": 106760447,
+      "y": 1,
+      "title": "236 (469|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 237,
+      "chromosome": "16",
+      "startPoint": 29454739,
+      "endPoint": 29454739,
+      "y": 1,
+      "title": "237 (470|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 238,
+      "chromosome": "6",
+      "startPoint": 71378331,
+      "endPoint": 71378331,
+      "y": 1,
+      "title": "238 (471|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 239,
+      "chromosome": "17",
+      "startPoint": 18166034,
+      "endPoint": 18166034,
+      "y": 1,
+      "title": "239 (472|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 240,
+      "chromosome": "15",
+      "startPoint": 81166220,
+      "endPoint": 81166220,
+      "y": 1,
+      "title": "240 (475|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 241,
+      "chromosome": "17",
+      "startPoint": 45924664,
+      "endPoint": 45924664,
+      "y": 1,
+      "title": "241 (476|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 242,
+      "chromosome": "1",
+      "startPoint": 152127219,
+      "endPoint": 152127219,
+      "y": 1,
+      "title": "242 (479|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 243,
+      "chromosome": "11",
+      "startPoint": 3680443,
+      "endPoint": 3680443,
+      "y": 1,
+      "title": "243 (481|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 244,
+      "chromosome": "19",
+      "startPoint": 51009429,
+      "endPoint": 51009429,
+      "y": 1,
+      "title": "244 (482|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 245,
+      "chromosome": "2",
+      "startPoint": 224462146,
+      "endPoint": 224462146,
+      "y": 1,
+      "title": "245 (483|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 246,
+      "chromosome": "5",
+      "startPoint": 149569890,
+      "endPoint": 149569890,
+      "y": 1,
+      "title": "246 (487|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 247,
+      "chromosome": "5",
+      "startPoint": 94800310,
+      "endPoint": 94800310,
+      "y": 1,
+      "title": "247 (489|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 248,
+      "chromosome": "17",
+      "startPoint": 79651096,
+      "endPoint": 79651096,
+      "y": 1,
+      "title": "248 (490|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 249,
+      "chromosome": "6",
+      "startPoint": 111982941,
+      "endPoint": 111982941,
+      "y": 1,
+      "title": "249 (491|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 250,
+      "chromosome": "13",
+      "startPoint": 114618843,
+      "endPoint": 114618843,
+      "y": 1,
+      "title": "250 (494|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 251,
+      "chromosome": "2",
+      "startPoint": 170668329,
+      "endPoint": 170668329,
+      "y": 1,
+      "title": "251 (495|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 252,
+      "chromosome": "14",
+      "startPoint": 39583509,
+      "endPoint": 39583509,
+      "y": 1,
+      "title": "252 (496|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 253,
+      "chromosome": "4",
+      "startPoint": 7062588,
+      "endPoint": 7062588,
+      "y": 1,
+      "title": "253 (497|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 254,
+      "chromosome": "10",
+      "startPoint": 81107304,
+      "endPoint": 81107304,
+      "y": 1,
+      "title": "254 (498|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 255,
+      "chromosome": "1",
+      "startPoint": 165797070,
+      "endPoint": 165797070,
+      "y": 1,
+      "title": "255 (499|NA)",
+      "type": "interval",
+      "strand": "*"
+    },
+    {
+      "iid": 256,
+      "chromosome": "9",
+      "startPoint": 34552068,
+      "endPoint": 34552068,
+      "y": 1,
+      "title": "256 (500|NA)",
+      "type": "interval",
+      "strand": "*"
+    }
+  ],
+  "connections": [],
+  "walks": [
+    {
+      "pid": 1,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 1,
+          "chromosome": "17",
+          "startPoint": 72874459,
+          "endPoint": 72874459,
+          "y": 170.4446,
+          "title": "1 (2|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 2,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 2,
+          "chromosome": "7",
+          "startPoint": 116166641,
+          "endPoint": 116166641,
+          "y": 40.6768,
+          "title": "2 (3|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 3,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 3,
+          "chromosome": "6",
+          "startPoint": 32822006,
+          "endPoint": 32822006,
+          "y": 388.0554,
+          "title": "3 (5|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 4,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 4,
+          "chromosome": "15",
+          "startPoint": 65108496,
+          "endPoint": 65108496,
+          "y": 114.5446,
+          "title": "4 (8|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 5,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 5,
+          "chromosome": "20",
+          "startPoint": 45839405,
+          "endPoint": 45839405,
+          "y": 384.0625,
+          "title": "5 (10|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 6,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 6,
+          "chromosome": "1",
+          "startPoint": 13448049,
+          "endPoint": 13448049,
+          "y": 44.6696,
+          "title": "6 (11|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 7,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 7,
+          "chromosome": "19",
+          "startPoint": 18979405,
+          "endPoint": 18979405,
+          "y": 376.0768,
+          "title": "7 (14|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 8,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 8,
+          "chromosome": "X",
+          "startPoint": 86772896,
+          "endPoint": 86772896,
+          "y": -131.0161,
+          "title": "8 (16|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 9,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 9,
+          "chromosome": "12",
+          "startPoint": 102122704,
+          "endPoint": 102122704,
+          "y": 324.1697,
+          "title": "9 (18|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 10,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 10,
+          "chromosome": "4",
+          "startPoint": 146435765,
+          "endPoint": 146435765,
+          "y": 388.0554,
+          "title": "10 (19|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 11,
+          "chromosome": "5",
+          "startPoint": 145969509,
+          "endPoint": 145969509,
+          "y": 388.0554,
+          "title": "11 (20|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 11,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 12,
+          "chromosome": "7",
+          "startPoint": 5662490,
+          "endPoint": 5662490,
+          "y": 374.0804,
+          "title": "12 (21|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 13,
+          "chromosome": "11",
+          "startPoint": 62558094,
+          "endPoint": 62558094,
+          "y": 374.0804,
+          "title": "13 (22|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 12,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 14,
+          "chromosome": "15",
+          "startPoint": 59910437,
+          "endPoint": 59910437,
+          "y": 362.1018,
+          "title": "14 (24|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 15,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 15,
+          "chromosome": "3",
+          "startPoint": 127411040,
+          "endPoint": 127411040,
+          "y": -17.2197,
+          "title": "15 (29|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 16,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 16,
+          "chromosome": "16",
+          "startPoint": 67899033,
+          "endPoint": 67899033,
+          "y": 360.1054,
+          "title": "16 (31|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 17,
+          "chromosome": "20",
+          "startPoint": 45169912,
+          "endPoint": 45169912,
+          "y": 360.1054,
+          "title": "17 (32|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 17,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 18,
+          "chromosome": "15",
+          "startPoint": 86686952,
+          "endPoint": 86686952,
+          "y": -31.1947,
+          "title": "18 (34|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 18,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 19,
+          "chromosome": "1",
+          "startPoint": 85020681,
+          "endPoint": 85020681,
+          "y": 328.1625,
+          "title": "19 (35|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 19,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 20,
+          "chromosome": "3",
+          "startPoint": 112642523,
+          "endPoint": 112642523,
+          "y": 302.2089,
+          "title": "20 (37|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 21,
+          "chromosome": "9",
+          "startPoint": 138235244,
+          "endPoint": 138235244,
+          "y": 302.2089,
+          "title": "21 (38|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 20,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 22,
+          "chromosome": "X",
+          "startPoint": 134869963,
+          "endPoint": 134869963,
+          "y": 68.6268,
+          "title": "22 (40|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 21,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 23,
+          "chromosome": "6",
+          "startPoint": 111621218,
+          "endPoint": 111621218,
+          "y": 294.2232,
+          "title": "23 (41|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 24,
+          "chromosome": "12",
+          "startPoint": 56114968,
+          "endPoint": 56114968,
+          "y": 294.2232,
+          "title": "24 (42|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 22,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 25,
+          "chromosome": "4",
+          "startPoint": 88577644,
+          "endPoint": 88577644,
+          "y": 134.5089,
+          "title": "25 (43|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 26,
+          "chromosome": "15",
+          "startPoint": 56385542,
+          "endPoint": 56385542,
+          "y": 134.5089,
+          "title": "26 (44|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 23,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 27,
+          "chromosome": "3",
+          "startPoint": 49547967,
+          "endPoint": 49547967,
+          "y": 356.1125,
+          "title": "27 (45|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 26,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 28,
+          "chromosome": "1",
+          "startPoint": 108993223,
+          "endPoint": 108993223,
+          "y": -73.1197,
+          "title": "28 (51|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 29,
+          "chromosome": "17",
+          "startPoint": 59667893,
+          "endPoint": 59667893,
+          "y": -73.1197,
+          "title": "29 (52|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 27,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 30,
+          "chromosome": "21",
+          "startPoint": 15964942,
+          "endPoint": 15964942,
+          "y": 392.0482,
+          "title": "30 (53|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 29,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 31,
+          "chromosome": "2",
+          "startPoint": 39477758,
+          "endPoint": 39477758,
+          "y": 354.1161,
+          "title": "31 (57|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 32,
+          "chromosome": "4",
+          "startPoint": 70896457,
+          "endPoint": 70896457,
+          "y": 354.1161,
+          "title": "32 (58|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 30,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 33,
+          "chromosome": "7",
+          "startPoint": 142829209,
+          "endPoint": 142829209,
+          "y": 404.0268,
+          "title": "33 (60|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 31,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 34,
+          "chromosome": "3",
+          "startPoint": 53851803,
+          "endPoint": 53851803,
+          "y": 246.3089,
+          "title": "34 (61|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 33,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 35,
+          "chromosome": "5",
+          "startPoint": 121726875,
+          "endPoint": 121726875,
+          "y": -35.1875,
+          "title": "35 (65|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 36,
+          "chromosome": "22",
+          "startPoint": 46447706,
+          "endPoint": 46447706,
+          "y": -35.1875,
+          "title": "36 (66|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 35,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 37,
+          "chromosome": "5",
+          "startPoint": 175875408,
+          "endPoint": 175875408,
+          "y": 12.7268,
+          "title": "37 (69|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 36,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 38,
+          "chromosome": "5",
+          "startPoint": 170289037,
+          "endPoint": 170289037,
+          "y": -5.2411,
+          "title": "38 (71|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 39,
+          "chromosome": "20",
+          "startPoint": 43738649,
+          "endPoint": 43738649,
+          "y": -5.2411,
+          "title": "39 (72|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 37,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 40,
+          "chromosome": "17",
+          "startPoint": 34310836,
+          "endPoint": 34310836,
+          "y": 340.1411,
+          "title": "40 (73|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 41,
+          "chromosome": "22",
+          "startPoint": 50656164,
+          "endPoint": 50656164,
+          "y": 340.1411,
+          "title": "41 (74|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 38,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 42,
+          "chromosome": "12",
+          "startPoint": 44189387,
+          "endPoint": 44189387,
+          "y": 146.4875,
+          "title": "42 (75|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 39,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 43,
+          "chromosome": "1",
+          "startPoint": 228194829,
+          "endPoint": 228194829,
+          "y": -81.1054,
+          "title": "43 (77|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 40,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 44,
+          "chromosome": "3",
+          "startPoint": 48663418,
+          "endPoint": 48663418,
+          "y": -3.2447,
+          "title": "44 (79|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 42,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 45,
+          "chromosome": "20",
+          "startPoint": 48699304,
+          "endPoint": 48699304,
+          "y": -49.1625,
+          "title": "45 (84|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 43,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 46,
+          "chromosome": "1",
+          "startPoint": 175129849,
+          "endPoint": 175129849,
+          "y": 364.0982,
+          "title": "46 (85|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 44,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 47,
+          "chromosome": "6",
+          "startPoint": 44126585,
+          "endPoint": 44126585,
+          "y": 350.1232,
+          "title": "47 (88|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 45,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 48,
+          "chromosome": "19",
+          "startPoint": 39923912,
+          "endPoint": 39923912,
+          "y": 386.0589,
+          "title": "48 (89|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 48,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 49,
+          "chromosome": "6",
+          "startPoint": 37186197,
+          "endPoint": 37186197,
+          "y": 290.2304,
+          "title": "49 (95|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 49,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 50,
+          "chromosome": "3",
+          "startPoint": 182662881,
+          "endPoint": 182662881,
+          "y": 258.2875,
+          "title": "50 (97|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 51,
+          "chromosome": "11",
+          "startPoint": 6411828,
+          "endPoint": 6411828,
+          "y": 258.2875,
+          "title": "51 (98|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 50,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 52,
+          "chromosome": "2",
+          "startPoint": 127413839,
+          "endPoint": 127413839,
+          "y": 378.0732,
+          "title": "52 (100|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 52,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 53,
+          "chromosome": "1",
+          "startPoint": 226252052,
+          "endPoint": 226252052,
+          "y": 344.1339,
+          "title": "53 (103|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 53,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 54,
+          "chromosome": "19",
+          "startPoint": 41281447,
+          "endPoint": 41281447,
+          "y": 308.1982,
+          "title": "54 (106|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 54,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 55,
+          "chromosome": "6",
+          "startPoint": 31674683,
+          "endPoint": 31674683,
+          "y": 164.4554,
+          "title": "55 (107|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 56,
+          "chromosome": "16",
+          "startPoint": 215996,
+          "endPoint": 215996,
+          "y": 164.4554,
+          "title": "56 (108|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 55,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 57,
+          "chromosome": "2",
+          "startPoint": 207146573,
+          "endPoint": 207146573,
+          "y": 98.5732,
+          "title": "57 (109|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 57,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 58,
+          "chromosome": "15",
+          "startPoint": 89379437,
+          "endPoint": 89379437,
+          "y": 82.6018,
+          "title": "58 (114|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 58,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 59,
+          "chromosome": "11",
+          "startPoint": 65784360,
+          "endPoint": 65784360,
+          "y": 238.3232,
+          "title": "59 (115|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 59,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 60,
+          "chromosome": "11",
+          "startPoint": 33719974,
+          "endPoint": 33719974,
+          "y": 150.4804,
+          "title": "60 (117|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 61,
+          "chromosome": "20",
+          "startPoint": 25388456,
+          "endPoint": 25388456,
+          "y": 150.4804,
+          "title": "61 (118|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 60,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 62,
+          "chromosome": "17",
+          "startPoint": 19437252,
+          "endPoint": 19437252,
+          "y": 404.0268,
+          "title": "62 (119|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 63,
+          "chromosome": "19",
+          "startPoint": 12540969,
+          "endPoint": 12540969,
+          "y": 404.0268,
+          "title": "63 (120|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 61,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 64,
+          "chromosome": "19",
+          "startPoint": 38880942,
+          "endPoint": 38880942,
+          "y": 50.6589,
+          "title": "64 (122|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 63,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 65,
+          "chromosome": "2",
+          "startPoint": 73612996,
+          "endPoint": 73612996,
+          "y": 360.1054,
+          "title": "65 (125|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 64,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 66,
+          "chromosome": "3",
+          "startPoint": 138153640,
+          "endPoint": 138153640,
+          "y": 32.6911,
+          "title": "66 (127|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 67,
+          "chromosome": "17",
+          "startPoint": 39032612,
+          "endPoint": 39032612,
+          "y": 32.6911,
+          "title": "67 (128|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 67,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 68,
+          "chromosome": "1",
+          "startPoint": 6695734,
+          "endPoint": 6695734,
+          "y": 230.3375,
+          "title": "68 (133|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 69,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 69,
+          "chromosome": "11",
+          "startPoint": 30253449,
+          "endPoint": 30253449,
+          "y": 378.0732,
+          "title": "69 (138|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 72,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 70,
+          "chromosome": "2",
+          "startPoint": 38177721,
+          "endPoint": 38177721,
+          "y": -41.1768,
+          "title": "70 (143|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 75,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 71,
+          "chromosome": "17",
+          "startPoint": 79993835,
+          "endPoint": 79993835,
+          "y": 378.0732,
+          "title": "71 (149|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 77,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 72,
+          "chromosome": "12",
+          "startPoint": 105501578,
+          "endPoint": 105501578,
+          "y": 196.3982,
+          "title": "72 (153|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 73,
+          "chromosome": "22",
+          "startPoint": 35695921,
+          "endPoint": 35695921,
+          "y": 196.3982,
+          "title": "73 (154|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 78,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 74,
+          "chromosome": "17",
+          "startPoint": 909319,
+          "endPoint": 909319,
+          "y": 338.1447,
+          "title": "74 (155|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 75,
+          "chromosome": "22",
+          "startPoint": 24322388,
+          "endPoint": 24322388,
+          "y": 338.1447,
+          "title": "75 (156|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 79,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 76,
+          "chromosome": "1",
+          "startPoint": 23279535,
+          "endPoint": 23279535,
+          "y": 136.5054,
+          "title": "76 (157|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 81,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 77,
+          "chromosome": "1",
+          "startPoint": 196621247,
+          "endPoint": 196621247,
+          "y": 356.1125,
+          "title": "77 (161|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 78,
+          "chromosome": "2",
+          "startPoint": 239079176,
+          "endPoint": 239079176,
+          "y": 356.1125,
+          "title": "78 (162|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 83,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 79,
+          "chromosome": "14",
+          "startPoint": 103566556,
+          "endPoint": 103566556,
+          "y": 414.0089,
+          "title": "79 (165|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 80,
+          "chromosome": "15",
+          "startPoint": 40650522,
+          "endPoint": 40650522,
+          "y": 414.0089,
+          "title": "80 (166|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 84,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 81,
+          "chromosome": "8",
+          "startPoint": 75898222,
+          "endPoint": 75898222,
+          "y": 370.0875,
+          "title": "81 (167|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 86,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 82,
+          "chromosome": "15",
+          "startPoint": 43886416,
+          "endPoint": 43886416,
+          "y": 328.1625,
+          "title": "82 (172|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 87,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 83,
+          "chromosome": "14",
+          "startPoint": 24612617,
+          "endPoint": 24612617,
+          "y": 290.2304,
+          "title": "83 (173|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 88,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 84,
+          "chromosome": "12",
+          "startPoint": 7169216,
+          "endPoint": 7169216,
+          "y": 388.0554,
+          "title": "84 (175|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 90,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 85,
+          "chromosome": "2",
+          "startPoint": 11295672,
+          "endPoint": 11295672,
+          "y": 34.6875,
+          "title": "85 (179|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 86,
+          "chromosome": "14",
+          "startPoint": 103592794,
+          "endPoint": 103592794,
+          "y": 34.6875,
+          "title": "86 (180|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 91,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 87,
+          "chromosome": "2",
+          "startPoint": 37872965,
+          "endPoint": 37872965,
+          "y": -59.1447,
+          "title": "87 (181|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 92,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 88,
+          "chromosome": "17",
+          "startPoint": 62473939,
+          "endPoint": 62473939,
+          "y": 400.0339,
+          "title": "88 (184|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 93,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 89,
+          "chromosome": "10",
+          "startPoint": 72972742,
+          "endPoint": 72972742,
+          "y": 52.6554,
+          "title": "89 (185|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 90,
+          "chromosome": "X",
+          "startPoint": 154299802,
+          "endPoint": 154299802,
+          "y": 52.6554,
+          "title": "90 (186|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 94,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 91,
+          "chromosome": "11",
+          "startPoint": 18478227,
+          "endPoint": 18478227,
+          "y": 110.5518,
+          "title": "91 (188|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 95,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 92,
+          "chromosome": "19",
+          "startPoint": 48618905,
+          "endPoint": 48618905,
+          "y": 194.4018,
+          "title": "92 (190|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 96,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 93,
+          "chromosome": "11",
+          "startPoint": 85576166,
+          "endPoint": 85576166,
+          "y": 386.0589,
+          "title": "93 (191|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 94,
+          "chromosome": "13",
+          "startPoint": 78130010,
+          "endPoint": 78130010,
+          "y": 386.0589,
+          "title": "94 (192|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 98,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 95,
+          "chromosome": "6",
+          "startPoint": 159187945,
+          "endPoint": 159187945,
+          "y": 392.0482,
+          "title": "95 (195|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 96,
+          "chromosome": "10",
+          "startPoint": 13320300,
+          "endPoint": 13320300,
+          "y": 392.0482,
+          "title": "96 (196|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 99,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 97,
+          "chromosome": "1",
+          "startPoint": 181452880,
+          "endPoint": 181452880,
+          "y": 28.6982,
+          "title": "97 (197|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 100,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 98,
+          "chromosome": "6",
+          "startPoint": 2833841,
+          "endPoint": 2833841,
+          "y": 300.2125,
+          "title": "98 (199|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 99,
+          "chromosome": "12",
+          "startPoint": 1740520,
+          "endPoint": 1740520,
+          "y": 300.2125,
+          "title": "99 (200|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 103,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 100,
+          "chromosome": "X",
+          "startPoint": 72064969,
+          "endPoint": 72064969,
+          "y": -103.0661,
+          "title": "100 (206|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 104,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 101,
+          "chromosome": "3",
+          "startPoint": 159943422,
+          "endPoint": 159943422,
+          "y": -29.1982,
+          "title": "101 (207|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 102,
+          "chromosome": "19",
+          "startPoint": 35616096,
+          "endPoint": 35616096,
+          "y": -29.1982,
+          "title": "102 (208|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 106,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 103,
+          "chromosome": "10",
+          "startPoint": 86004846,
+          "endPoint": 86004846,
+          "y": 88.5911,
+          "title": "103 (211|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 107,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 104,
+          "chromosome": "17",
+          "startPoint": 79791604,
+          "endPoint": 79791604,
+          "y": 352.1197,
+          "title": "104 (214|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 108,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 105,
+          "chromosome": "4",
+          "startPoint": 68777059,
+          "endPoint": 68777059,
+          "y": 328.1625,
+          "title": "105 (215|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 106,
+          "chromosome": "9",
+          "startPoint": 126118539,
+          "endPoint": 126118539,
+          "y": 328.1625,
+          "title": "106 (216|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 109,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 107,
+          "chromosome": "10",
+          "startPoint": 120795550,
+          "endPoint": 120795550,
+          "y": 320.1768,
+          "title": "107 (218|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 110,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 108,
+          "chromosome": "10",
+          "startPoint": 17191038,
+          "endPoint": 17191038,
+          "y": 242.3161,
+          "title": "108 (219|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 112,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 109,
+          "chromosome": "1",
+          "startPoint": 112233982,
+          "endPoint": 112233982,
+          "y": 208.3768,
+          "title": "109 (223|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 113,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 110,
+          "chromosome": "X",
+          "startPoint": 106171458,
+          "endPoint": 106171458,
+          "y": -111.0518,
+          "title": "110 (226|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 114,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 111,
+          "chromosome": "1",
+          "startPoint": 11728715,
+          "endPoint": 11728715,
+          "y": 340.1411,
+          "title": "111 (227|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 115,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 112,
+          "chromosome": "1",
+          "startPoint": 156278989,
+          "endPoint": 156278989,
+          "y": 62.6375,
+          "title": "112 (229|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 117,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 113,
+          "chromosome": "9",
+          "startPoint": 125562401,
+          "endPoint": 125562401,
+          "y": 396.0411,
+          "title": "113 (234|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 118,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 114,
+          "chromosome": "6",
+          "startPoint": 41126340,
+          "endPoint": 41126340,
+          "y": 140.4982,
+          "title": "114 (235|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 115,
+          "chromosome": "17",
+          "startPoint": 1369019,
+          "endPoint": 1369019,
+          "y": 140.4982,
+          "title": "115 (236|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 119,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 116,
+          "chromosome": "3",
+          "startPoint": 49249213,
+          "endPoint": 49249213,
+          "y": -47.1661,
+          "title": "116 (237|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 117,
+          "chromosome": "19",
+          "startPoint": 54742828,
+          "endPoint": 54742828,
+          "y": -47.1661,
+          "title": "117 (238|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 121,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 118,
+          "chromosome": "X",
+          "startPoint": 96139309,
+          "endPoint": 96139309,
+          "y": 182.4232,
+          "title": "118 (242|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 122,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 119,
+          "chromosome": "12",
+          "startPoint": 50344613,
+          "endPoint": 50344613,
+          "y": 408.0197,
+          "title": "119 (243|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 120,
+          "chromosome": "14",
+          "startPoint": 93673636,
+          "endPoint": 93673636,
+          "y": 408.0197,
+          "title": "120 (244|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 123,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 121,
+          "chromosome": "4",
+          "startPoint": 141446582,
+          "endPoint": 141446582,
+          "y": 256.2911,
+          "title": "121 (246|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 124,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 122,
+          "chromosome": "11",
+          "startPoint": 62529120,
+          "endPoint": 62529120,
+          "y": 392.0482,
+          "title": "122 (247|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 128,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 123,
+          "chromosome": "14",
+          "startPoint": 24974721,
+          "endPoint": 24974721,
+          "y": 358.1089,
+          "title": "123 (255|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 124,
+          "chromosome": "18",
+          "startPoint": 12449636,
+          "endPoint": 12449636,
+          "y": 358.1089,
+          "title": "124 (256|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 129,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 125,
+          "chromosome": "17",
+          "startPoint": 80015990,
+          "endPoint": 80015990,
+          "y": 396.0411,
+          "title": "125 (258|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 130,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 126,
+          "chromosome": "4",
+          "startPoint": 120160914,
+          "endPoint": 120160914,
+          "y": 180.4268,
+          "title": "126 (259|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 127,
+          "chromosome": "12",
+          "startPoint": 120882674,
+          "endPoint": 120882674,
+          "y": 180.4268,
+          "title": "127 (260|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 132,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 128,
+          "chromosome": "1",
+          "startPoint": 237167486,
+          "endPoint": 237167486,
+          "y": 384.0625,
+          "title": "128 (263|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 133,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 129,
+          "chromosome": "12",
+          "startPoint": 26208276,
+          "endPoint": 26208276,
+          "y": 378.0732,
+          "title": "129 (265|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 134,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 130,
+          "chromosome": "20",
+          "startPoint": 55066612,
+          "endPoint": 55066612,
+          "y": -25.2054,
+          "title": "130 (268|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 135,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 131,
+          "chromosome": "22",
+          "startPoint": 50354595,
+          "endPoint": 50354595,
+          "y": 6.7375,
+          "title": "131 (270|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 136,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 132,
+          "chromosome": "1",
+          "startPoint": 46806498,
+          "endPoint": 46806498,
+          "y": 194.4018,
+          "title": "132 (271|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 133,
+          "chromosome": "6",
+          "startPoint": 146920176,
+          "endPoint": 146920176,
+          "y": 194.4018,
+          "title": "133 (272|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 137,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 134,
+          "chromosome": "12",
+          "startPoint": 72233561,
+          "endPoint": 72233561,
+          "y": 354.1161,
+          "title": "134 (273|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 138,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 135,
+          "chromosome": "3",
+          "startPoint": 93779791,
+          "endPoint": 93779791,
+          "y": 102.5661,
+          "title": "135 (275|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 139,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 136,
+          "chromosome": "6",
+          "startPoint": 41755435,
+          "endPoint": 41755435,
+          "y": 206.3804,
+          "title": "136 (278|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 140,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 137,
+          "chromosome": "16",
+          "startPoint": 1306281,
+          "endPoint": 1306281,
+          "y": 288.2339,
+          "title": "137 (280|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 142,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 138,
+          "chromosome": "2",
+          "startPoint": 85826198,
+          "endPoint": 85826198,
+          "y": 312.1911,
+          "title": "138 (283|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 144,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 139,
+          "chromosome": "1",
+          "startPoint": 165619084,
+          "endPoint": 165619084,
+          "y": 166.4518,
+          "title": "139 (287|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 140,
+          "chromosome": "10",
+          "startPoint": 77542733,
+          "endPoint": 77542733,
+          "y": 166.4518,
+          "title": "140 (288|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 145,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 141,
+          "chromosome": "9",
+          "startPoint": 131465194,
+          "endPoint": 131465194,
+          "y": 402.0304,
+          "title": "141 (289|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 148,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 142,
+          "chromosome": "7",
+          "startPoint": 138916230,
+          "endPoint": 138916230,
+          "y": 298.2161,
+          "title": "142 (296|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 149,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 143,
+          "chromosome": "7",
+          "startPoint": 2514771,
+          "endPoint": 2514771,
+          "y": 398.0375,
+          "title": "143 (297|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 150,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 144,
+          "chromosome": "7",
+          "startPoint": 916282,
+          "endPoint": 916282,
+          "y": 342.1375,
+          "title": "144 (300|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 151,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 145,
+          "chromosome": "X",
+          "startPoint": 64732654,
+          "endPoint": 64732654,
+          "y": 178.4304,
+          "title": "145 (302|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 152,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 146,
+          "chromosome": "17",
+          "startPoint": 40831570,
+          "endPoint": 40831570,
+          "y": 368.0911,
+          "title": "146 (303|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 147,
+          "chromosome": "21",
+          "startPoint": 43892927,
+          "endPoint": 43892927,
+          "y": 368.0911,
+          "title": "147 (304|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 154,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 148,
+          "chromosome": "1",
+          "startPoint": 18149503,
+          "endPoint": 18149503,
+          "y": -93.0839,
+          "title": "148 (307|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 156,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 149,
+          "chromosome": "4",
+          "startPoint": 164048130,
+          "endPoint": 164048130,
+          "y": 260.2839,
+          "title": "149 (311|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 150,
+          "chromosome": "11",
+          "startPoint": 111800577,
+          "endPoint": 111800577,
+          "y": 260.2839,
+          "title": "150 (312|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 157,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 151,
+          "chromosome": "1",
+          "startPoint": 152487859,
+          "endPoint": 152487859,
+          "y": -77.1125,
+          "title": "151 (313|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 158,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 152,
+          "chromosome": "14",
+          "startPoint": 24805380,
+          "endPoint": 24805380,
+          "y": 310.1947,
+          "title": "152 (315|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 153,
+          "chromosome": "19",
+          "startPoint": 41903732,
+          "endPoint": 41903732,
+          "y": 310.1947,
+          "title": "153 (316|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 159,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 154,
+          "chromosome": "11",
+          "startPoint": 5686736,
+          "endPoint": 5686736,
+          "y": 198.3946,
+          "title": "154 (318|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 160,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 155,
+          "chromosome": "15",
+          "startPoint": 45777360,
+          "endPoint": 45777360,
+          "y": 60.6411,
+          "title": "155 (320|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 161,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 156,
+          "chromosome": "12",
+          "startPoint": 53491501,
+          "endPoint": 53491501,
+          "y": 246.3089,
+          "title": "156 (321|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 157,
+          "chromosome": "19",
+          "startPoint": 51410189,
+          "endPoint": 51410189,
+          "y": 246.3089,
+          "title": "157 (322|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 162,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 158,
+          "chromosome": "2",
+          "startPoint": 10924383,
+          "endPoint": 10924383,
+          "y": -37.1839,
+          "title": "158 (323|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 159,
+          "chromosome": "17",
+          "startPoint": 46846350,
+          "endPoint": 46846350,
+          "y": -37.1839,
+          "title": "159 (324|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 163,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 160,
+          "chromosome": "1",
+          "startPoint": 201867499,
+          "endPoint": 201867499,
+          "y": 124.5268,
+          "title": "160 (325|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 161,
+          "chromosome": "11",
+          "startPoint": 94153290,
+          "endPoint": 94153290,
+          "y": 124.5268,
+          "title": "161 (326|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 164,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 162,
+          "chromosome": "20",
+          "startPoint": 13371006,
+          "endPoint": 13371006,
+          "y": -61.1411,
+          "title": "162 (328|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 165,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 163,
+          "chromosome": "7",
+          "startPoint": 75399010,
+          "endPoint": 75399010,
+          "y": 86.5946,
+          "title": "163 (329|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 164,
+          "chromosome": "20",
+          "startPoint": 207929,
+          "endPoint": 207929,
+          "y": 86.5946,
+          "title": "164 (330|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 167,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 165,
+          "chromosome": "17",
+          "startPoint": 61897161,
+          "endPoint": 61897161,
+          "y": 406.0232,
+          "title": "165 (333|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 169,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 166,
+          "chromosome": "2",
+          "startPoint": 46525050,
+          "endPoint": 46525050,
+          "y": 106.5589,
+          "title": "166 (337|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 167,
+          "chromosome": "12",
+          "startPoint": 50355800,
+          "endPoint": 50355800,
+          "y": 106.5589,
+          "title": "167 (338|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 170,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 168,
+          "chromosome": "4",
+          "startPoint": 25314431,
+          "endPoint": 25314431,
+          "y": 384.0625,
+          "title": "168 (339|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 171,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 169,
+          "chromosome": "6",
+          "startPoint": 30621018,
+          "endPoint": 30621018,
+          "y": 384.0625,
+          "title": "169 (341|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 170,
+          "chromosome": "6",
+          "startPoint": 32159142,
+          "endPoint": 32159142,
+          "y": 384.0625,
+          "title": "170 (342|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 172,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 171,
+          "chromosome": "14",
+          "startPoint": 91360750,
+          "endPoint": 91360750,
+          "y": 128.5196,
+          "title": "171 (344|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 173,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 172,
+          "chromosome": "10",
+          "startPoint": 115327256,
+          "endPoint": 115327256,
+          "y": 240.3196,
+          "title": "172 (346|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 174,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 173,
+          "chromosome": "2",
+          "startPoint": 233404457,
+          "endPoint": 233404457,
+          "y": -23.2089,
+          "title": "173 (347|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 174,
+          "chromosome": "17",
+          "startPoint": 73643456,
+          "endPoint": 73643456,
+          "y": -23.2089,
+          "title": "174 (348|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 175,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 175,
+          "chromosome": "16",
+          "startPoint": 75573891,
+          "endPoint": 75573891,
+          "y": 366.0947,
+          "title": "175 (349|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 176,
+          "chromosome": "20",
+          "startPoint": 44351006,
+          "endPoint": 44351006,
+          "y": 366.0947,
+          "title": "176 (350|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 177,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 177,
+          "chromosome": "13",
+          "startPoint": 36743170,
+          "endPoint": 36743170,
+          "y": 26.7018,
+          "title": "177 (354|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 178,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 178,
+          "chromosome": "4",
+          "startPoint": 130023765,
+          "endPoint": 130023765,
+          "y": 20.7125,
+          "title": "178 (355|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 179,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 179,
+          "chromosome": "1",
+          "startPoint": 207627763,
+          "endPoint": 207627763,
+          "y": -95.0804,
+          "title": "179 (357|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 180,
+          "chromosome": "20",
+          "startPoint": 43128936,
+          "endPoint": 43128936,
+          "y": -95.0804,
+          "title": "180 (358|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 180,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 181,
+          "chromosome": "1",
+          "startPoint": 192544922,
+          "endPoint": 192544922,
+          "y": 322.1732,
+          "title": "181 (359|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 182,
+          "chromosome": "5",
+          "startPoint": 140855683,
+          "endPoint": 140855683,
+          "y": 322.1732,
+          "title": "182 (360|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 181,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 183,
+          "chromosome": "X",
+          "startPoint": 69506931,
+          "endPoint": 69506931,
+          "y": -53.1554,
+          "title": "183 (362|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 182,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 184,
+          "chromosome": "1",
+          "startPoint": 109856664,
+          "endPoint": 109856664,
+          "y": -97.0768,
+          "title": "184 (363|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 185,
+          "chromosome": "19",
+          "startPoint": 39971184,
+          "endPoint": 39971184,
+          "y": -97.0768,
+          "title": "185 (364|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 183,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 186,
+          "chromosome": "22",
+          "startPoint": 39436965,
+          "endPoint": 39436965,
+          "y": -115.0447,
+          "title": "186 (366|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 184,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 187,
+          "chromosome": "2",
+          "startPoint": 163200758,
+          "endPoint": 163200758,
+          "y": -85.0982,
+          "title": "187 (367|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 185,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 188,
+          "chromosome": "18",
+          "startPoint": 30517974,
+          "endPoint": 30517974,
+          "y": 388.0554,
+          "title": "188 (370|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 186,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 189,
+          "chromosome": "16",
+          "startPoint": 57188201,
+          "endPoint": 57188201,
+          "y": 312.1911,
+          "title": "189 (371|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 189,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 190,
+          "chromosome": "X",
+          "startPoint": 49061596,
+          "endPoint": 49061596,
+          "y": 364.0982,
+          "title": "190 (378|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 191,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 191,
+          "chromosome": "10",
+          "startPoint": 88985587,
+          "endPoint": 88985587,
+          "y": 278.2518,
+          "title": "191 (381|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 192,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 192,
+          "chromosome": "11",
+          "startPoint": 94300684,
+          "endPoint": 94300684,
+          "y": 142.4946,
+          "title": "192 (383|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 193,
+          "chromosome": "22",
+          "startPoint": 38054789,
+          "endPoint": 38054789,
+          "y": 142.4946,
+          "title": "193 (384|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 193,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 194,
+          "chromosome": "19",
+          "startPoint": 54466396,
+          "endPoint": 54466396,
+          "y": 232.3339,
+          "title": "194 (386|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 195,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 195,
+          "chromosome": "4",
+          "startPoint": 159814854,
+          "endPoint": 159814854,
+          "y": 354.1161,
+          "title": "195 (389|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 196,
+          "chromosome": "8",
+          "startPoint": 38965294,
+          "endPoint": 38965294,
+          "y": 354.1161,
+          "title": "196 (390|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 196,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 197,
+          "chromosome": "1",
+          "startPoint": 74663923,
+          "endPoint": 74663923,
+          "y": 182.4232,
+          "title": "197 (391|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 198,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 198,
+          "chromosome": "6",
+          "startPoint": 26204872,
+          "endPoint": 26204872,
+          "y": 130.5161,
+          "title": "198 (395|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 203,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 199,
+          "chromosome": "6",
+          "startPoint": 89808296,
+          "endPoint": 89808296,
+          "y": 394.0447,
+          "title": "199 (406|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 204,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 200,
+          "chromosome": "15",
+          "startPoint": 38545386,
+          "endPoint": 38545386,
+          "y": 284.2411,
+          "title": "200 (408|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 206,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 201,
+          "chromosome": "X",
+          "startPoint": 153626860,
+          "endPoint": 153626860,
+          "y": -99.0732,
+          "title": "201 (412|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 207,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 202,
+          "chromosome": "16",
+          "startPoint": 57279279,
+          "endPoint": 57279279,
+          "y": 96.5768,
+          "title": "202 (414|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 209,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 203,
+          "chromosome": "5",
+          "startPoint": 126383361,
+          "endPoint": 126383361,
+          "y": -45.1697,
+          "title": "203 (417|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 210,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 204,
+          "chromosome": "10",
+          "startPoint": 57359659,
+          "endPoint": 57359659,
+          "y": 152.4768,
+          "title": "204 (419|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 211,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 205,
+          "chromosome": "11",
+          "startPoint": 47440385,
+          "endPoint": 47440385,
+          "y": 224.3482,
+          "title": "205 (421|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 206,
+          "chromosome": "18",
+          "startPoint": 52544816,
+          "endPoint": 52544816,
+          "y": 224.3482,
+          "title": "206 (422|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 212,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 207,
+          "chromosome": "1",
+          "startPoint": 151732525,
+          "endPoint": 151732525,
+          "y": 336.1482,
+          "title": "207 (423|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 213,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 208,
+          "chromosome": "11",
+          "startPoint": 6416763,
+          "endPoint": 6416763,
+          "y": 408.0197,
+          "title": "208 (426|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 214,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 209,
+          "chromosome": "3",
+          "startPoint": 161063880,
+          "endPoint": 161063880,
+          "y": 352.1197,
+          "title": "209 (427|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 210,
+          "chromosome": "6",
+          "startPoint": 116441235,
+          "endPoint": 116441235,
+          "y": 352.1197,
+          "title": "210 (428|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 215,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 211,
+          "chromosome": "11",
+          "startPoint": 56257910,
+          "endPoint": 56257910,
+          "y": 386.0589,
+          "title": "211 (430|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 216,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 212,
+          "chromosome": "6",
+          "startPoint": 4021659,
+          "endPoint": 4021659,
+          "y": 156.4696,
+          "title": "212 (431|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 213,
+          "chromosome": "16",
+          "startPoint": 2564104,
+          "endPoint": 2564104,
+          "y": 156.4696,
+          "title": "213 (432|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 217,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 214,
+          "chromosome": "16",
+          "startPoint": 49313314,
+          "endPoint": 49313314,
+          "y": 372.0839,
+          "title": "214 (434|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 218,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 215,
+          "chromosome": "19",
+          "startPoint": 44721945,
+          "endPoint": 44721945,
+          "y": 408.0197,
+          "title": "215 (436|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 219,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 216,
+          "chromosome": "11",
+          "startPoint": 73007563,
+          "endPoint": 73007563,
+          "y": 412.0125,
+          "title": "216 (437|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 217,
+          "chromosome": "12",
+          "startPoint": 5020544,
+          "endPoint": 5020544,
+          "y": 412.0125,
+          "title": "217 (438|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 220,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 218,
+          "chromosome": "12",
+          "startPoint": 62654195,
+          "endPoint": 62654195,
+          "y": 218.3589,
+          "title": "218 (440|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 221,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 219,
+          "chromosome": "1",
+          "startPoint": 201328337,
+          "endPoint": 201328337,
+          "y": 380.0697,
+          "title": "219 (441|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 222,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 220,
+          "chromosome": "1",
+          "startPoint": 143897546,
+          "endPoint": 143897546,
+          "y": 266.2732,
+          "title": "220 (443|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 223,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 221,
+          "chromosome": "10",
+          "startPoint": 5936452,
+          "endPoint": 5936452,
+          "y": 368.0911,
+          "title": "221 (445|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 222,
+          "chromosome": "12",
+          "startPoint": 96252851,
+          "endPoint": 96252851,
+          "y": 368.0911,
+          "title": "222 (446|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 224,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 223,
+          "chromosome": "16",
+          "startPoint": 31502155,
+          "endPoint": 31502155,
+          "y": 294.2232,
+          "title": "223 (447|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 224,
+          "chromosome": "X",
+          "startPoint": 49297934,
+          "endPoint": 49297934,
+          "y": 294.2232,
+          "title": "224 (448|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 226,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 225,
+          "chromosome": "6",
+          "startPoint": 132966122,
+          "endPoint": 132966122,
+          "y": 202.3875,
+          "title": "225 (452|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 228,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 226,
+          "chromosome": "4",
+          "startPoint": 6925116,
+          "endPoint": 6925116,
+          "y": 84.5982,
+          "title": "226 (455|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 227,
+          "chromosome": "16",
+          "startPoint": 53526323,
+          "endPoint": 53526323,
+          "y": 84.5982,
+          "title": "227 (456|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 229,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 228,
+          "chromosome": "11",
+          "startPoint": 20628575,
+          "endPoint": 20628575,
+          "y": 382.0661,
+          "title": "228 (457|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 229,
+          "chromosome": "13",
+          "startPoint": 19748002,
+          "endPoint": 19748002,
+          "y": 382.0661,
+          "title": "229 (458|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 231,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 230,
+          "chromosome": "1",
+          "startPoint": 62228564,
+          "endPoint": 62228564,
+          "y": 274.2589,
+          "title": "230 (461|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 231,
+          "chromosome": "5",
+          "startPoint": 96058381,
+          "endPoint": 96058381,
+          "y": 274.2589,
+          "title": "231 (462|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 232,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 232,
+          "chromosome": "19",
+          "startPoint": 51919278,
+          "endPoint": 51919278,
+          "y": 390.0518,
+          "title": "232 (463|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 233,
+          "chromosome": "21",
+          "startPoint": 42551102,
+          "endPoint": 42551102,
+          "y": 390.0518,
+          "title": "233 (464|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 233,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 234,
+          "chromosome": "1",
+          "startPoint": 29447416,
+          "endPoint": 29447416,
+          "y": 16.7196,
+          "title": "234 (465|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 234,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 235,
+          "chromosome": "1",
+          "startPoint": 248366369,
+          "endPoint": 248366369,
+          "y": 368.0911,
+          "title": "235 (467|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 235,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 236,
+          "chromosome": "12",
+          "startPoint": 106760447,
+          "endPoint": 106760447,
+          "y": 384.0625,
+          "title": "236 (469|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 237,
+          "chromosome": "16",
+          "startPoint": 29454739,
+          "endPoint": 29454739,
+          "y": 384.0625,
+          "title": "237 (470|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 236,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 238,
+          "chromosome": "6",
+          "startPoint": 71378331,
+          "endPoint": 71378331,
+          "y": 144.4911,
+          "title": "238 (471|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 239,
+          "chromosome": "17",
+          "startPoint": 18166034,
+          "endPoint": 18166034,
+          "y": 144.4911,
+          "title": "239 (472|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 238,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 240,
+          "chromosome": "15",
+          "startPoint": 81166220,
+          "endPoint": 81166220,
+          "y": 402.0304,
+          "title": "240 (475|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 241,
+          "chromosome": "17",
+          "startPoint": 45924664,
+          "endPoint": 45924664,
+          "y": 402.0304,
+          "title": "241 (476|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 240,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 242,
+          "chromosome": "1",
+          "startPoint": 152127219,
+          "endPoint": 152127219,
+          "y": 0.7482,
+          "title": "242 (479|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 241,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 243,
+          "chromosome": "11",
+          "startPoint": 3680443,
+          "endPoint": 3680443,
+          "y": 158.4661,
+          "title": "243 (481|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 244,
+          "chromosome": "19",
+          "startPoint": 51009429,
+          "endPoint": 51009429,
+          "y": 158.4661,
+          "title": "244 (482|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 242,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 245,
+          "chromosome": "2",
+          "startPoint": 224462146,
+          "endPoint": 224462146,
+          "y": 376.0768,
+          "title": "245 (483|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 244,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 246,
+          "chromosome": "5",
+          "startPoint": 149569890,
+          "endPoint": 149569890,
+          "y": 188.4125,
+          "title": "246 (487|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 245,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 247,
+          "chromosome": "5",
+          "startPoint": 94800310,
+          "endPoint": 94800310,
+          "y": 70.6232,
+          "title": "247 (489|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 248,
+          "chromosome": "17",
+          "startPoint": 79651096,
+          "endPoint": 79651096,
+          "y": 70.6232,
+          "title": "248 (490|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 246,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 249,
+          "chromosome": "6",
+          "startPoint": 111982941,
+          "endPoint": 111982941,
+          "y": 308.1982,
+          "title": "249 (491|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 247,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 250,
+          "chromosome": "13",
+          "startPoint": 114618843,
+          "endPoint": 114618843,
+          "y": 402.0304,
+          "title": "250 (494|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 248,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 251,
+          "chromosome": "2",
+          "startPoint": 170668329,
+          "endPoint": 170668329,
+          "y": 92.5839,
+          "title": "251 (495|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 252,
+          "chromosome": "14",
+          "startPoint": 39583509,
+          "endPoint": 39583509,
+          "y": 92.5839,
+          "title": "252 (496|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 249,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 253,
+          "chromosome": "4",
+          "startPoint": 7062588,
+          "endPoint": 7062588,
+          "y": 316.1839,
+          "title": "253 (497|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 254,
+          "chromosome": "10",
+          "startPoint": 81107304,
+          "endPoint": 81107304,
+          "y": 316.1839,
+          "title": "254 (498|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    },
+    {
+      "pid": 250,
+      "cn": 1,
+      "type": "path",
+      "strand": "+",
+      "cids": [],
+      "iids": [
+        {
+          "iid": 255,
+          "chromosome": "1",
+          "startPoint": 165797070,
+          "endPoint": 165797070,
+          "y": 192.4054,
+          "title": "255 (499|NA)",
+          "type": "interval",
+          "strand": "+"
+        },
+        {
+          "iid": 256,
+          "chromosome": "9",
+          "startPoint": 34552068,
+          "endPoint": 34552068,
+          "y": 192.4054,
+          "title": "256 (500|NA)",
+          "type": "interval",
+          "strand": "+"
+        }
+      ]
+    }
+  ]
+}

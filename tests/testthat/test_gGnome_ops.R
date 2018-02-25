@@ -699,6 +699,102 @@ test_that('check bGraph works, default', {
 
 
 
+###
+### gWalks
+### METHODS:
+### nullGWalks
+### pairup
+### set.seg.cn
+### gw2gg
+### gw2grl
+### grl2gw
+### gw2td
+### json
+### gw2js
+### v2e
+### p2e
+### epath
+### simplify
+### reduce
+### subset
+### print
+### len
+### metaCols
+### window
+### plot
+### isStrandPaired
+### rpaths
+### label
+###
+### ACTIVE BINDINGS:
+### segstats
+### edges
+### grl
+### td
+### path
+### values
+
+
+
+
+test_that('check gWalks works, default', {
+    newgwalk = gWalks$new()
+    expect_equal(newgwalk$segstats, NULL)
+    ### edges
+    ### grl
+    ### td
+    expect_equal(newgwalk$path, NULL)
+    expect_equal(newgwalk$value, NULL)
+    ## 
+    ## nullGWalks
+    nullgw = newgwalk$nullGWalks()
+    expect_equal(nullgw$segstats, NULL)
+    ### edges
+    ### grl
+    ### td
+    expect_equal(nullgw$path, NULL)
+    expect_equal(nullgw$value, NULL)
+    ##
+    ## pairup
+    ## ERROR 
+    ### pairedup = newgwalk$pairup()
+    setsegcnd = nullgw$set.seg.cn()
+    expect_equal(length(setsegcnd$segstats), 1)
+    ### edges
+    ### grl
+    ### td
+    expect_equal(setsegcnd$path, NULL)
+    expect_equal(setsegcnd$value, NULL)
+    ##
+    ## gw2gg
+    ## gw2ggfoo = newgwalk$gw2gg()
+    ## Error in do.call(c, new.paths) : second argument must be a list
+    ##
+    ## gw2grl
+    ## gw2grlfoo = newgwalk$gw2grl()
+    ##
+    ## grl2gw
+    grl2gwfoo = newgwalk$grl2gw(grl=grl2)
+    expect_equal(length(grl2gwfoo$segstats), 502)
+    expect_equal(dim(grl2gwfoo$edges)[1], 251)
+    expect_equal(dim(grl2gwfoo$edges)[2], 16)
+    expect_true(is(grl2gwfoo$grl, 'GRangesList'))
+    expect_equal(length(grl2gwfoo$grl), 251)
+    expect_true(is(grl2gwfoo$td, 'gTrack'))
+    expect_equal(length(grl2gwfoo$path), 251)
+    expect_equal(grl2gwfoo$value, NULL)
+    ##
+    ## gw2td
+    expect_true(is(newgwalk$gw2td(), 'gTrack'))
+    ##
+    ## json
+    jsonfoo = newgwalk$json()
+    expect_match(jsonfoo, 'data.json')
+    ##
+    ## gw2js
+    ## gw2jsfoo = newgwalk$gw2js()
+
+})
 
 
 
