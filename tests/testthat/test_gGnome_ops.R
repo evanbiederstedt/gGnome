@@ -793,11 +793,55 @@ test_that('check gWalks works, default', {
     ##
     ## gw2js
     ## gw2jsfoo = newgwalk$gw2js()
+    ## expect_equal(length(newgwalk$gw2js()), 0)
+    ##
+    ## ERRORs
+    ### v2e
+    ### p2e
+    ## 
+    ## epath
+    epathfoo = newgwalk$epath()
+    expect_equal(length(epathfoo), 502)
+    ##
+    ##
+    ## > simplified = newgwalk$simplify()
+    ## Error in FUN(X[[i]], ...) : object 'cn' not found
+    ## 
+    ## reduced = newgwalk$reduce()
+    ## Error in do.call(c, new.paths) : second argument must be a list
+    ##
+    ## subset()
+    ##subsetted = newgwalk$subset(GRanges())
+    ##expect_equal(subsetted$segstats, NULL)
+    ### edges
+    ### grl
+    ### td
+    ##expect_equal(subsetted$path, NULL)
+    ##expect_equal(subsetted$values, NULL)
+    ### path
+    ### values
+    ##
+    ## print
+    expect_equal(newgwalk$print(), NULL)
+    ##
+    ## len
+    expect_equal(newgwalk$len(), 502)
+    ##
+    ## metaCols
+    expect_equal(dim(newgwalk$metaCols())[1], 502)
+    expect_equal(dim(newgwalk$metaCols())[2], 3) 
+    ##
+    ## > newgwalk$window()
+    ## Error in (function (classes, fdef, mtable)  : 
+    ##   unable to find an inherited method for function ‘seqinfo’ for signature ‘"NULL"’
+    ## > newgwalk$plot()
+    ## Error in (function (classes, fdef, mtable)  : 
+    ##   unable to find an inherited method for function ‘seqinfo’ for signature ‘"NULL"’
+    ## ERROR
+    ##  newgwalk$isStrandPaired()
+    ## 
 
 })
-
-
-
 
 
 
