@@ -3,6 +3,9 @@ library(gGnome)
 library(testthat)
 library(gUtils)
 
+options(gGnome.verbose=TRUE)
+
+
 context('testing gGnome')
 
 
@@ -99,7 +102,8 @@ test_that('gGraph works', {
 ## ACTIVE BINDINGS: segstats, edges, junctions, G, adj, A, parts, seqinfo, purity, ploidy, td, win, ig
 
 test_that('gGraph works, default', {
-
+    
+    options(gGnome.verbose=TRUE)
     ggnew = gGraph$new()
     expect_true(is(ggnew, 'gGraph'))
     ## ACCESS ACTIVE BINDINGS
@@ -648,6 +652,7 @@ test_that('gGraph works, default', {
 
 test_that('check bGraph works, default', {
 
+    options(gGnome.verbose=TRUE)
     bgnew = bGraph$new()
     expect_true(is(bgnew, 'bGraph'))
     expect_equal(length(bgnew$segstats), 0)
