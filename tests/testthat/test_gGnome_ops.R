@@ -24,6 +24,13 @@ message("PREGO results: ", prego)
 weaver = system.file('extdata', 'weaver', package='gGnome')
 message("Weaver results: ", weaver)
 
+svabavcf = system.file('extdata', 'HCC1143.svaba.somatic.sv.vcf', package='gGnome')
+message("SvABA results: ", svabavcf)
+
+novobreakvcf = system.file('extdata', 'novoBreak.pass.flt.vcf', package='gGnome')
+message("Novobreaks results: ", novobreakvcf)
+
+
 
 jabba = readRDS(jab)
 
@@ -34,10 +41,8 @@ gr = GRanges(1, IRanges(c(3,7,13), c(5,9,16)), strand=c('+','-','-'), seqinfo=Se
 gr2 = GRanges(1, IRanges(c(1,9), c(6,14)), strand=c('+','-'), seqinfo=Seqinfo("1", 25), field=c(1,2))
 dt = data.table(seqnames=1, start=c(2,5,10), end=c(3,8,15))
 
+options(gGnome.verbose=TRUE)
 
-
-
-verbose = getOption("gGnome.verbose")
 
 test_that('junctions works', {
 
@@ -73,6 +78,7 @@ test_that('gGraph works', {
 
     ggnew = gGraph$new()
     expect_true(is(ggnew, 'gGraph'))
+    expect_error(seqinfo(ggnew), NA) ## check works
     foobar = gGraph$new(segs = test_segs, es=test_es)
     expect_true(is(foobar, 'gGraph'))
     foojab = gGraph$new(jabba = jab, segs = test_segs, es=test_es)
@@ -366,6 +372,7 @@ test_that('gGraph works, default', {
     expect_equal((ggnew_decouple$td)$ygap, 2)
     expect_match((ggnew_decouple$td)$name, 'CN')
     expect_equal(length(ggnew_decouple$win), 25)
+    ##
     ggnew_decouple = ggnew$decouple(mod=FALSE)
     expect_true(is(ggnew_decouple, 'gGraph'))
     expect_equal(length(ggnew_decouple$segstats), 50)
@@ -386,7 +393,7 @@ test_that('gGraph works, default', {
     expect_equal(length(ggnew_decouple$win), 25)
     ## 
     ## add = function(gg, mod=FALSE)
-    added = ggnew$add(gg=ggnew_karyograph)
+    added = ggnew$add(gg=ggnew_karyograph, mod=TRUE)
     expect_true(is(added, 'gGraph'))
     expect_equal(length(added$segstats), 100)
     expect_equal(dim(added$edges)[1], 0)
@@ -409,13 +416,13 @@ test_that('gGraph works, default', {
     ## add() several times
     five_adds = ggnew$add(gg=ggnew_karyograph)$add(gg=ggnew_karyograph)$add(gg=ggnew_karyograph)$add(gg=ggnew_karyograph)$add(gg=ggnew_karyograph)
     expect_true(is(five_adds, 'gGraph'))
-    expect_equal(length(five_adds$segstats), 300)
+    expect_equal(length(five_adds$segstats), 600)
     expect_equal(dim(five_adds$edges)[1], 0)
     expect_equal(dim(five_adds$edges)[2], 10)
     expect_equal(length(five_adds$junctions), 0)
     expect_error(five_adds$G, NA) ## check it works
-    expect_equal(length(five_adds$adj),  90000)
-    expect_equal(length(five_adds$A),   90000)
+    expect_equal(length(five_adds$adj), 360000)
+    expect_equal(length(five_adds$A), 360000)
     ##expect_true(is(five_adds$parts, 'list'))
     ##expect_equal(length(five_adds$parts), 3)
     ##expect_equal(length(five_adds$parts$membership), 300)
@@ -449,6 +456,31 @@ test_that('gGraph works, default', {
     expect_equal((jabbd$td)$ygap, 2)
     expect_match((jabbd$td)$name, 'CN')
     expect_equal(length(jabbd$win), 85) 
+    ##
+    ## seqlengths(jabba$segstats) = NA 
+    ## should trip 'if (all(is.na(s.sl <- seqlengths(jabba$segstats)))){'
+    jabba_seqna = jabba
+    seqlengths(jabba_seqna$segstats) = NA 
+    jabbd_seqna = ggnew$jab2gg(jabba_seqna)
+    expect_true(is(jabbd_seqna, 'gGraph'))
+    expect_equal(length(jabbd_seqna$segstats), 2346)
+    expect_equal(dim(jabbd_seqna$edges)[1], 2714)
+    expect_equal(dim(jabbd_seqna$edges)[2], 12)
+    expect_equal(length(jabbd_seqna$junctions), 0)
+    expect_error(jabbd_seqna$G, NA) ## check it works
+    ## ERROR expect_equal(length(jabbd$adj),  90000)
+    ## ERROR expect_equal(length(jabbd$A),   90000)
+    ##expect_true(is(jabbd$parts, 'list'))
+    ##expect_equal(length(jabbd$parts), 3)
+    ##expect_equal(length(jabbd$parts$membership), 300)
+    ##expect_equal(length((jabbd$parts)$csize), 25)
+    expect_equal(length(jabbd_seqna$seqinfo), 85)   
+    expect_equal(jabbd_seqna$purity, 0.96)
+    expect_equal(round(jabbd_seqna$ploidy, 2), 3.85)  
+    expect_true(is(jabbd_seqna$td, 'gTrack'))
+    expect_equal((jabbd_seqna$td)$ygap, 2)
+    expect_match((jabbd_seqna$td)$name, 'CN')
+    expect_equal(length(jabbd_seqna$win), 85) 
     ##
     ## wv2gg()
     weavd = ggnew$wv2gg(weaver)
@@ -497,6 +529,7 @@ test_that('gGraph works, default', {
     expect_error(ggnew$print(), NA)
     ## plot() nothing is returned here, so let's do this for now:
     expect_error(ggnew$plot(), NA)
+    expect_error(ggnew$plot(colorful=TRUE), NA)
     ## window()
     expect_equal(length(ggnew$window()), 24)
     ## 
@@ -510,21 +543,17 @@ test_that('gGraph works, default', {
     expect_true(is(ggnew$gg2td(), 'gTrack'))
     ## JSON
     ## > ggnew$json()
-    ## Error in eval(jsub, SDenv, parent.frame()) : object 'y' not found
-    ## In addition: Warning message:
-    ## In `[.data.table`(node.dt, , `:=`(y, private$segs$cn[oid])) :
-    ##   Adding new column 'y' then assigning NULL (deleting it).
+    expect_error(ggnew$json(), NA)
     ## HTML
     ## > ggnew$html()
+    expect_error(ggnew$html()) ## Error in ggnew$html() : Get from https://github.com/mskilab/gGnome.js
     ## No gGnome.js repository found on your system.
     ## Error in ggnew$html() : Get from https://github.com/mskilab/gGnome.js
     ## gg2j()
     ## > ggnew$gg2js()
-    ## Error in eval(jsub, SDenv, parent.frame()) : object 'y' not found
-    ## In addition: Warning message:
-    ## In `[.data.table`(node.dt, , `:=`(y, private$segs$cn[oid])) :
-    ##   Adding new column 'y' then assigning NULL (deleting it).
-    ## components()
+    expect_error(ggnew$gg2js(), NA)
+    ##
+    ## component()
     component = ggnew$components(mc.cores=2)
     expect_true(is(component, 'list'))
     expect_equal(length(component), 10)
@@ -635,24 +664,24 @@ test_that('gGraph works, default', {
     ## with added
     gotgadd = added$get.g(force=TRUE) 
     expect_true(is(gotgadd, 'gGraph'))
-    expect_equal(length(gotgadd$segstats), 100)
-    expect_equal(dim(gotgadd$edges)[1], 0)
-    expect_equal(dim(gotgadd$edges)[2], 19)
-    expect_equal(length(gotgadd$junctions), 0)
+    expect_equal(length(gotgadd$segstats), 1208)
+    expect_equal(dim(gotgadd$edges)[1], 1380)
+    expect_equal(dim(gotgadd$edges)[2], 29)
+    expect_equal(length(gotgadd$junctions), 420)
     expect_error(gotgadd$G, NA) 
-    expect_equal(length(gotgadd$adj), 10000)
-    expect_equal(length(gotgadd$A),  10000)
-    expect_equal(length(gotgadd$parts), 3)  
-    expect_equal(length((gotgadd$parts)$membership), 100)
-    expect_equal(length((gotgadd$parts)$csize), 25)
-    expect_equal(length((gotgadd$parts)$no), 1)  ## 25
-    expect_equal(length(gotgadd$seqinfo), 25)   
-    expect_equal(gotgadd$purity, NULL)
-    expect_equal(gotgadd$ploidy, NULL)  ## checks!
+    expect_equal(length(gotgadd$adj), 1459264)
+    expect_equal(length(gotgadd$A),  1459264)
+    ##expect_equal(length(gotgadd$parts), 3)  
+    ##expect_equal(length((gotgadd$parts)$membership), 1208)
+    ##expect_equal(length((gotgadd$parts)$csize), 25)
+    ##expect_equal(length((gotgadd$parts)$no), 1)  ## 25
+    expect_equal(length(gotgadd$seqinfo), 84)   
+    expect_equal(gotgadd$purity, 1)
+    expect_equal(round(gotgadd$ploidy, 2), 2.1) 
     expect_true(is(gotgadd$td, 'gTrack'))
     expect_equal((gotgadd$td)$ygap, 2)
     expect_match((gotgadd$td)$name, 'CN')
-    expect_equal(length(gotgadd$win), 25) 
+    expect_equal(length(gotgadd$win), 24) 
     ##  hood = function(win, d=NULL, k=NULL, pad=0, bagel=FALSE, ignore.strand=T, verbose=FALSE)  
     ##gr2_win = ggnew$hood(win=gr2)
     expect_error(ggnew$hood(win=grl1)) ## Error in .local(x, y, ...) : setdiff() between a GRanges and a GRangesList object is not supported
@@ -671,7 +700,14 @@ test_that('gGraph works, default', {
     ##expect_equal(hgseq_win$ploidy, NULL)  ## checks!
     ##expect_equal(length(hgseq_win$td), 0)
     ##expect_equal(length(hgseq_win$win), 0) 
-    #
+    ##
+    ## dist
+    distanced1 = ggnew$dist(GRanges('1:5500-6000'), GRanges('1:5000-5500'))
+    expect_equal(as.numeric(distanced1), 0)
+    ## ERROR distanced2 = ggnew$dist(GRanges('1:5500-6000'), GRanges('1:15000-15500'))
+    distanced_diffchroms = ggnew$dist(GRanges('2:5500-6000'), GRanges('3:5000-5500'))
+    expect_equal(as.numeric(distanced_diffchroms), Inf)
+    ##
     ## fillup
     filledup = ggnew$fillup()
     expect_true(is(filledup, 'gGraph'))
@@ -1142,6 +1178,33 @@ test_that('gread', {
     expect_true(is(list_foo, 'bGraph'))
     
 })
+
+
+
+
+test_that('test grl.match() ', {
+
+    foo = grl.match(grl1, grl2)
+    expect_equal(dim(foo)[1], 502)
+    expect_equal(dim(foo)[2], 8)
+
+})
+
+
+
+##-------------------------------------------------------##
+test_that('testing ra_breaks', {
+
+    breaks = ra_breaks(svabavcf)
+    expect_true(is(breaks, 'GRangesList'))
+    expect_equal(length(breaks), 494)
+    novobreaks = ra_breaks(novobreakvcf)
+    expect_true(is(novobreaks, 'GRangesList'))
+    expect_equal(length(novobreaks), 383)
+
+
+})
+
 
 
 

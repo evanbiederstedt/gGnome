@@ -2075,7 +2075,7 @@ gGraph = R6::R6Class("gGraph",
                      },
 
                      dist = function(gr1, gr2,
-                                     matrix=T,
+                                     matrix=TRUE,
                                      EPS=1e-9,
                                      include.internal=TRUE, ## consider bp within feature "close"
                                      directed=FALSE, ## if TRUE, only consider gr1-->gr2 paths
@@ -2085,8 +2085,9 @@ gGraph = R6::R6Class("gGraph",
                          }
 
                          ## DONE
-                         if (verbose)
+                         if (verbose){
                              now = Sys.time()
+                         }
 
                          intersect.ix = gr.findoverlaps(gr1, gr2, ignore.strand = FALSE)
 
@@ -2133,8 +2134,7 @@ gGraph = R6::R6Class("gGraph",
                          gr1.e = gr.end(gr1, ignore.strand = FALSE)
                          gr2.s = gr.start(gr2, ignore.strand = FALSE)
 
-                         if (!directed)
-                         {
+                         if (!directed){
                              gr1.s = gr.start(gr1, ignore.strand = FALSE)
                              gr2.e = gr.end(gr2, ignore.strand = FALSE)
                          }
@@ -2144,8 +2144,7 @@ gGraph = R6::R6Class("gGraph",
                          ## graph node corresponding to beginning of gr2
                          gr2.s$ix= gr.match(gr2.s, tiles, ignore.strand = F)
 
-                         if (!directed)
-                         {
+                         if (!directed){
                              ## graph node corresponding to end of gr1.ew
                              gr1.s$ix = gr.match(gr1.s, tiles, ignore.strand = F)
                              ## graph node corresponding to beginning of gr2
@@ -2162,8 +2161,7 @@ gGraph = R6::R6Class("gGraph",
                                        start(gr2.s) - start(tiles)[gr2.s$ix])
 
                          ## reverse offset now calculate 3' offset from 5' of intervals
-                         if (!directed)
-                         {
+                         if (!directed){
                              off1r = ifelse(as.logical(strand(gr1.s)=='+'),
                                             end(tiles)[gr1.s$ix]-start(gr1.s),
                                             end(gr1.s) - start(tiles)[gr1.s$ix])
@@ -2176,8 +2174,7 @@ gGraph = R6::R6Class("gGraph",
                          uix1 = unique(gr1.e$ix)
                          uix2 = unique(gr2.s$ix)
 
-                         if (!directed)
-                         {
+                         if (!directed){
                              uix1r = unique(gr1.s$ix)
                              uix2r = unique(gr2.e$ix)
                          }
@@ -2186,8 +2183,7 @@ gGraph = R6::R6Class("gGraph",
                          uix1map = match(gr1.e$ix, uix1)
                          uix2map = match(gr2.s$ix, uix2)
 
-                         if (!directed)
-                         {
+                         if (!directed){
                              uix1mapr = match(gr1.s$ix, uix1r)
                              uix2mapr = match(gr2.e$ix, uix2r)
                          }
@@ -2195,10 +2191,9 @@ gGraph = R6::R6Class("gGraph",
                          adj = self$get.adj()
                          self.l = which(Matrix::diag(adj)>0)
 
-                         if (verbose)
-                         {
+                         if (verbose){
                              message('Finished mapping gr1 and gr2 objects to jabba graph')
-                             print(Sys.time() -now)
+                             print(Sys.time() - now)
                          }
 
                          ## need to take into account forward and reverse scenarios of "distance" here
@@ -2216,8 +2211,7 @@ gGraph = R6::R6Class("gGraph",
                              2, off2, '-') ## subtract uix2 3' offset to all distances
 
 
-                         if (!directed)
-                         {
+                         if (!directed){
                              ## now looking upstream - ie essentially flipping edges on our graph - the edge weights
                              ## now represent "source" node widths (ie of the flipped edges)
                                         # need to correct these distances by (1) subtracting 3' offset of uix1 from its node
@@ -2241,9 +2235,9 @@ gGraph = R6::R6Class("gGraph",
                                      1, off1, '-'), ## substract  uix1 offset to all distances but subtract weight of <first> node
                                  2, off2r , '+') ## add uix2 offset to all distances
                              D = pmin(abs(Df), abs(Dr), abs(Df2), abs(Dr2))
-                         }
-                         else
+                         } else{
                              D = Df
+                         }
 
                          if (verbose)
                          {
@@ -4087,11 +4081,13 @@ hGraph = R6::R6Class("hGraph",
 #'
 #' @return vector same length as query, containing the indices of the first hit in subject
 grl.match = function(query, subject,
-                     ordered=FALSE,
-                     ignore.strand=FALSE,
-                     verbose=FALSE){
+                    ordered=FALSE,
+                    ignore.strand=FALSE,
+                    verbose=FALSE){
     if (ignore.strand){
-        if (verbose) message("Ignoring the strand info.")
+        if (verbose){
+            message("Ignoring the strand info.")
+        }
         grl1 = gr.stripstrand(grl1)
         grl2 = gr.stripstrand(grl2)
         return(grl.match(grl1, grl2, ordered=ordered, ignore.strand=FALSE))
@@ -4103,6 +4099,10 @@ grl.match = function(query, subject,
 
     ## LATER
 }
+
+
+
+
 
 #' rev.comp
 #' Return the reverse complement of a given GRanges
@@ -5427,8 +5427,7 @@ gread = function(filename){
 
         if (inherits(rds, "gGraph")) {
             return(rds)
-        }
-        else if (inherits(rds, "list")){
+        } else if (inherits(rds, "list")){
             bg = tryCatch(bGraph$new(jabba = rds),
                           error = function(e) NULL)
             if (!is.null(bg)){
@@ -5549,8 +5548,7 @@ fusions = function(gg = NULL,
     ## QC input cds
     if (!inherits(cds, 'GRangesList')){
         cds = NULL
-    } else if (!all(c('Transcript_id', 'Gene_name') %in%
-                    names(values(cds)))){
+    } else if (!all(c('Transcript_id', 'Gene_name') %in% names(values(cds)))){
         cds = NULL
     }
 
@@ -5695,7 +5693,7 @@ fusions = function(gg = NULL,
 
         if (length(x)==2){
             list(x[c(tmp.source, tmp.sink)])
-        }else if (all(Matrix::rowSums(tmp.mat)<=1) & all(Matrix::colSums(tmp.mat)<=1)){
+        } else if (all(Matrix::rowSums(tmp.mat)<=1) & all(Matrix::colSums(tmp.mat)<=1)){
             get.shortest.paths(G, from = intersect(x, sources), intersect(x, sinks))$vpath
         } else {
             if (exhaustive){
@@ -5977,8 +5975,7 @@ proximity = function(query,
     for (i in 1:length(tmp)){
         if (class(tmp[[i]]) != 'list'){
             warning(sprintf('Query %s failed', ix.query[i]))
-        }
-        else{
+        } else{
             D.rel = D.rel + tmp[[i]]$D.rel
             D.ra = D.ra + tmp[[i]]$D.ra
             D.ref = D.ref + tmp[[i]]$D.ref
@@ -6195,7 +6192,7 @@ collapse.paths = function(G, verbose = T){
                 ## if parent has no other children then merge with him
                 if (sum(out[parent, ])==1){
                     sets[[parent]] = c(sets[[parent]], sets[[i]])
-                }else{
+                } else{
                     sets[[child]] = c(sets[[child]], sets[[i]])
                 }
 
@@ -6324,8 +6321,7 @@ read_gencode = function(con = Sys.getenv("DEFAULT_GENE_ANNOTATION"),
 
         if (by == 'transcript_id'){
             return(.gencode_transcript_split(ge, tx))
-        }
-        else{
+        } else{
             return(split(ge, values(gene)[, by]))
         }
     }
@@ -6347,8 +6343,7 @@ capitalize = function(string, un = FALSE){
     if (!un){
         capped <- grep("^[^A-Z].*$", string, perl = TRUE)
         substr(string[capped], 1, 1) <- toupper(substr(string[capped],1, 1))
-    }
-    else{
+    } else{
         capped <- grep("^[A-Z].*$", string, perl = TRUE)
         substr(string[capped], 1, 1) <- tolower(substr(string[capped],1, 1))
     }
@@ -6573,31 +6568,6 @@ annotate.walks = function(walks, cds, promoters = NULL, filter.splice = T, verbo
         end(this.tx.span)[tmp$query.id[rightmost.cds.exon]] <  end(cds.u)[tmp$subject.id[rightmost.cds.exon]]
 
 
-    ## now traverse each walk and connect "broken transcripts"
-    ## each walk is a list of windows, connections will be made with respect to the window walk
-    ## paying attention to (1) side of breakage, (2) orientation of adjacent windows in walk (3) orientation of transcript
-    ##
-    ## right broken + cds upstream of ++ junction attaches to left  broken + cds in next window
-    ##              - cds upstream of ++ junction attached to left  broken - cds in next window
-    ##              + cds upstream of +- junction attaches to right broken - cds in next window
-    ##              - cds upstream of +- junction attaches to right broken + cds in next window
-    ##
-    ## left  broken + cds upstream of -- junction attaches to right broken + cds in next window
-    ##              - cds upstream of -- junction attached to right broken - cds in next window
-    ##              + cds upstream of -+ junction attaches to left  broken - cds in next window
-    ##              - cds upstream of -+ junction attaches to left  broken + cds in next window
-    ##
-    ##
-    ##
-
-                                        # to achieve this create a graphs on elements of this.tx.span
-                                        # connecting elements i and j if a window pair k k+1 in (the corresponding) input grl
-                                        # produces a connection with the correct orientation
-
-                                        # match up on the basis of the above factors to determine edges in graph
-
-    ##
-
     edges = merge(
         data.table(
             i = 1:length(this.tx.span),
@@ -6651,8 +6621,7 @@ annotate.walks = function(walks, cds, promoters = NULL, filter.splice = T, verbo
         }else {
             if (exhaustive){
                 lapply(all.paths(A[x,x, drop = FALSE], source.vertices = tmp.source, sink.vertices = tmp.sink, verbose = FALSE)$paths, function(y) x[y])
-            }
-            else {
+            } else {
                 out = do.call('c', lapply(intersect(x, sources),
                                           function(x, sinks) suppressWarnings(get.shortest.paths(G, from = x, to = sinks)$vpath), sinks = intersect(x, sinks)))
                 out = out[sapply(out, length)!=0]
@@ -6696,16 +6665,14 @@ annotate.walks = function(walks, cds, promoters = NULL, filter.splice = T, verbo
     for (i in 1:length(paths.u.inframe)) {
         if (i == 1){
             outside = TRUE
-        }
-        else if (paths.i[i] != paths.i[i-1] | (paths.u.str[i] == '+' & paths.u.lout[i]) | (paths.u.str[i] == '-' & paths.u.rout[i])){
+        } else if (paths.i[i] != paths.i[i-1] | (paths.u.str[i] == '+' & paths.u.lout[i]) | (paths.u.str[i] == '-' & paths.u.rout[i])){
             outside = TRUE
         }
 
         if (outside){
             if (paths.u.str[i] == '+'){
                 paths.u.inframe[i] = paths.u.lout[i] & paths.u.lef[i] == 0
-            }
-            else{
+            } else{
                 paths.u.inframe[i] = paths.u.rout[i] & paths.u.ref[i] == 0
             }
 
@@ -6714,14 +6681,11 @@ annotate.walks = function(walks, cds, promoters = NULL, filter.splice = T, verbo
         } else {
             if (paths.u.str[i] == '+' & paths.u.str[i-1] == '+'){
                 paths.u.inframe[i] = paths.u.lec[i] != 1 & paths.u.lef[i] == ((paths.u.ref[i-1]+1) %% 3) & paths.u.lcds[i] & paths.u.rcds[i-1]
-            }
-            else if (paths.u.str[i] == '+' & paths.u.str[i-1] == '-'){
+            } else if (paths.u.str[i] == '+' & paths.u.str[i-1] == '-'){
                 paths.u.inframe[i] = paths.u.lec[i] != 1 & paths.u.ref[i]  == ((paths.u.ref[i-1]+1) %% 3) & paths.u.rcds[i] & paths.u.rcds[i-1]
-            }
-            else if (paths.u.str[i] == '-' & paths.u.str[i-1] == '-'){
+            } else if (paths.u.str[i] == '-' & paths.u.str[i-1] == '-'){
                 paths.u.inframe[i] = paths.u.rec[i] != 1 & paths.u.ref[i] == ((paths.u.lef[i-1]+1) %% 3) & paths.u.rcds[i] & paths.u.lcds[i-1]
-            }
-            else if (paths.u.str[i] == '-' & paths.u.str[i-1] == '+'){
+            } else if (paths.u.str[i] == '-' & paths.u.str[i-1] == '+'){
                 paths.u.inframe[i] = paths.u.rec[i] != 1 & paths.u.lef[i] == ((paths.u.lef[i-1]+1) %% 3) & paths.u.lcds[i] & paths.u.lcds[i-1]
             }
         }
@@ -7435,8 +7399,7 @@ etype = function(segs, es, force=FALSE, both=FALSE){
             if ("cn" %in% colnames(es2)){
                 ## if edges comes with CN field, add them together
                 es2[, .(from, to, cn=sum(cn), type), by=eid]
-            }
-            else {
+            } else {
                 ## otherwise just ignore it
                 es2 = es2[!duplicated(eid),]
             }
@@ -7521,6 +7484,8 @@ etype = function(segs, es, force=FALSE, both=FALSE){
     }
 }
 
+
+
 #####################################
 #' @name setxor
 #' @title XOR operation on sets
@@ -7535,6 +7500,8 @@ setxor = function (A, B){
     return(setdiff(union(A, B), intersect(A, B)))
 }
 
+
+
 ############################################
 #' @name write.tab
 #' @title wrapper around write.table
@@ -7546,6 +7513,8 @@ write.tab = function (x, ..., sep = "\t", quote = F, row.names = F){
     }
     write.table(x, ..., sep = sep, quote = quote, row.names = row.names)
 }
+
+
 
 ################################
 #' @name dedup
@@ -7569,6 +7538,8 @@ dedup = function(x, suffix = '.'){
     out[unlist(udup.ix)] = paste(out[unlist(udup.ix)], unlist(udup.suffices), sep = '');
     return(out)
 }
+
+
 
 #############################################################
 #' @name munlist
@@ -7622,6 +7593,9 @@ munlist = function(x, force.rbind = F, force.cbind = F, force.list = F){
     }
 }
 
+
+
+
 ################################################
 #' read_vcf: utility function to read VCF into GRanges object
 #'
@@ -7663,8 +7637,7 @@ read_vcf = function (fn, gr = NULL, hg = "hg19", geno = NULL, swap.header = NULL
         if (grepl("gz$", swap.header)){
             system(sprintf("zcat %s | grep '^[#]' > %s.header",
                            swap.header, tmp.name))
-        }
-        else{
+        } else{
             system(sprintf("grep '^[#]' %s > %s.header", swap.header,
                             tmp.name))
         }
@@ -7673,8 +7646,9 @@ read_vcf = function (fn, gr = NULL, hg = "hg19", geno = NULL, swap.header = NULL
         vcf = readVcf(tmp.name, hg, ...)
         system(sprintf("rm %s %s.body %s.header", tmp.name, tmp.name,
                        tmp.name))
+    } else{
+        vcf = readVcf(fn, hg, ...)
     }
-    else vcf = readVcf(fn, hg, ...)
     out = granges(vcf)
     if (!is.null(values(out))){
         values(out) = cbind(values(out), info(vcf))
@@ -7691,9 +7665,11 @@ read_vcf = function (fn, gr = NULL, hg = "hg19", geno = NULL, swap.header = NULL
         for (g in geno) {
             m = as.data.frame(geno(vcf)[[g]])
             names(m) = paste(g, names(m), sep = "_")
-            if (is.null(gt))
+            if (is.null(gt)){
                 gt = m
-            else gt = cbind(gt, m)
+            } else{
+                gt = cbind(gt, m)
+            }
         }
         values(out) = cbind(values(out), as(gt, "DataFrame"))
     }
@@ -8096,46 +8072,40 @@ ra_breaks = function(rafile,
 
                 ## if "first" and "right" then we set this entry "-" and the second entry "+"
                 tmpix = vgr.pair1$first & vgr.pair1$right
-                if (any(tmpix))
-                {
+                if (any(tmpix)){
                     strand(vgr.pair1)[tmpix] = '-'
                     strand(vgr.pair2)[tmpix] = '+'
                 }
 
                 ## if "first" and "left" then "-", "-"
                 tmpix = vgr.pair1$first & !vgr.pair1$right
-                if (any(tmpix))
-                {
+                if (any(tmpix)){
                     strand(vgr.pair1)[tmpix] = '-'
                     strand(vgr.pair2)[tmpix] = '-'
                 }
 
                 ## if "second" and "left" then "+", "-"
                 tmpix = !vgr.pair1$first & !vgr.pair1$right
-                if (any(tmpix))
-                {
+                if (any(tmpix)){
                     strand(vgr.pair1)[tmpix] = '+'
                     strand(vgr.pair2)[tmpix] = '-'
                 }
 
                 ## if "second" and "right" then "+", "+"
                 tmpix = !vgr.pair1$first & vgr.pair1$right
-                if (any(tmpix))
-                {
+                if (any(tmpix)){
                     strand(vgr.pair1)[tmpix] = '+'
                     strand(vgr.pair2)[tmpix] = '+'
                 }
 
                 pos1 = as.logical(strand(vgr.pair1)=='+') ## positive strand junctions shift left by one (i.e. so that they refer to the base preceding the break for these junctions
-                if (any(pos1))
-                {
+                if (any(pos1)){
                     start(vgr.pair1)[pos1] = start(vgr.pair1)[pos1]-1
                     end(vgr.pair1)[pos1] = end(vgr.pair1)[pos1]-1
                 }
 
                 pos2 = as.logical(strand(vgr.pair2)=='+') ## positive strand junctions shift left by one (i.e. so that they refer to the base preceding the break for these junctions
-                if (any(pos2))
-                {
+                if (any(pos2)){
                     start(vgr.pair2)[pos2] = start(vgr.pair2)[pos2]-1
                     end(vgr.pair2)[pos2] = end(vgr.pair2)[pos2]-1
                 }
@@ -8146,8 +8116,12 @@ ra_breaks = function(rafile,
             ## ALERT: vgr has already been subsetted to only include BND rows
             ## bix is the original indices, so NOT compatible!
             ## this.inf = values(vgr)[bix[pix[vix]], ]
-            if (exists("pix") & exists("vix")) this.inf = values(vgr)[pix[vix], ]
-            if (exists("iid")) this.inf = values(vgr[which(iid==1)])
+            if (exists("pix") & exists("vix")){
+                this.inf = values(vgr)[pix[vix], ]
+            }
+            if (exists("iid")){
+                this.inf = values(vgr[which(iid==1)])
+            }
 
             if (is.null(this.inf$POS)){
                 this.inf = cbind(data.frame(POS = ''), this.inf)
@@ -8182,8 +8156,7 @@ ra_breaks = function(rafile,
                 ## Snowman/SvABA uses "PASS"
                 ## Lumpy/Speedseq uses "."
                 values(ra)$tier = ifelse(values(ra)$FILTER %in% c(".", "PASS"), 2, 3)
-            }
-            else {
+            } else {
                 values(ra)$tier = values(ra)$TIER
             }
 
@@ -8201,8 +8174,7 @@ ra_breaks = function(rafile,
                                 error = function(e) NULL)
                 if (!is.null(tmp)){
                     values(vgr.loose) = tmp
-                }
-                else{
+                } else{
                     values(vgr.loose) = cbind(vcf@fixed[bix[npix], ], info(vcf)[bix[npix], ])
                 }
 
@@ -8301,14 +8273,11 @@ ra_breaks = function(rafile,
 
         out = seg2gr(seg, seqlengths = seqlengths)[, c('ra.index', 'ra.which')];
         out = split(out, out$ra.index)
-    } else if (!is.null(rafile$start1) & !is.null(rafile$start2) & !is.null(rafile$end1) & !is.null(rafile$end2))
-                         {
-                             ra1 = gr.flipstrand(GRanges(rafile$chr1, IRanges(rafile$start1, rafile$end1), strand = rafile$str1))
-                             ra2 = gr.flipstrand(GRanges(rafile$chr2, IRanges(rafile$start2, rafile$end2), strand = rafile$str2))
-                             out = grl.pivot(GRangesList(ra1, ra2))
-                         }
-
-
+    } else if (!is.null(rafile$start1) & !is.null(rafile$start2) & !is.null(rafile$end1) & !is.null(rafile$end2)){
+        ra1 = gr.flipstrand(GRanges(rafile$chr1, IRanges(rafile$start1, rafile$end1), strand = rafile$str1))
+        ra2 = gr.flipstrand(GRanges(rafile$chr2, IRanges(rafile$start2, rafile$end2), strand = rafile$str2))
+        out = grl.pivot(GRangesList(ra1, ra2))
+    }
 
     if (keep.features){
         values(out) = rafile[, ]
