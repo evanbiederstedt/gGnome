@@ -779,7 +779,7 @@ test_that('check gGraph w/ inputs works', {
     expect_true(is(setseq, 'gGraph'))
     expect_equal(length(setseq$segstats), 10)
     expect_equal(dim(setseq$edges)[1], 12)
-    expect_equal(dim(setseq$edges)[2], 30)
+    expect_equal(dim(setseq$edges)[2], 29)
     expect_equal(length(setseq$junctions), 2)
     expect_error(setseq$G, NA)  ## IGRAPH 8d66213 D--- 10 12 --
     expect_equal(length(setseq$adj), 100)
@@ -790,7 +790,7 @@ test_that('check gGraph w/ inputs works', {
     expect_equal(setseq$ploidy, 3)
     expect_true(is(setseq$td, 'gTrack'))
     expect_equal(width(setseq$win), 1000000)
-    expect_equal(setseq$ig, NULL)   
+    ## expect_equal(setseq$ig, NULL)   
     ## gg_setseq_hg = gg$set.seqinfo(genome = hg_seqlengths(), gname = 'foobar', drop = TRUE)
     gg_setseq_hg = gg$set.seqinfo(genome = hg_seqlengths(), gname = 'foobar', drop = TRUE)
     expect_true(is(gg_setseq_hg, 'gGraph'))
