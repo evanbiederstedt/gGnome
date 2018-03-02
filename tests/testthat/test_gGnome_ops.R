@@ -807,7 +807,7 @@ test_that('check gGraph w/ inputs works', {
     expect_equal(gg_setseq_hg$ploidy, 3)
     expect_true(is(gg_setseq_hg$td, 'gTrack'))
     expect_equal(width(gg_setseq_hg$win), 1000000)
-    expect_equal(gg_setseq_hg$ig, NULL)   
+    ###expect_equal(gg_setseq_hg$ig, NULL)   
 
 })
 
