@@ -1865,7 +1865,7 @@ test_that('testing ra_breaks', {
     expect_equal(length(dellybreaks), 210)
     lumpybreaks = ra_breaks(lumpyvcf)
     expect_true(is(lumpybreaks, 'GRangesList'))
-    expect_equal(length(lumpybreaks), 2114)
+    expect_equal(length(lumpybreaks), 2115)
 
 })
 
