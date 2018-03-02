@@ -154,7 +154,7 @@ ra.duplicated = function(junc){
     if (!inherits(junc, "junctions")){
         stop("Only works for a junctions object.")
     }
-
+    
     if (length(junc)==0){
         return(logical(0))
     } else {
@@ -7910,7 +7910,7 @@ ra_breaks = function(rafile,
                 if ("STRANDS" %in% colnames(mc) & any(ns <- sapply(vgr$STRANDS, length)>1)){
                     ## first fix format errors, two strand given, but not comma separeted
                     ## so you'd have taken them as single
-                    if (any(fuix <- sapply(vgr[which(!ns)]$STRANDS, str_count, ":")>1)){
+                    if (any(fuix <- sapply(vgr[which(!ns)]$STRANDS, stringr::str_count, ":")>1)){
                         which(!ns)[fuix] -> tofix
                         vgr$STRANDS[tofix] = lapply(vgr$STRANDS[tofix],
                                                     function(x){
