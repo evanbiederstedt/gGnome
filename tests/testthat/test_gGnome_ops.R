@@ -815,3 +815,591 @@ test_that('check gGraph w/ inputs works', {
 
 
 
+
+
+
+### bGraph, default
+### bGraph inherits all active bindings from gGraph
+## METHODS
+## print
+## subgraph
+## walk
+## walk2
+##
+
+
+
+
+test_that('check bGraph works, default', {
+    
+    options(gGnome.verbose=TRUE)
+    bgnew = bGraph$new()
+    expect_true(is(bgnew, 'bGraph'))
+    expect_equal(length(bgnew$segstats), 0)
+    expect_equal(dim(bgnew$edges)[1], 0)
+    expect_equal(dim(bgnew$edges)[2], 3)
+    expect_equal(length(bgnew$junctions), 0)
+    expect_error(bgnew$G, NA)
+    expect_equal(length(bgnew$adj), 0)
+    expect_equal(length(bgnew$A),  0)
+    ##expect_equal(length(bgnew$parts), 0)
+    expect_equal(length(bgnew$seqinfo), 0)
+    expect_equal(bgnew$purity, NULL)
+    expect_equal(bgnew$ploidy, NULL)  ## checks!
+    expect_equal(bgnew$td, NULL)
+    expect_equal(length(bgnew$win), 0)
+    ##
+    ##
+    ##
+    ## print()
+    ## variable outputs 'numeric(0)'
+    expect_error(bgnew$print(), NA) ## check it works
+    ##
+    ## subgraph()
+    subgraphed = bgnew$subgraph()
+    expect_true(is(subgraphed, 'bGraph'))
+    expect_equal(length(subgraphed$segstats), 0)
+    expect_equal(dim(subgraphed$edges)[1], 0)
+    expect_equal(dim(subgraphed$edges)[2], 3)
+    expect_equal(length(subgraphed$junctions), 0)
+    expect_error(subgraphed$G, NA)
+    expect_equal(length(subgraphed$adj), 0)
+    expect_equal(length(subgraphed$A),  0)
+    ##expect_equal(length(bgnew$parts), 0)
+    expect_equal(length(subgraphed$seqinfo), 0)
+    expect_equal(subgraphed$purity, NULL)
+    expect_equal(subgraphed$ploidy, NULL)  ## checks!
+    expect_equal(subgraphed$td, NULL)
+    expect_equal(length(subgraphed$win), 0)
+    ##
+    ##
+    ## walk()
+    expect_equal(bgnew$walk(), NULL)
+    ##
+    ## walk2()
+    expect_equal(bgnew$walk2(), NULL)
+    
+})
+
+
+
+
+###
+### gWalks
+### METHODS:
+### nullGWalks
+### pairup
+### set.seg.cn
+### gw2gg
+### gw2grl
+### grl2gw
+### gw2td
+### json
+### gw2js
+### v2e
+### p2e
+### epath
+### simplify
+### reduce
+### subset
+### print
+### len
+### metaCols
+### window
+### plot
+### isStrandPaired
+### rpaths
+### label
+###
+### ACTIVE BINDINGS:
+### segstats
+### edges
+### grl
+### td
+### path
+### values
+
+
+
+
+test_that('check gWalks works, default', {
+    newgwalk = gWalks$new()
+    expect_equal(newgwalk$segstats, NULL)
+    ### edges
+    ### grl
+    ### td
+    expect_equal(newgwalk$path, NULL)
+    expect_equal(newgwalk$value, NULL)
+    ##
+    ## nullGWalks
+    nullgw = newgwalk$nullGWalks()
+    expect_equal(nullgw$segstats, NULL)
+    ### edges
+    ### grl
+    ### td
+    expect_equal(nullgw$path, NULL)
+    expect_equal(nullgw$value, NULL)
+    ##
+    ## pairup
+    ## ERROR
+    ### pairedup = newgwalk$pairup()
+    setsegcnd = nullgw$set.seg.cn()
+    expect_equal(length(setsegcnd$segstats), 1)
+    ### edges
+    ### grl
+    ### td
+    expect_equal(setsegcnd$path, NULL)
+    expect_equal(setsegcnd$value, NULL)
+    ##
+    ## gw2gg
+    ## gw2ggfoo = newgwalk$gw2gg()
+    ## Error in do.call(c, new.paths) : second argument must be a list
+    ##
+    ## gw2grl
+    ## gw2grlfoo = newgwalk$gw2grl()
+    ##
+    ## grl2gw
+    grl2gwfoo = newgwalk$grl2gw(grl=grl2)
+    expect_equal(length(grl2gwfoo$segstats), 502)
+    expect_equal(dim(grl2gwfoo$edges)[1], 251)
+    expect_equal(dim(grl2gwfoo$edges)[2], 16)
+    expect_true(is(grl2gwfoo$grl, 'GRangesList'))
+    expect_equal(length(grl2gwfoo$grl), 251)
+    expect_true(is(grl2gwfoo$td, 'gTrack'))
+    expect_equal(length(grl2gwfoo$path), 251)
+    expect_equal(grl2gwfoo$value, NULL)
+    ##
+    ## gw2td
+    expect_true(is(newgwalk$gw2td(), 'gTrack'))
+    ##
+    ## json
+    jsonfoo = newgwalk$json()
+    expect_match(jsonfoo, 'data.json')
+    ##
+    ## gw2js
+    ## gw2jsfoo = newgwalk$gw2js()
+    ## expect_equal(length(newgwalk$gw2js()), 0)
+    ##
+    ## ERRORs
+    ### v2e
+    ### p2e
+    ##
+    ## epath
+    epathfoo = newgwalk$epath()
+    expect_equal(length(epathfoo), 502)
+    ##
+    ##
+    ## > simplified = newgwalk$simplify()
+    ## Error in FUN(X[[i]], ...) : object 'cn' not found
+    ##
+    ## reduced = newgwalk$reduce()
+    ## Error in do.call(c, new.paths) : second argument must be a list
+    ##
+    ## subset()
+    ##subsetted = newgwalk$subset(GRanges())
+    ##expect_equal(subsetted$segstats, NULL)
+    ### edges
+    ### grl
+    ### td
+    ##expect_equal(subsetted$path, NULL)
+    ##expect_equal(subsetted$values, NULL)
+    ### path
+    ### values
+    ##
+    ## print
+    expect_equal(newgwalk$print(), NULL)
+    ##
+    ## len
+    expect_equal(newgwalk$len(), 502)
+    ##
+    ## metaCols
+    expect_equal(dim(newgwalk$metaCols())[1], 502)
+    expect_equal(dim(newgwalk$metaCols())[2], 3)
+    ##
+    ## > newgwalk$window()
+    ## Error in (function (classes, fdef, mtable)  :
+    ##   unable to find an inherited method for function ‘seqinfo’ for signature ‘"NULL"’
+    ## > newgwalk$plot()
+    ## Error in (function (classes, fdef, mtable)  :
+    ##   unable to find an inherited method for function ‘seqinfo’ for signature ‘"NULL"’
+    ## ERROR
+    ##  newgwalk$isStrandPaired()
+    ##
+    
+})
+
+
+
+
+
+
+
+
+test_that('rev.comp works', {
+    
+    expect_error(rev.comp())
+    expect_error(rev.comp(data.frame()))
+    gr3 = dt2gr(dt)  ## not stranded
+    expect_error(rev.comp(gr3))   ## Error in rev.comp(gr3) : Input must be all strand specific.
+    ##expect_equal(as.integer(width(rev.comp(gr2[1]))), 6)
+    ##expect_equal(as.character(strand(rev.comp(gr)[1])), "+")
+    ##expect_equal(width(rev.comp(gr)[2]), 3)
+    ##expect_equal(as.character(strand(rev.comp(gr)[2])), "+")
+    
+})
+
+
+
+
+
+test_that('capitalize works', {
+    
+    str1 = "Foo FOO"
+    str2 = "2Foo . $%@"
+    str3 = "foobar foo"
+    expect_match(capitalize(str1), "Foo FOO")
+    expect_match(capitalize(str1, un=TRUE), "foo FOO")
+    expect_equal(capitalize(str2), "2Foo . $%@")
+    expect_equal(capitalize(str2, un=TRUE), "2Foo . $%@")    ## probably should report this bug to r-lib
+    expect_match(capitalize(str3), "Foobar foo")
+    expect_match(capitalize(str3, un=TRUE), "foobar foo")
+    
+})
+
+
+
+
+
+test_that('ul works', {
+    
+    A = matrix(c(2, 4, 3, 1, 5, 7),  nrow=2, ncol=3, byrow = TRUE)
+    expect_equal(ul(A, n=0), NULL)   ### Is this expected behavior?
+    expect_equal(as.integer(ul(A, n=1)), 2)
+    expect_equal(dim(ul(A, n=2))[1], 2)
+    expect_equal(dim(ul(A, n=2))[2], 2)
+    expect_equal(dim(ul(A, n=999))[1], 2)
+    expect_equal(dim(ul(A, n=9999))[2], 2)   ### Is this expected behavior?
+    
+})
+
+
+
+
+
+
+test_that('e2j works', {
+    
+    expect_equal(length(e2j(test_segs, test_es)), 2)
+    
+})
+
+
+
+
+test_that('etype works', {
+    
+    expect_equal(dim(etype(test_segs, test_es))[1], 12)
+    expect_equal(dim(etype(test_segs, test_es))[2], 16)
+    
+})
+
+
+
+
+
+
+
+test_that('write.tab() works', {
+    
+    expect_equal(length(write.tab(dt)), 0)  ### throws dt to STDOUT
+    
+})
+
+
+
+
+
+
+
+test_that('get.ploidy works', {
+    
+    expect_error(get.ploidy(GRangesList()))
+    expect_equal(get.ploidy(test_segs), 3)
+    ## if (length(cnix <- grep("CN", colnames(mcols(segs)), ignore.case = T)) ==
+    
+})
+
+
+
+
+
+test_that('dedup() works', {
+    
+    expect_equal(dedup(c(rep(2, 10.5), rep(3, 20)))[30], "3.20")
+    
+})
+
+
+
+
+
+
+
+
+
+
+test_that('chr2num works', {
+    
+    expect_equal(as.logical(chr2num("ChrX")), NA)
+    expect_equal(chr2num("chrX"), 23)
+    expect_equal(chr2num("chrY"), 24)
+    
+})
+
+
+
+test_that('affine.map works', {
+    
+    expect_equal(affine.map(49), 0.5)
+    
+})
+
+
+test_that('gr.flatmap works', {
+    
+    expect_equal((gr.flatmap(example_genes, windows=GRanges('1:10000-20000'))$window.segs)$start, 1)
+    expect_equal((gr.flatmap(example_genes, windows=GRanges('1:10000-20000'))$window.segs)$end, 10001)
+    expect_equal(length((gr.flatmap(example_genes, windows=GRanges('1:10000-20000'))$window.segs)$grl.segs), 0)
+    
+})
+
+
+
+
+### XT's tests
+
+##-------------------------------------------------------##
+test_that('constructors and essential functions', {
+    ## small example, nested tDUP
+    ## default
+    expect_equal(dim(etype(test_segs, test_es))[1], 12)
+    expect_equal(dim(etype(test_segs, test_es))[2], 16)
+    expect_equal(unique(as.integer(etype(test_segs, test_es)$toChr)), 5)
+    expect_equal(any(etype(test_segs, test_es)$fromLoose), FALSE)
+    expect_equal(any(etype(test_segs, test_es)$toLoose), FALSE)
+    expect_error(etype(GRangesList(), GRangesList()))  ## Error in etype(GRangesList(), GRangesList()) : Error:segs must be GRanges
+    expect_error(etype(GRanges(), GRangesList()))      ## Error in etype(GRanges(), GRangesList()) : Error:es must be data.frame
+    expect_error(etype(GRanges(), data.table()))       ## Error: 'from' & 'to' must be in es!
+    expect_error(gGraph$new(), NA)  ## test it works
+    foo = gGraph$new(segs=test_segs, es=test_es)
+    ##expect_equal(dim(foo$edges)[1], 12)
+    ##expect_equal(dim(foo$edges)[2], 16)
+    expect_equal(max((foo$edges)$cn), 3)
+    expect_equal(max((foo$edges)$fromStart), 18593415)
+    expect_equal(max((foo$edges)$fromEnd), 18793414)
+    foo = gGraph$new(segs=test_segs, es=test_es)
+    ##expect_equal(dim(foo$edges)[1], 12)
+    ## expect_equal(dim(foo$edges)[2], 16)
+    expect_equal(max((foo$edges)$cn), 3)
+    expect_equal(max((foo$edges)$fromStart), 18593415)
+    expect_equal(max((foo$edges)$fromEnd), 18793414)
+    expect_equal(dim((foo$nullGGraph())$edges)[1], 0)
+    expect_equal(dim((foo$nullGGraph())$edges)[2], 3)
+    
+})
+
+
+
+
+##-------------------------------------------------------##
+test_that('gGraph, dipGraph', {
+    
+    expect_error(gGraph$new()$dipGraph(), NA)
+    expect_equal(nrow(gGraph$new()$dipGraph()$edges), 0)
+    expect_equal(length(gGraph$new()$dipGraph()$segstats), length(gUtils::hg_seqlengths())*2)
+    
+})
+
+
+
+test_that('karyograph', {
+    
+    kag.tile = gGraph$new(tile = test_segs)
+    expect_true(inherits(kag.tile, "gGraph"))
+    
+})
+
+
+
+
+##-------------------------------------------------------##
+test_that('gread', {
+    
+    jab = system.file('extdata', 'jabba.simple.rds', package="gGnome")
+    message("JaBbA result: ", jab)
+    prego = system.file('extdata', 'intervalFile.results', package='gGnome')
+    message("PREGO results: ", prego)
+    weaver = system.file('extdata', 'weaver', package='gGnome')
+    message("Weaver results: ", weaver)
+    expect_error(gread('no_file_here'))
+    jab_bgraph = gread(jab)
+    expect_true(is(jab_bgraph, "bGraph"))
+    ## preg_bgraph = gread(prego)
+    ## expect_true(is(preg_bgraph, "bGraph")) ### 'gGraph'
+    ## wv_bgraph = gread(weaver)
+    ## expect_true(is(wv_bgraph, "bGraph"))  ### 'gGraph'
+    ## if (is.list(file)){
+    list_foo = gread(readRDS(system.file("extdata", "jabba.simple.rds", package="gGnome")))
+    expect_true(is(list_foo, 'bGraph'))
+    
+})
+
+
+
+
+test_that('test grl.match() ', {
+    
+    foo = grl.match(grl1, grl2)
+    expect_equal(dim(foo)[1], 502)
+    expect_equal(dim(foo)[2], 8)
+    
+})
+
+
+
+##-------------------------------------------------------##
+test_that('testing ra_breaks', {
+    
+    breaks = ra_breaks(svabavcf)
+    expect_true(is(breaks, 'GRangesList'))
+    expect_equal(length(breaks), 494)
+    novobreaks = ra_breaks(novobreakvcf)
+    expect_true(is(novobreaks, 'GRangesList'))
+    expect_equal(length(novobreaks), 383)
+    dellybreaks = ra_breaks(dellyvcf)
+    expect_true(is(dellybreaks, 'GRangesList'))
+    expect_equal(length(dellybreaks), 210)
+    lumpybreaks = ra_breaks(lumpyvcf)
+    expect_true(is(lumpybreaks, 'GRangesList'))
+    expect_equal(length(lumpybreaks), 2115)
+    
+})
+
+
+
+
+
+
+## ##-------------------------------------------------------##
+## test_that('gtf2json', {
+##     expect_error(gread('no_file_here'))
+##     expect_equal(gtf2json(system.file('extdata', 'test.gtf', package='gGnome')), "./gtf.json")
+##     system(paste('rm', "./gtf.json"))
+## })
+
+
+
+
+## * could not find function "setxor"
+##-------------------------------------------------------##
+
+test_that('setxor', {
+    
+    A = c(1, 2, 3)
+    B = c(1, 4, 5)
+    expect_equal(setxor(A, B), c(2, 3, 4, 5))
+    
+})
+
+
+
+
+
+##-------------------------------------------------------##
+test_that('special ranges functions for skew-symmetric graph', {
+    
+    
+    segments = readRDS(jab)$segstats
+    junctions = readRDS(jab)$junctions
+    expect_equal(length(seg.fill(GRanges())), 0)
+    expect_equal(length(seg.fill(segments)), 2346)
+    ## check 'verbose'
+    expect_equal(length(seg.fill(segments, verbose=TRUE)), 2346)
+    expect_equal(length(seg.fill(segments %Q% (strand=="+"), verbose=TRUE)), 2346)
+    expect_equal(dim(hydrogenBonds(segments))[1], length(segments))
+    expect_equal(dim(hydrogenBonds(segments))[2], 3)
+    expect_equal(unique(hydrogenBonds(segments)$type), 'hydrogen')
+    
+})
+
+
+## Error: Test failed: 'gWalks'
+## * length(gw <<- as(grl, "gWalks")) not equal to sum(values(grl)$cn > 0).
+## 1/1 mismatches
+## [1] 32 - 630 == -598
+## * `bg <<- as(gw, "bGraph")` threw an error.
+## Message: Error: Given edge data is not skew-symmetric!!!
+## Class:   simpleError/error/condition
+## * object 'bg' not found
+## 1: expect_equal(length(bg$junctions), sum(values(junctions)$cn > 0)) at :12
+## 2: quasi_label(enquo(object), label)
+## 3: eval_bare(get_expr(quo), get_env(quo))
+
+
+
+
+##-------------------------------------------------------##
+##test_that('gWalks', {
+##
+##    jab = system.file('extdata', 'jabba.simple.rds', package="gGnome")
+##    message("JaBbA result: ", jab)
+##    segments = readRDS(jab)$segstats
+##    junctions = readRDS(jab)$junctions
+##    grl = system.file("extdata", "gw.grl.rds", package="gGnome")
+##    message("Walks for testing:", grl)
+##    grl = readRDS(grl)
+##    expect_equal(length(gw <<- as(grl, "gWalks")), sum(values(grl)$cn>0))
+##    expect_error(bg <<- as(gw, "bGraph"), NA)
+##    expect_equal(length(bg$junctions), sum(values(junctions)$cn>0))
+##    expect_true(inherits(gw.simp <<- gw$simplify(mod=FALSE), "gWalks"))
+##    expect_error(bg.simp <<- as(gw.simp, "bGraph"), NA)
+##    expect_error(bg.dc <<- bg.simp$decouple(mod=FALSE), NA)
+##    ## expect_equal(length(bg.dc$junctions), length(bg$junctions)) 291>269
+##    ## why does simplifying gwalks then decouple create more junctions????
+##
+##})
+
+
+## I think downloading data without warnings is evil
+
+## trying URL 'ftp://ftp.sanger.ac.uk/pub/gencode/Gencode_human/release_27/GRCh37_mapping/gencode.v27lift37.basic.annotation.gff3.gz'
+## Content type 'unknown' length 39550148 bytes (37.7 MB)
+## ==================================================
+## trying URL 'ftp://ftp.sanger.ac.uk/pub/gencode/Gencode_human/release_27/GRCh37_mapping/gencode.v27lift37.basic.annotation.gff3.gz'
+## Content type 'unknown' length 39550148 bytes (37.7 MB)
+## ==================================================
+
+
+
+##-------------------------------------------------------##
+##test_that('fusions', {
+##    juncs = system.file('extdata', 'testing_junctions.rds', package="gGnome")
+##    message("Junctions for testing: ", juncs)
+##    juncs = readRDS(juncs)
+
+## make sure the gene annotation can be loaded
+##    expect_error(cds <<- read_gencode(type = "cds"), NA)
+##    expect_error(fusions())
+##    expect_error(fusions(junc = juncs, cds = cds), NA) ## no problem
+##})
+
+## ##-------------------------------------------------------##
+## test_that('graph distance and proximity', {
+##     query = readRDS()
+##     expect_error()
+## })
+
+
+
+
+
