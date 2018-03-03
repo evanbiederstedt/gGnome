@@ -796,7 +796,7 @@ test_that('check gGraph w/ inputs works', {
     expect_true(is(gg_setseq_hg, 'gGraph'))
     expect_equal(length(gg_setseq_hg$segstats), 10)
     expect_equal(dim(gg_setseq_hg$edges)[1], 12)
-    expect_equal(dim(gg_setseq_hg$edges)[2], 30)
+    expect_equal(dim(gg_setseq_hg$edges)[2], 29)
     expect_equal(length(gg_setseq_hg$junctions), 2)
     expect_error(gg_setseq_hg$G, NA)  ## IGRAPH 8d66213 D--- 10 12 --
     expect_equal(length(gg_setseq_hg$adj), 100)
