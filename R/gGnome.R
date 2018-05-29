@@ -2038,7 +2038,7 @@ gGraph = R6::R6Class("gGraph",
                          ## START: SUBINTERVALS
                          ##        behavior will be almost exactly previous INTERVALS,
                          ##        but with some extra fields
-                         node.dt = data.table(oid = which(as.logical(strand(private$segs)=="+")))
+                         node.dt = data.table(oid = which(as.logical(strand(private$segs)=="+") & private$segs$loose==FALSE))
                          ## node.dt[, rid := seq_along(private$segs)[-oid][match(private$segs[-oid],
                          ##                                                      gUtils::gr.flipstrand(
                          ##                                                                  private$segs[oid]
@@ -2088,11 +2088,11 @@ gGraph = R6::R6Class("gGraph",
                          ## riid : qid of - strand match
                          ## siid : sub-index of this segment within super segment
                          ## int.id : 1:.N (replacing iid, which was once a renumbering from 1:.N)
-                         node.dt.both = rbind(node.dt[, .(nid = oid, siid,
+                         node.dt.both = rbind(node.dt[, .(nid = as.character(oid), siid,
                                                           iid=iid,
                                                           chr, start, end,
                                                           title, type, strand="+")],
-                                              node.dt[, .(nid = rid, siid,
+                                              node.dt[, .(nid = as.character(rid), siid,
                                                           iid=riid,
                                                           chr, start, end,
                                                           title, type, strand="-")])
@@ -2109,11 +2109,10 @@ gGraph = R6::R6Class("gGraph",
                                                  sequence)]
 
                          orig.dt = gr2dt(private$segs[private$segs$orig])
-                         orig.dt = orig.dt[1:.N %in%
-                                           which(private$segs$loose==FALSE &
-                                                 as.character(seqnames(private$segs))
-                                                 %in% names(regular.sl))]
-                         
+                         orig.dt = orig.dt[loose==FALSE &
+                                           as.character(seqnames)
+                                           %in% names(regular.sl)]
+                     
                          orig.dt = orig.dt[order(qid)]
                          orig.dt[, terminal := !duplicated(qid) | rev(!duplicated(rev(qid)))]
                          orig.dt = orig.dt[terminal==T,]
@@ -2142,13 +2141,15 @@ gGraph = R6::R6Class("gGraph",
                          orig.node.dt[, title := paste(iid, paste0("(",oid,"|",rid,")"))]
                          orig.node.dt[, type := "interval"]
 
-                         onode.dt.both = rbind(orig.node.dt[, .(nid = oid, iid,
+                         onode.dt.both = rbind(orig.node.dt[, .(nid = as.character(oid), iid,
                                                           chr, start, end, y,
                                                           title, type, strand="+")],
-                                              orig.node.dt[, .(nid = rid, iid,
+                                              orig.node.dt[, .(nid = as.character(rid), iid,
                                                           chr, start, end, y,
                                                           title, type, strand="-")])
+                         onode.dt.both = onode.dt.both[!is.na(nid),]
                          setkey(onode.dt.both, "nid")
+                         node.dt.both[, jsiid := onode.dt.both[as.character(node.dt.both$iid)]$iid]
                          
                          ## INTERVALS : 
                          ## NODE.JSON
@@ -2162,7 +2163,7 @@ gGraph = R6::R6Class("gGraph",
                                                  strand)]
 
                          ## MOVING ON TO EDGES : THESE WILL BECOME SUBCONNECTIONS
-                         
+
                          ## TMPFIX: remove NA edges .. not clear where these are coming from
                          ## but likely the result of trimming / hood, but then it's not balanced
                          ## mapping from type field to label in json
@@ -2176,29 +2177,31 @@ gGraph = R6::R6Class("gGraph",
                                               !(to %in% regsegs.ix))]
                          ed.na = ed[e.na.ix, ]
 
+                                                  
                          ## if any edge left, process
                          if (nrow(ed)-length(e.na.ix)>0){
                              if (any(e.na.ix)){
                                  ed = ed[-e.na.ix, ]
                              }
 
-                             ed[, from.iid := private$segs[from]$qid]
-                             ed[, to.iid := private$segs[to]$qid]
-                             ed[, sub.con := from.iid == to.iid]
+                             ed[, from.iid := node.dt.both[as.character(from), jsiid]]
+                             ed[, to.iid := node.dt.both[as.character(to), jsiid]]
+                             ed[, sub.con := !is.na(from.iid) & !is.na(to.iid) & from.iid == to.iid]
 
                              sub.ed = ed[sub.con==T,]
-                             orig.ed = ed[sub.con==F,]
+                             orig.ed = ed[sub.con!=T,]
 
                              ## HANDLE SUBCONNECTIONS FIRST
                              sub.ed[, iid := from.iid]
                              sub.ed[, scid := 1:.N]
-                             sub.ed[, from.siid := node.dt.both[from, siid]]
-                             sub.ed[, to.siid := node.dt.both[to, siid]]
+                             sub.ed[, from.siid := node.dt.both[as.character(from), siid]]
+                             sub.ed[, to.siid := node.dt.both[as.character(to), siid]]
                              
                              ## edge's unique identifier
                              sub.ed[, ":="(eid = paste(iid, from.siid, to.siid, sep="-"),
-                                           reid = paste(node.dt.both[hb.map[as.character(from)], iid], node.dt.both[hb.map[as.character(to)],siid],
-                                                        node.dt.both[hb.map[as.character(from)], siid],
+                                           reid = paste(node.dt.both[as.character(hb.map[as.character(from)]), jsiid],
+                                                        node.dt.both[as.character(hb.map[as.character(to)]), siid],
+                                                        node.dt.both[as.character(hb.map[as.character(from)]), siid],
                                                         sep="-"))]
                                            
                              ## ALERT: bc strandlessness, I only retained half of the edges
@@ -2247,8 +2250,8 @@ gGraph = R6::R6Class("gGraph",
                              
                              ## edge's unique identifier
                              orig.ed[, ":="(eid = paste(from.iid, to.iid, sep="-"),
-                                            reid = paste(node.dt.both[hb.map[as.character(to)], iid],
-                                                        node.dt.both[hb.map[as.character(from)], iid],
+                                            reid = paste(node.dt.both[as.character(hb.map[as.character(to)]), jsiid],
+                                                        node.dt.both[as.character(hb.map[as.character(from)]), jsiid],
                                                         sep="-"))]
                                            
                              ## ALERT: bc strandlessness, I only retained half of the edges
@@ -3956,6 +3959,7 @@ bGraph = R6::R6Class("bGraph",
 
                                  ## repurpose karyoMIP.to.path to generate all paths
                                  ## using "fake solution" i.e. all 1 weights, to karyoMIP as input
+                                 ### only running karyoMIP to get the appropriate kclass
                                  karyo.sol = gGnome::karyoMIP(K, h$e, h$eclass,
                                                       nsolutions = nsolutions,
                                                       tilim = tilim,
@@ -4004,8 +4008,11 @@ bGraph = R6::R6Class("bGraph",
                                  gw = gWalks$new(segs=segs,
                                                  paths=p$paths,
                                                  is.cycle=p$is.cyc,
-                                                 cn = p$cn)
-                                 return(gw)
+                                                 cn = p$cn,
+                                                 metacols = data.frame(kix=p$kix,
+                                                                       kix2=p$kix2)
+                                 )
+                             return(gw)
                              }
                          },
 
@@ -4137,7 +4144,7 @@ bGraph = R6::R6Class("bGraph",
                              ## compute convex basis of B
                              K = convex.basis(B)
                              col.reps = c(setNames(wk.dt[!duplicated(walk), walk.n], wk.dt[!duplicated(walk), kix]), setNames(wk.dt[!duplicated(walk), walk.n], wk.dt[!duplicated(walk), kix2]))
-                             col.reps = col.reps[sort(names(col.reps))]
+                             col.reps = col.reps[as.character(sort(as.integer(names(col.reps))))]
                              K = K[, rep(as.integer(names(col.reps)), col.reps)]
                              kclass = abs(as.integer(colnames(mprior)))
                              prior = rep(1, ncol(K))
@@ -4148,7 +4155,7 @@ bGraph = R6::R6Class("bGraph",
                                  saveRDS(prior, "prior.rds")
                              }
 
-                             karyo.sol = gGnome::karyoMIP(K, h$e, h$eclass,
+                             karyo.sol = karyoMIP(K, h$e, h$eclass,
                                                           kclass = kclass,
                                                           nsolutions = nsolutions,
                                                           tilim = tilim,
@@ -4177,22 +4184,31 @@ bGraph = R6::R6Class("bGraph",
 
                              if(!is.null(nodes)){
                                  nodes = sort(nodes)
-                                 nodes$segment = gr.match(nodes, segs)
+                                 tmpnd = gr.findoverlaps(nodes , segs)
+                                 nodes = nodes[tmpnd$query.id]
+                                 nodes$segment = tmpnd$subject.id
                                  start(nodes) = start(nodes) - 1
-                                 nodes = GenomicRanges::split(nodes, nodes$segment)
+                                 nodes = GenomicRanges::split(nodes, factor(nodes$segment, 1:length(segs)))
                                  save.vals = values(p$grl)
 
                                  p$grl = GRangesList(mclapply(1:length(p$grl), function(gr.ix){
                                      gr = p$grl[[gr.ix]]
-                                     gr$ALT = ""
-                                     allele = mclapply(strsplit(strsplit(save.vals$allelic.profile[gr.ix], ","), ""), function(s) s > 0)
-                                     s.ix = p$paths[gr.ix]
-                                     gr.n = unlist(sapply(1:length(s.ix), function(ix){
-                                         nodes[[ix]][which(allele[ix])]
-                                     }))
+                                     gr$qid = 1:length(gr)
+                                     gr$ALT = "N"
+                                     allele = mclapply(strsplit(unlist(strsplit(save.vals$allelic.profile[gr.ix], ",")), ""), function(s) s > 0)
+                                     s.ix = p$paths[[gr.ix]]
+                                     gr.n = unlist(GRangesList(sapply(1:length(s.ix), function(ix){
+                                         sn = nodes[[s.ix[ix]]]
+                                         if(length(sn) > 0) sn = sn[which(allele[[ix]])]
+                                         return(sn)
+                                     })))
+                                     if(length(gr.n) == 0) return(gr)
+                                     ### this is going to mess up the order of the walk
                                      gr = gUtils::gr.breaks(gr.n, gr)
+                                     gr = gr %Q% (order(qid))
                                      start(gr.n) = start(gr.n) + 1
                                      gr = gr %$% gr.n[, 'ALT']
+                                     gr[gr$ALT==""]$ALT = "N"
                                      return(gr)
                                  }, mc.cores=mc.cores))
                                  values(p$grl) = save.vals
